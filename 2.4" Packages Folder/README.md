@@ -1,4 +1,4 @@
-If you're using the 2.4" Nextion panel copy this directory into your already existing '/config/packages/' folder. 
+If you're using the 2.4" Nextion panel copy this directory into your already existing ```/config/packages/``` folder. 
 
 **Important:** If you renamed your HASP Node and therefore isn't called *plate01* you have to change every MQTT topic in the config files manually.
 
