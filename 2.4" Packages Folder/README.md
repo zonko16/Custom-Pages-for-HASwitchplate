@@ -4,11 +4,11 @@ This will replace your previous settings for page 3,6 and 8. Backup your existin
 
 You'll need a [Darksky API](https://darksky.net/dev) to use the weather component. Place your API key into ```hasp_plate01_00_components.yaml```. 
 
-For the **Toggles Page** you'll need to set up your entities. Lines commented with **"Set name for b(*)"** in **hasp_plate01_p6_toggles.yaml** are for setting the title of each toggle. For each toggle you can either set to have a lightbulb or a I/O button. Search for the lines with **# Toggle colors on p[3].b[4] when light1 changes**. There you will find: 
+For the **Toggles Page** you'll need to set up your entities. Lines commented with **"Set name for b(*)"** in **hasp_plate01_p6_toggles.yaml** are for setting the title of each toggle. For each toggle you can either set to have a lightbulb or a I/O button. Search for the lines with **# Toggle colors on p[3].b[*] when light1 changes**. There you will find: 
 ```
 - service: mqtt.publish
   data_template:
-    topic: 'hasp/plate01/command/p[6].b[4].pic'
+    topic: 'hasp/plate01/command/p[6].b[*].pic'
     payload_template: >-
       {% if states.your_entity.state == "on" -%}
         {{ 6 }}
