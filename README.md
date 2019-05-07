@@ -1,5 +1,6 @@
 # Custom-Pages-for-HASwitchplate
 Custom pages for HA Switchplate created by @aderusha
+Special thanks to @madrian for spending hours of beta testing with me. 
 
 **Important:** You need to go through the basic setup of [HASwitchPlate](https://github.com/aderusha/HASwitchPlate) from @aderusha to use these custom Pages. Instead of flashing the original HASwitchPlate.tft you can use the provided .tft in this repository. 
 If you renamed your HASP Node and therefore isn't called *plate01* you have to change every MQTT topic in the config files manually.
@@ -14,7 +15,7 @@ Once finished setting up HASP copy the .yaml files from this repository into ```
 
 You'll need a [Darksky API](https://darksky.net/dev) to use the weather component. Place your API key into ```hasp_plate01_00_components.yaml```. 
 
-**Important:** If you're not using two temperature sensors or you don't want you use two, flash your Nextion Panel with **HASwitchPlate_2.4.tft**. If you want to use two sensors use **HASwitchPlate_ChangeTemperature.tft**. For Now it will use Page 3 and Page 4 to have two sensors in the "same place". This is just a workaround for now and will be changed in the future to only use one page.
+**Important:** If you're not using two temperature sensors or you don't want you use two, flash your Nextion Panel with [HASwitchPlate_2.4.tft](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/blob/master/Nextion%20HMI/HASwitchPlate_2.4.tft). If you want to use two sensors use [HASwitchPlate_ChangeTemperature.tft](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/blob/master/Nextion%20HMI/HASwitchPlate_2.4_ChangeTemperature.tft). For Now it will use Page 3 and Page 4 to have two sensors in the "same place". This is just a workaround for now and will be changed in the future to only use one page.
 
 If you have a temperature and humidity sensor inside, you can have the temperature change from Out to In by clicking on the actual temperature. 
 To set this up you have to replace ```sensor.your_indoor_temp``` and ```sensor.your_indoor_humidity```with your own entities.
