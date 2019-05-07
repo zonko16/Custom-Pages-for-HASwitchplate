@@ -4,7 +4,11 @@ Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) crea
 ![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/master/Preview.png)
 
 
+
+
 Special thanks to @aderusha for creating HASwitchPlate and @madrian for spending hours of beta testing with me. 
+
+
 
 **Important:** You need to go through the basic setup of [HASwitchPlate](https://github.com/aderusha/HASwitchPlate) from @aderusha to use these custom Pages. Instead of flashing the original HASwitchPlate.tft you can use the provided .tft in this repository. 
 If you renamed your HASP Node and therefore isn't called *plate01* you have to change every MQTT topic in the config files manually.
