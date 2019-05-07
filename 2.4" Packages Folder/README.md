@@ -1,8 +1,8 @@
-If you're using the 2.4" Nextion panel copy this directory into your already existing ```/config/packages/``` folder. 
+If you're using the 2.4" Nextion panel paste this directory into your already existing ```/config/packages/``` folder. 
 
-**Important:** If you renamed your HASP Node and therefore isn't called *plate01* you have to change every MQTT topic in the config files manually.
+**Important:** You need to go through the basic setup of [HASwitchPlate](https://github.com/aderusha/HASwitchPlate) from @aderusha to use these custom Pages. If you renamed your HASP Node and therefore isn't called *plate01* you have to change every MQTT topic in the config files manually.
 
-This will replace your previous settings for page 3,6 and 8. Backup your existing files if you ever need them again. 
+This will replace your all your previous settings of page 3,6 and 8. Backup your existing files if you ever need them again. 
 
 **_Page 3 Weather Setup_**
 
