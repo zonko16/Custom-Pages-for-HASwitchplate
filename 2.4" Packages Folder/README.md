@@ -1,4 +1,5 @@
-If you're using the 2.4" Nextion panel paste this directory into your already existing ```/config/packages/``` folder. 
+If you're using the 2.4" Nextion panel paste this directory into your already existing ```/config/packages/plate01``` folder. 
+Don't copy hasp_plate01_p4_clock.yaml, hasp_plate01_p4_weather.yaml and hasp_plate01_p4_colorconfig.yaml into your config if you're NOT using a second temperature sensor.
 
 **Important:** You need to go through the basic setup of [HASwitchPlate](https://github.com/aderusha/HASwitchPlate) from @aderusha to use these custom Pages. If you renamed your HASP Node and therefore isn't called *plate01* you have to change every MQTT topic in the config files manually.
 
