@@ -4,9 +4,34 @@ If you're using the 2.4" Nextion panel paste this directory into your already ex
 
 This will replace your all your previous settings of page 3,6 and 8. Backup your existing files if you ever need them again. 
 
-**_Page 3 Weather Setup_**
+**_Page 3/4 Weather Setup_**
 
 You'll need a [Darksky API](https://darksky.net/dev) to use the weather component. Place your API key into ```hasp_plate01_00_components.yaml```. 
+If you have a temperature and humidity sensor inside, you can have the temperature change from Out to In by clicking on the actual temperature. 
+To set this up you have to replace ```sensor.your_indoor_temp``` and ```sensor.your_indoor_humidity```with your own entities.
+Additionally uncomment these lines in the ```hasp_plate01_p0_pages.yaml```:
+```
+#  - alias: hasp_plate01_p0_ChangeToTempInside
+#    trigger:
+#    - platform: mqtt
+#      topic: 'hasp/plate01/state/p[3].b[6]'    
+#    action:
+#    - service: input_number.set_value
+#      data_template:
+#        entity_id: 'input_number.hasp_plate01_activepage'
+#        value: '{{states.input_number.hasp_plate01_pagebutton4page.state|int}}'
+#  
+#  - alias: hasp_plate01_p0_ChangeToTempOutside
+#    trigger:
+#    - platform: mqtt
+#      topic: 'hasp/plate01/state/p[4].b[6]'    
+#    action:
+#    - service: input_number.set_value
+#      data_template:
+#        entity_id: 'input_number.hasp_plate01_activepage'
+#        value: '{{states.input_number.hasp_plate01_pagebutton3page.state|int}}'
+```
+
 
 
 **_Page 6 Toggles Setup_**
