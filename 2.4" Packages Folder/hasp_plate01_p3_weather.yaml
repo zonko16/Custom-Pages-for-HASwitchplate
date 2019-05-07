@@ -1,0 +1,154 @@
+##############################################################################
+# Automations to display the weather forecast and current temp on page 3
+
+automation:
+  # Display weather details on page 3 when weather updates or on HASP init
+  - alias: hasp_plate01_p3_Weather
+    trigger:
+    - platform: state
+      entity_id: sensor.xiaomi_mijia_mean
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+    - platform: homeassistant
+      event: start
+    condition:
+    - condition: state
+      entity_id: 'binary_sensor.plate01_connected'
+      state: 'on'
+    action:
+    # Textfield Temp Outside
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[7].font'
+        payload: '7'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[7].txt'
+        payload_template: '"Out"'
+    # Outside Weather
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[6].font'
+        payload: '6'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[6].txt'
+        payload_template: '"{{ states.sensor.dark_sky_temperature.state }}°C"'
+
+    # Out Humidity
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[8].font'
+        payload: '7'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[8].txt'
+        payload_template: '"{{ states.sensor.dark_sky_humidity.state }}%"'
+
+# Forecast
+# Textfield of "now" weather icon
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[12].font'
+        payload: '0'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[12].txt'
+        payload_template: '"now"'
+# Icon Now
+    - service: mqtt.publish
+      data_template:
+        topic: 'hasp/plate01/command/p[3].b[9].pic'
+        payload_template: >-
+          {% if states.sensor.dark_sky_icon_0d.state == "clear-day" -%}
+            {{ 15 }}
+          {%- elif states.sensor.dark_sky_icon_0d.state == "clear-night" -%}
+            {{ 15 }}
+          {%- elif states.sensor.dark_sky_icon_0d.state == "rain" -%}
+            {{ 13 }}
+          {%- elif states.sensor.dark_sky_icon_0d.state == "partly-cloudy-day" -%}
+            {{ 14 }}
+          {%- elif states.sensor.dark_sky_icon_0d.state == "partly-cloudy-night" -%}
+            {{ 14 }}
+          {%- elif states.sensor.dark_sky_icon_0d.state == "cloudy" -%}
+            {{ 12 }}
+          {%- elif states.sensor.dark_sky_icon_0d.state == "fog" -%}
+            {{ 17 }}
+          {%- elif states.sensor.dark_sky_icon_0d.state == "snow" -%}
+            {{ 16 }}
+          {%- elif states.sensor.dark_sky_icon_0d.state == "sleet" -%}
+            {{ 16 }}
+          {%- endif %}
+
+# Textfield for 24h weather icon
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[13].font'
+        payload: '0'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[13].txt'
+        payload_template: '"24h"'
+  #Icon  24h  
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[10].font'
+        payload: '12'
+    - service: mqtt.publish
+      data_template:
+        topic: 'hasp/plate01/command/p[3].b[10].pic'
+        payload_template: >-
+          {% if states.sensor.dark_sky_icon_1d.state == "clear-day" -%}
+            {{ 15 }}
+          {%- elif states.sensor.dark_sky_icon_1d.state == "clear-night" -%}
+            {{ 15 }}
+          {%- elif states.sensor.dark_sky_icon_1d.state == "rain" -%}
+            {{ 13 }}
+          {%- elif states.sensor.dark_sky_icon_1d.state == "partly-cloudy-day" -%}
+            {{ 14 }}
+          {%- elif states.sensor.dark_sky_icon_1d.state == "partly-cloudy-night" -%}
+            {{ 14 }}
+          {%- elif states.sensor.dark_sky_icon_1d.state == "cloudy" -%}
+            {{ 12 }}
+          {%- elif states.sensor.dark_sky_icon_1d.state == "fog" -%}
+            {{ 17 }}
+          {%- elif states.sensor.dark_sky_icon_1d.state == "snow" -%}
+            {{ 16 }}
+          {%- elif states.sensor.dark_sky_icon_1d.state == "sleet" -%}
+            {{ 16 }}
+          {%- endif %}
+
+# Textfield for 48h weather icon
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[14].font'
+        payload: '0'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[14].txt'
+        payload_template: '"48h"'
+# 48h Icon
+    - service: mqtt.publish
+      data_template:
+        topic: 'hasp/plate01/command/p[3].b[11].pic'
+        payload_template: >-
+          {% if states.sensor.dark_sky_icon_2d.state == "clear-day" -%}
+            {{ 15 }}
+          {%- elif states.sensor.dark_sky_icon_2d.state == "clear-night" -%}
+            {{ 20 }}
+          {%- elif states.sensor.dark_sky_icon_2d.state == "rain" -%}
+            {{ 13 }}
+          {%- elif states.sensor.dark_sky_icon_2d.state == "partly-cloudy-day" -%}
+            {{ 14 }}
+          {%- elif states.sensor.dark_sky_icon_2d.state == "partly-cloudy-night" -%}
+            {{ 15 }}
+          {%- elif states.sensor.dark_sky_icon_2d.state == "cloudy" -%}
+            {{ 12 }}
+          {%- elif states.sensor.dark_sky_icon_2d.state == "fog" -%}
+            {{ 19 }}
+          {%- elif states.sensor.dark_sky_icon_2d.state == "snow" -%}
+            {{ 17 }}
+          {%- elif states.sensor.dark_sky_icon_2d.state == "sleet" -%}
+            {{ 18 }}
+          {%- endif %}
+
