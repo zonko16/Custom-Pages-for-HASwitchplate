@@ -1,5 +1,5 @@
 # Custom-Pages-for-HASwitchplate
-Custom pages for HA Switchplate created by @aderusha
+Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) created by @aderusha
 
 Special thanks to @aderusha for creating HASwitchPlate and @madrian for spending hours of beta testing with me. 
 
