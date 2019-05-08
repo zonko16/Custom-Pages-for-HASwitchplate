@@ -8,7 +8,7 @@ Special thanks to @aderusha for creating HASwitchPlate and @madrian for spending
 
 **UPDATE:**  
 The first version used two pages for switching the temperature displayed between In and Out. 
-The new version does the same but only needs page 3 for the same outcome. If already flashed, reflash the ```HASwitchPlate_2.4.tft```
+The new version does the same but only needs page 3 for the same outcome. If you already flashed your Nextion Panel before, reflash the ```HASwitchPlate_2.4.tft``` and replace ```hasp_plate01_p0_pages.yaml``` and  ```hasp_plate01_p3_weather.yaml``` with the new ones.
 
 **QUICK START**
 
