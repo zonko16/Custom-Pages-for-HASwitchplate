@@ -276,22 +276,15 @@ automation:
             {%- endif %}",
           {%- endfor -%}]
 
-  - alias: hasp_plate01_p0_ChangeToTempInside
+####################################################################
+# Toggles the Label and Temp/Humidity displayed on Page 3. Thanks @madrian
+  - alias: hasp_plate01_p0_ChangeToTempInOut
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[3].b[6]'    
+      topic: 'hasp/plate01/state/p[3].b[6]'
+      payload: 'ON' 
     action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: 'input_number.hasp_plate01_activepage'
-        value: '4'
+    - service: input_boolean.toggle
+      entity_id: input_boolean.hasp_plate01_p3_temperatureswitch
+
   
-  - alias: hasp_plate01_p0_ChangeToTempOutside
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[6]'    
-    action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: 'input_number.hasp_plate01_activepage'
-        value: '3'      
