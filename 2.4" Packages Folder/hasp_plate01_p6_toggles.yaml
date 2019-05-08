@@ -66,7 +66,7 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[15].txt'
         payload: '"BUTTON9"'
 
-# Replace switch.YOUR_ENTITY with your entities you want to control
+# Replace switch.YOUR_ENTITY* with your entities you want to control
   # Toggle BUTTON4 when p[6].b[4] pressed
   - alias: hasp_plate01_p6_Toggle1
     trigger:
