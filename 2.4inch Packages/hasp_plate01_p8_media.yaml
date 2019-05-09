@@ -118,7 +118,12 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[8].b[6].picc'
-        payload_template: "\"{%- if is_state('media_player.spotify', 'playing') %}3{% elif is_state('media_player.spotify', 'paused') %}4{% endif -%}\""
+        payload_template: >-
+          {% if states.media_player.spotify.state == "playing" -%}
+            {{ 3 }}
+          {%- elif states.media_player.spotify.state == "paused" -%}
+            {{ 4 }}
+          {% endif -%}
   
   # Volume slider value published, apply published state
   - alias: hasp_plate01_p8_MediaVolSliderUpdateHass
