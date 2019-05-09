@@ -1,90 +1,81 @@
 ##############################################################################
-# Automations for handling toggle state buttons on page 4
+# Automations for handling toggle state BUTTONs on page 6
 automation:
-  #Set font and text for toggle buttons on device connection
-  - alias: hasp_plate01_p4_ToggleInit
+  #Set font and text for toggle BUTTONs on device connection
+  - alias: hasp_plate01_p6_ToggleInit
     trigger:
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
     - platform: homeassistant
       event: start
+    - platform: state
+      entity_id: input_boolean.hasp_plate01_p6_switchtoggles
+      to: 'on'
+
+    #condition:
+    #- condition: state
+    #  entity_id: input_boolean.hasp_plate01_p6_switchtoggles
+    #  state: 'off'
+
     action:
+    #Change payload (BUTTON7) to the name for TOP LEFT toggle
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[10].font'
+        payload: '0'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[10].txt'
+        payload: '"BUTTON7"'  
+    #Change payload (BUTTON8) to the name for TOP RIGHT toggle
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[11].font'
+        payload: '0'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[11].txt'
+        payload: '"BUTTON8"'
+    #Change payload (BUTTON9) to the name for MIDDLE LEFT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[12].font'
-        payload: '7'
+        payload: '0'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[12].txt'
-    # Change Payload for your Toggle
-        payload: '"Toggle1"'
-    
+        payload: '"BUTTON9"'
+    #Change payload (BUTTON10) to the name for MIDDLE RIGHT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[13].font'
-        payload: '7'
+        payload: '0'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[13].txt'
-    # Change Payload for your Toggle
-        payload: '"Toggle2"'
+        payload: '"BUTTON10"'
+    #Change payload (BUTTON11) to the name for BOTTOM LEFT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[14].font'
-        payload: '7'
+        payload: '0'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[14].txt'
-      # Change Payload to the name of your toggle 
-        payload: '"Toggle3"'
+        payload: '"BUTTON11"'
+    #Change payload (BUTTON9) to the name for BOTTOM RIGHT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[15].font'
-        payload: '7'
+        payload: '0'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[15].txt'
-      # Change Payload for your Toggle 
-        payload: '"Toggle4"'
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[16].font'
-        payload: '7'
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[16].txt'
-      # Change Payload to the name of your toggle 
-        payload: '"Toggle5"'
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[17].font'
-        payload: '7'
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[17].txt'
-      # Change Payload to the name of your toggle   
-        payload: '"Toggle6"'
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[18].font'
-        payload: '7'
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[18].txt'
-      # Change payload to the name of your toggle   
-        payload: '"Toggle7"'
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[19].font'
-        payload: '7'
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[19].txt'
-      # Change Payload to the name of your toggle   
-        payload: '"Toggle8"'
-       
-  # Toggle light1 when p[6].b[4] pressed
+        payload: '"BUTTON12"'
+
+# Replace switch.YOUR_ENTITY* with your entities you want to control
+  # Toggle BUTTON8 when p[6].b[4] pressed
   - alias: hasp_plate01_p6_Toggle1
     trigger:
     - platform: mqtt
@@ -92,9 +83,9 @@ automation:
       payload: 'ON'
     action:
     - service: homeassistant.toggle
-      entity_id: switch.YOUR_ENTITY1
+      entity_id: switch.YOUR_ENTITY7
       
-  # Toggle light2 when p[6].b[5] pressed
+  # Toggle BUTTON8 when p[6].b[5] pressed
   - alias: hasp_plate01_p6_Toggle2
     trigger:
     - platform: mqtt
@@ -102,9 +93,9 @@ automation:
       payload: 'ON'
     action:
     - service: homeassistant.toggle
-      entity_id: switch.YOUR_ENTITY2
+      entity_id: switch.YOUR_ENTITY8
 
-  # Toggle light3 when p[6].b[6] pressed
+  # Toggle BUTTON9 when p[6].b[6] pressed
   - alias: hasp_plate01_p6_Toggle3
     trigger:
     - platform: mqtt
@@ -112,9 +103,9 @@ automation:
       payload: 'ON'
     action:
     - service: homeassistant.toggle
-      entity_id: switch.YOUR_ENTITY3
+      entity_id: switch.YOUR_ENTITY9
       
-   # Toggle Button 4 when p4.b7 pressed
+   # Toggle BUTTON10 when p6.b7 pressed
   - alias: hasp_plate01_p6_Toggle4
     trigger:
     - platform: mqtt
@@ -122,9 +113,9 @@ automation:
       payload: 'ON'
     action:
     - service: homeassistant.toggle
-      entity_id: switch.YOUR_ENTITY4
+      entity_id: switch.YOUR_ENTITY70
       
-   # Toggle Button 5 when p6.b8
+   # Toggle BUTTON8 when p6.b8
   - alias: hasp_plate01_p6_Toggle5
     trigger:
     - platform: mqtt
@@ -132,9 +123,9 @@ automation:
       payload: 'ON'
     action:
     - service: homeassistant.toggle
-      entity_id: switch.YOUR_ENTITY5
+      entity_id: switch.YOUR_ENTITY11
     
-    # Toggle Button 6 p4.b9
+    # Toggle BUTTON9 p6.b9
   - alias: hasp_plate01_p6_Toggle6
     trigger:
     - platform: mqtt
@@ -142,258 +133,11 @@ automation:
       payload: 'ON'
     action:
     - service: homeassistant.toggle
-      entity_id: switch.YOUR_ENTITY6
-    
-    # Toggle Button 7 p4.b10
-  - alias: hasp_plate01_p6_Toggle7
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[6].b[10]'
-      payload: 'ON'
-    action:
-    - service: homeassistant.toggle
-      entity_id: switch.YOUR_ENTITY7
-        
-     # Togge Button 8 p4.b11
-  - alias: hasp_plate01_p6_Toggle8
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[6].b[11]'
-      payload: 'ON'
-    action:
-    - service: homeassistant.toggle
-      entity_id: switch.YOUR_ENTITY8
-      
-  # Toggle colors on p[6].b[4] when light1 changes
-  - alias: hasp_plate01_p4_ToggleColor1
-    trigger:
-    - platform: state
-      entity_id: switch.YOUR_ENTITY1
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[4].pco'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY1.state == "on" -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
-    - service: mqtt.publish
-      data_template:
-        topic: 'hasp/plate01/command/p[6].b[4].picc'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY1.state == "on" -%}
-            {{ 1 }}
-          {%- else -%}
-            {{ 2 }}
-          {%- endif %}
-
-  # Toggle colors on p[6].b[5] when light1 changes
-  - alias: hasp_plate01_p6_ToggleColor2
-    trigger:
-    - platform: state
-      entity_id: switch.YOUR_ENTITY2
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[5].pco'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY2.state == "on" -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
-    - service: mqtt.publish
-      data_template:
-        topic: 'hasp/plate01/command/p[6].b[5].picc'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY2.state == "on" -%}
-            {{ 1 }}
-          {%- else -%}
-            {{ 2 }}
-          {%- endif %}
-
-  # Toggle colors on p[6].b[6] when light1 changes
-  - alias: hasp_plate01_p6_ToggleColor3
-    trigger:
-    - platform: state
-      entity_id: switch.YOUR_ENTITY3
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[6].pco'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY3.state == "on" -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
-    - service: mqtt.publish
-      data_template:
-        topic: 'hasp/plate01/command/p[6].b[6].picc'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY3.state == "on" -%}
-            {{ 1 }}
-          {%- else -%}
-            {{ 2 }}
-          {%- endif %}
+      entity_id: switch.YOUR_ENTITY12
           
-  # Toggle colors on p[6].b[7] when light1 changes
-  - alias: hasp_plate01_p7_ToggleColor3
-    trigger:
-    - platform: state
-      entity_id: switch.YOUR_ENTITY4
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[7].pco'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY4.state == "on" -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
-    - service: mqtt.publish
-      data_template:
-        topic: 'hasp/plate01/command/p[6].b[7].picc'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY4.state == "on" -%}
-            {{ 1 }}
-          {%- else -%}
-            {{ 2 }}
-          {%- endif %}
-   
-  # Toggle colors on p[6].b[8] when light1 changes
-  - alias: hasp_plate01_p8_ToggleColor3
-    trigger:
-    - platform: state
-      entity_id: switch.YOUR_ENTITY5
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[8].pco'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY5.state == "on" -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
-    - service: mqtt.publish
-      data_template:
-        topic: 'hasp/plate01/command/p[6].b[8].picc'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY5.state == "on" -%}
-            {{ 1 }}
-          {%- else -%}
-            {{ 2 }}
-          {%- endif %}
-          
-  # Toggle colors on p[6].b[9] when light1 changes
-  - alias: hasp_plate01_p4_ToggleColor3
-    trigger:
-    - platform: state
-      entity_id: switch.YOUR_ENTITY6
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[9].pco'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY6.state == "on" -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
-    - service: mqtt.publish
-      data_template:
-        topic: 'hasp/plate01/command/p[6].b[9].picc'
-        payload_template: >-
-          {% if states.switch.YOUR_ENTITY6.state == "on" -%}
-            {{ 1 }}
-          {%- else -%}
-            {{ 2 }}
-          {%- endif %}
-     
-  # Toggle colors on p[6].b[10] when light1 changes
-  - alias: hasp_plate01_p10_ToggleColor
+  # Replace YOUR_ENTITY* with the corresponding from above    
+  # Toggle colors/icon on p[6].b[4] when BUTTON8 changes
+  - alias: hasp_plate01_p2_ToggleColor1
     trigger:
     - platform: state
       entity_id: switch.YOUR_ENTITY7
@@ -415,26 +159,26 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[10].pco'
         payload_template: >-
-          {% if states.switch.YOUR_ENTITY7.state == "on" -%}
+          {% if states.switch.YOUR_ENTITY7 == "on" -%}
             {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
           {%- else -%}
             {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
           {%- endif %}
     - service: mqtt.publish
       data_template:
-        topic: 'hasp/plate01/command/p[6].b[10].picc'
+        topic: 'hasp/plate01/command/p[6].b[4].picc'
         payload_template: >-
           {% if states.switch.YOUR_ENTITY7.state == "on" -%}
             {{ 1 }}
           {%- else -%}
             {{ 2 }}
           {%- endif %}
-         
-  # Toggle colors on p[6].b[11] when light1 changes
-  - alias: hasp_plate01_p11_ToggleColor
+
+  # Toggle colors on p[6].b[5] when BUTTON8 changes
+  - alias: hasp_plate01_p6_ToggleColor2
     trigger:
     - platform: state
-      entity_id: switch.YOUR_ENTITY8
+      entity_id: switch.YOUR_ENTITY2
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -453,19 +197,169 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[11].pco'
         payload_template: >-
-          {% if states.switch.YOUR_ENTITY8.state == "on" -%}
+          {% if states.switch.YOUR_ENTITY2.state == "on" -%}
             {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
           {%- else -%}
             {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
           {%- endif %}
     - service: mqtt.publish
       data_template:
-        topic: 'hasp/plate01/command/p[6].b[11].picc'
+        topic: 'hasp/plate01/command/p[6].b[5].picc'
         payload_template: >-
-          {% if states.switch.YOUR_ENTITY8.state == "on" -%}
+          {% if states.switch.YOUR_ENTITY2.state == "on" -%}
+            {{ 1 }}
+          {%- else -%}
+            {{ 2 }}
+          {%- endif %}
+
+  # Toggle colors on p[6].b[6] when BUTTON9 changes
+  - alias: hasp_plate01_p6_ToggleColor3
+    trigger:
+    - platform: state
+      entity_id: light.switch.YOUR_ENTITY9
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedforegroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[12].pco'
+        payload_template: >-
+          {% if states.light.switch.YOUR_ENTITY9.state == "on" -%}
+            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
+          {%- else -%}
+            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
+          {%- endif %}
+    - service: mqtt.publish
+      data_template:
+        topic: 'hasp/plate01/command/p[6].b[6].picc'
+        payload_template: >-
+          {% if states.light.switch.YOUR_ENTITY9.state == "on" -%}
             {{ 1 }}
           {%- else -%}
             {{ 2 }}
           {%- endif %}
           
-  
+  # Toggle colors on p[6].b[7] when BUTTON10 changes
+  - alias: hasp_plate01_p7_ToggleColor3
+    trigger:
+    - platform: state
+      entity_id: switch.YOUR_ENTITY70
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedforegroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[13].pco'
+        payload_template: >-
+          {% if states.light.switch.YOUR_ENTITY70.state == "on" -%}
+            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
+          {%- else -%}
+            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
+          {%- endif %}
+    - service: mqtt.publish
+      data_template:
+        topic: 'hasp/plate01/command/p[6].b[7].picc'
+        payload_template: >-
+          {% if states.light.switch.YOUR_ENTITY70 == "on" -%}
+            {{ 1 }}
+          {%- else -%}
+            {{ 2 }}
+          {%- endif %}
+   
+  # Toggle colors on p[6].b[8] when BUTTON8 changes
+  - alias: hasp_plate01_p8_ToggleColor3
+    trigger:
+    - platform: state
+      entity_id: switch.YOUR_ENTITY11
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedforegroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[14].pco'
+        payload_template: >-
+          {% if states.light.switch.YOUR_ENTITY11.state == "on" -%}
+            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
+          {%- else -%}
+            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
+          {%- endif %}
+    - service: mqtt.publish
+      data_template:
+        topic: 'hasp/plate01/command/p[6].b[8].picc'
+        payload_template: >-
+          {% if states.light.switch.YOUR_ENTITY11.state == "on" -%}
+            {{ 1 }}
+          {%- else -%}
+            {{ 2 }}
+          {%- endif %}
+          
+  # Toggle colors on p[6].b[9] when BUTTON9 changes
+  - alias: hasp_plate01_p9_ToggleColor3
+    trigger:
+    - platform: state
+      entity_id: switch.YOUR_ENTITY12
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedforegroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[15].pco'
+        payload_template: >-
+          {% if states.light.switch.YOUR_ENTITY12.state == "on" -%}
+            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
+          {%- else -%}
+            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
+          {%- endif %}
+    - service: mqtt.publish
+      data_template:
+        topic: 'hasp/plate01/command/p[6].b[9].picc'
+        payload_template: >-
+          {% if states.light.switch.YOUR_ENTITY12.state == "on" -%}
+            {{ 1 }}
+          {%- else -%}
+            {{ 2 }}
+          {%- endif %}

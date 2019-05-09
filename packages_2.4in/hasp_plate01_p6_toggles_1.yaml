@@ -1,3 +1,10 @@
+######################################################################
+# Input Boolean used to switch between Toggle Page 1 and Toggle Page 2
+# Pressing the lightbulb in the NavBar will switch between Toggles Page 1 and 2
+input_boolean:
+  hasp_plate_01_p6_switchtoggles:
+    initial: off
+
 ##############################################################################
 # Automations for handling toggle state BUTTONs on page 6
 automation:
@@ -11,7 +18,7 @@ automation:
       event: start
      
     action:
-    #Change payload (BUTTON4) to the name for TOP LEFT toggle
+    #Change payload (BUTTON1) to the name for TOP LEFT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[10].font'
@@ -19,8 +26,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[10].txt'
-        payload: '"BUTTON4"'  
-    #Change payload (BUTTON5) to the name for TOP RIGHT toggle
+        payload: '"BUTTON1"'  
+    #Change payload (BUTTON2) to the name for TOP RIGHT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[11].font'
@@ -28,8 +35,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[11].txt'
-        payload: '"BUTTON5"'
-    #Change payload (BUTTON6) to the name for MIDDLE LEFT toggle
+        payload: '"BUTTON2"'
+    #Change payload (BUTTON3) to the name for MIDDLE LEFT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[12].font'
@@ -37,8 +44,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[12].txt'
-        payload: '"BUTTON6"'
-    #Change payload (BUTTON7) to the name for MIDDLE RIGHT toggle
+        payload: '"BUTTON3"'
+    #Change payload (BUTTON4) to the name for MIDDLE RIGHT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[13].font'
@@ -46,8 +53,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[13].txt'
-        payload: '"BUTTON7"'
-    #Change payload (BUTTON8) to the name for BOTTOM LEFT toggle
+        payload: '"BUTTON4"'
+    #Change payload (BUTTON5) to the name for BOTTOM LEFT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[14].font'
@@ -55,8 +62,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[14].txt'
-        payload: '"BUTTON8"'
-    #Change payload (BUTTON9) to the name for BOTTOM RIGHT toggle
+        payload: '"BUTTON5"'
+    #Change payload (BUTTON6) to the name for BOTTOM RIGHT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[15].font'
@@ -64,10 +71,10 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[15].txt'
-        payload: '"BUTTON9"'
+        payload: '"BUTTON6"'
 
 # Replace switch.YOUR_ENTITY* with your entities you want to control
-  # Toggle BUTTON4 when p[6].b[4] pressed
+  # Toggle BUTTON1 when p[6].b[4] pressed
   - alias: hasp_plate01_p6_Toggle1
     trigger:
     - platform: mqtt
@@ -77,7 +84,7 @@ automation:
     - service: homeassistant.toggle
       entity_id: switch.YOUR_ENTITY1
       
-  # Toggle BUTTON5 when p[6].b[5] pressed
+  # Toggle BUTTON2 when p[6].b[5] pressed
   - alias: hasp_plate01_p6_Toggle2
     trigger:
     - platform: mqtt
@@ -87,7 +94,7 @@ automation:
     - service: homeassistant.toggle
       entity_id: switch.YOUR_ENTITY2
 
-  # Toggle BUTTON6 when p[6].b[6] pressed
+  # Toggle BUTTON3 when p[6].b[6] pressed
   - alias: hasp_plate01_p6_Toggle3
     trigger:
     - platform: mqtt
@@ -97,7 +104,7 @@ automation:
     - service: homeassistant.toggle
       entity_id: switch.YOUR_ENTITY3
       
-   # Toggle BUTTON7 when p6.b7 pressed
+   # Toggle BUTTON4 when p6.b7 pressed
   - alias: hasp_plate01_p6_Toggle4
     trigger:
     - platform: mqtt
@@ -107,7 +114,7 @@ automation:
     - service: homeassistant.toggle
       entity_id: switch.YOUR_ENTITY4
       
-   # Toggle BUTTON8 when p6.b8
+   # Toggle BUTTON5 when p6.b8
   - alias: hasp_plate01_p6_Toggle5
     trigger:
     - platform: mqtt
@@ -117,7 +124,7 @@ automation:
     - service: homeassistant.toggle
       entity_id: switch.YOUR_ENTITY5
     
-    # Toggle BUTTON9 p6.b9
+    # Toggle BUTTON6 p6.b9
   - alias: hasp_plate01_p6_Toggle6
     trigger:
     - platform: mqtt
@@ -128,7 +135,7 @@ automation:
       entity_id: switch.YOUR_ENTITY6
           
   # Replace YOUR_ENTITY* with the corresponding from above    
-  # Toggle colors/icon on p[6].b[4] when BUTTON4 changes
+  # Toggle colors/icon on p[6].b[4] when BUTTON1 changes
   - alias: hasp_plate01_p2_ToggleColor1
     trigger:
     - platform: state
@@ -166,7 +173,7 @@ automation:
             {{ 2 }}
           {%- endif %}
 
-  # Toggle colors on p[6].b[5] when BUTTON5 changes
+  # Toggle colors on p[6].b[5] when BUTTON2 changes
   - alias: hasp_plate01_p6_ToggleColor2
     trigger:
     - platform: state
@@ -204,7 +211,7 @@ automation:
             {{ 2 }}
           {%- endif %}
 
-  # Toggle colors on p[6].b[6] when BUTTON6 changes
+  # Toggle colors on p[6].b[6] when BUTTON3 changes
   - alias: hasp_plate01_p6_ToggleColor3
     trigger:
     - platform: state
@@ -242,7 +249,7 @@ automation:
             {{ 2 }}
           {%- endif %}
           
-  # Toggle colors on p[6].b[7] when BUTTON7 changes
+  # Toggle colors on p[6].b[7] when BUTTON4 changes
   - alias: hasp_plate01_p7_ToggleColor3
     trigger:
     - platform: state
@@ -280,7 +287,7 @@ automation:
             {{ 2 }}
           {%- endif %}
    
-  # Toggle colors on p[6].b[8] when BUTTON8 changes
+  # Toggle colors on p[6].b[8] when BUTTON5 changes
   - alias: hasp_plate01_p8_ToggleColor3
     trigger:
     - platform: state
@@ -318,7 +325,7 @@ automation:
             {{ 2 }}
           {%- endif %}
           
-  # Toggle colors on p[6].b[9] when BUTTON9 changes
+  # Toggle colors on p[6].b[9] when BUTTON6 changes
   - alias: hasp_plate01_p9_ToggleColor3
     trigger:
     - platform: state
@@ -356,3 +363,16 @@ automation:
             {{ 2 }}
           {%- endif %}
      
+# Automation that toggles between toggles_1 and toggles_2
+  - alias: hasp_plate01_p6_SwitchTogglesPages
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[6].b[2]'
+      payload: 'ON'
+    condition:
+      condition: state
+      entity_id: input_number.hasp_plate01_activpage
+      state: '6'
+    action:
+    - service: input_boolean.toggle
+      entity_id: input_boolean.hasp_plate01_p3_toggleswitch
