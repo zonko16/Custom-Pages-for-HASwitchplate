@@ -105,20 +105,20 @@ automation:
         topic: 'hasp/plate01/command/p[8].b[9].txt'
         payload_template: '"{{ states.sensor.media_player_title.state|wordwrap(20, wrapstring="\\r") }}"'
   
-  #- alias: hasp_plate01_p8_MediaPlayPause
-  #  trigger:
-  #  - platform: state
-  #    entity_id: media_player.spotify
-  #  - platform: state
-  #    entity_id: 'binary_sensor.plate01_connected'
-  #    to: 'on'
-  #  - platform: homeassistant
-  #    event: start
-  #  action:
-  #  - service: mqtt.publish
-  #    data:
-  #      topic: 'hasp/plate01/command/p[8].b[7].picc'
-  #      payload_template: "\"{%- if is_state('media_player.media_player', 'playing') %}3{% elif is_state('media_player.media_player', 'paused') %}4{% endif -%}\""
+  - alias: hasp_plate01_p8_MediaPlayPause
+    trigger:
+    - platform: state
+      entity_id: media_player.spotify
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[8].b[6].picc'
+        payload_template: "\"{%- if is_state('media_player.media_player', 'playing') %}3{% elif is_state('media_player.media_player', 'paused') %}4{% endif -%}\""
   
   # Volume slider value published, apply published state
   - alias: hasp_plate01_p8_MediaVolSliderUpdateHass
