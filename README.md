@@ -21,7 +21,7 @@ The new version does the same but only needs page 3 for the same outcome. If you
 4. Change the entities and Labels for Page 3,6 and 8 to your liking.
 Entities that need to be changed are called like **switch.YOUR_ENTITY** **senor.YOUR_TEMPERATURE** and so on.
 
-5. If you're using a **second temperature/humidity** and want to switch between In and  Out by clicking on the displayed temperature uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
+5. (3.2" users skip this step) If you're using a **second temperature/humidity** and want to switch between In and  Out by clicking on the displayed temperature uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
 
 ```
 ####################################################################
