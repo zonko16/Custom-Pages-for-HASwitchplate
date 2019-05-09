@@ -16,7 +16,10 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-     
+    - platform: state
+      entity_id: input_boolean.hasp_plate01_p6_switchtoggles
+      to: 'off'
+
     action:
     #Change payload (BUTTON1) to the name for TOP LEFT toggle
     - service: mqtt.publish
@@ -375,4 +378,4 @@ automation:
       state: '6'
     action:
     - service: input_boolean.toggle
-      entity_id: input_boolean.hasp_plate01_p3_toggleswitch
+      entity_id: input_boolean.hasp_plate01_p6_switchtoggles
