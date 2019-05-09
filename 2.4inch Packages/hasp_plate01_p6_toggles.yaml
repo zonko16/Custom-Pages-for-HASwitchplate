@@ -11,7 +11,7 @@ automation:
       event: start
      
     action:
-    #Change payload (BUTTON4) to the name for b4
+    #Change payload (BUTTON4) to the name for TOP LEFT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[10].font'
@@ -20,7 +20,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[10].txt'
         payload: '"BUTTON4"'  
-    #Change payload (BUTTON5) to the name for b5
+    #Change payload (BUTTON5) to the name for TOP RIGHT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[11].font'
@@ -29,7 +29,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[11].txt'
         payload: '"BUTTON5"'
-    #Change payload (BUTTON6) to the name for b6
+    #Change payload (BUTTON6) to the name for MIDDLE LEFT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[12].font'
@@ -38,7 +38,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[12].txt'
         payload: '"BUTTON6"'
-    #Change payload (BUTTON7) to the name for b7
+    #Change payload (BUTTON7) to the name for MIDDLE RIGHT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[13].font'
@@ -47,7 +47,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[13].txt'
         payload: '"BUTTON7"'
-    #Change payload (BUTTON8) to the name for b8
+    #Change payload (BUTTON8) to the name for BOTTOM LEFT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[14].font'
@@ -56,7 +56,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[14].txt'
         payload: '"BUTTON8"'
-    #Change payload (BUTTON9) to the name for BUTTON9
+    #Change payload (BUTTON9) to the name for BOTTOM RIGHT toggle
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[15].font'
