@@ -1,10 +1,4 @@
-##############################################################################
-# Input Boolean used to switch between Indoor and Outdoor for Label, Temperature and Humidity
 
-input_boolean:
-  hasp_plate01_p3_temperatureswitch:
-    name: Switch between Indoor/Outdoor Temperature
-    initial: off
 
 # Automations to display the weather forecast and current temp on page 2
 
@@ -15,7 +9,7 @@ automation:
     - platform: state
       entity_id: input_boolean.hasp_plate01_p3_temperatureswitch
     - platform: state
-      entity_id: sensor.esszimmer_temperatur
+      entity_id: sensor.YOUR_TEMPERATURE_SENSOR
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
     - platform: homeassistant
@@ -51,7 +45,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p3_temperatureswitch == "on" -%}
             '"{{ states.sensor.dark_sky_temperature.state }}°C"'
           {%- else -%}
-            '"{{ states.sensor.eszimmer_temperatur.state }}°C"'
+            '"{{ states.sensor.YOUR_TEMPERATURE_SENSOR.state }}°C"'
           {%- endif %}
 
     # In Humidity
@@ -66,7 +60,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p3_tempertureswitch == "on" -%}
             '"{{ states.sensor.dark_sky_humidity.state }}%"'
           {%- else -%}
-            '"{{ states.sensor.esszimmer_luftfeuchtigkeit.state }}%"'
+            '"{{ states.sensor.YOUR_HUMIDITY_SENSOR.state }}%"'
 
     # Out
     - service: mqtt.publish
