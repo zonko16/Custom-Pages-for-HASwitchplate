@@ -19,7 +19,7 @@ homeassistant:
 panel_iframe:
   plate01:
     title: "HA Switchplate"
-    url: "http://locoalhost:8123/states"
+    url: "http://hassio.local:8123/states"
     icon: "mdi:cellphone-text"
 
 light:
@@ -52,42 +52,6 @@ sensor:
     payload_available: "ON"
     payload_not_available: "OFF"
     json_attributes_topic:  "hasp/plate01/sensor"
-
-# Custom Page 3: Weather Component
-# This is the Darksky sensor which will be used for the forecast and the temperature/humidity
-# You have to get your own API key to use it.
-  - platform: darksky
-    api_key: YOUR_API_KEY
-    forecast:
-      - 0
-    language: en
-    monitored_conditions:
-      - summary
-      - icon
-      - temperature
-      - humidity
-    scan_interval:
-      minutes: 5
-
-  - platform: darksky
-    api_key: YOUR_API_KEY
-    forecast:
-      - 1
-    language: en
-    monitored_conditions:
-      - icon
-    scan_interval:
-      minutes: 30
-
-  - platform: darksky
-    api_key: YOUR_API_KEY
-    forecast:
-      - 2
-    language: en
-    monitored_conditions:
-      - icon
-    scan_interval:
-      minutes: 30
 
 input_text:
   hasp_plate01_pagebutton1label:
