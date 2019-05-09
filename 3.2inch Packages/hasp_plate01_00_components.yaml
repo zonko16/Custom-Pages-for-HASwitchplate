@@ -19,7 +19,7 @@ homeassistant:
 panel_iframe:
   plate01:
     title: "HA Switchplate"
-    url: "https://nanut.duckdns.org:8123/states"
+    url: "http://hassio.local:8123/states"
     icon: "mdi:cellphone-text"
 
 light:
