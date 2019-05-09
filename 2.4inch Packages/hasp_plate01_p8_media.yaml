@@ -46,6 +46,10 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[8].b[7].font'
         payload: '4'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[8].b[8].pic'
+        payload: '22'
 
 
   # Play/Pause button action
