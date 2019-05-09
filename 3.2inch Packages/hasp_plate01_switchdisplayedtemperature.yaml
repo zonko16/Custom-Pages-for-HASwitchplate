@@ -1,0 +1,57 @@
+input_boolean:
+  hasp_plate01_p3_temperatureswitch:
+    initial: 'off'
+    
+automation:
+  - alias: hasp_plate01_p3_switchtotemperature_indoor
+    trigger: 
+    - platform: time_pattern
+      seconds: 00
+    - platform: state
+      entity_id: 'input_boolean.hasp_plate01_p3_temperatureswitch'
+    condition:
+    - condition: state
+      entity_id: 'binary_sensor.plate01_connected'
+      state: 'on'
+    action:
+        #  Text
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[7].font'
+        payload: '7'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[7].txt'
+        payload_template: >-
+          {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
+            '"{{ Innen }}"'
+          {%- else -%}
+            '"{{ Aussen }}"'
+          {%- endif %}
+    # Switches the displayed temperature  
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[6].font'
+        payload: '5'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[6].txt'
+        payload_template: >-
+          {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
+            {{ states.sensor.esszimmer_temperatur.state }}
+          {%- else -%}
+            {{ states.sensor.dark_sky_temperature.state | int }}
+          {%- endif %}
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[8].font'
+        payload: '7'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[3].b[8].txt'
+        payload_template: >-
+          {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
+            '"{{ states.sensor.esszimmer_luftfeuchtigkeit.state }}%"'
+          {%- else -%}
+            '"{{ states.sensor.dark_sky_humidity.state}}%"'
+          {%- endif %}
