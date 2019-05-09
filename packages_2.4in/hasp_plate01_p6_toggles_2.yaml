@@ -11,7 +11,7 @@ automation:
       event: start
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
-      to: 'off'
+      to: 'on'
     #condition:
     #- condition: state
     #  entity_id: input_boolean.hasp_plate01_p6_switchtoggles
