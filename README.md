@@ -14,8 +14,9 @@ The new version does the same but only needs page 3 for the same outcome. If you
 
 1. Install HASP as usual but use the [HASwitchplate_2.4.tft](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/blob/master/Nextion%20HMI/HASwitchPlate_2.4.tft) provided by this repository instead. 
 
-2. Replace the yaml files in ```config/packages/plate01``` with the [ones provided in this repository.](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/tree/master/2.4%22%20Packages%20Folder) 
-
+2. Replace the yaml files in ```config/packages/plate01``` with the ones provided in this repository.
+    - For the **2.4" Panel** use .yamls in [packages_2.4in/](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/tree/master/packages_2.4in) 
+    - For the **3.2" Panel** use .yamls in [packages_3.2in/](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/tree/master/packages_3.2in)
 3. Replace YOUR_API_KEY in ```hasp_plate01_00_components.yaml``` with your own Darksky API 
 
 4. Change the entities and Labels for Page 3,6 and 8 to your liking.
