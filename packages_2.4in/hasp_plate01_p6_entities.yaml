@@ -1,0 +1,73 @@
+groups:
+
+################################################
+# Replace dummy entities with your entities
+# 
+
+################################################
+# Page 6: Toggles Page 1 components
+
+  hasp_plate01_p6_button1:
+    name: Toggle 1
+    entities:
+    - switch.DUMMY
+ 
+  hasp_plate01_p6_button2:
+    name: Toggle 2
+    entities:
+    - switch.DUMMY
+      
+  hasp_plate01_p6_button3:
+    name: Toggle 3
+    entities:
+    - switch.DUMMY
+    
+  hasp_plate01_p6_button4:
+    name: Toggle 4
+    entities:
+    - switch.DUMMY
+
+    
+  hasp_plate01_p6_button5:
+    name: Toggle 5
+    entities:
+    - switch.DUMMY
+    
+    
+  hasp_plate01_p6_button6:
+    name: Toggle 6
+    entities:
+    - switch.DUMMY
+    
+#Page 6: Toggles Page 2 components
+  hasp_plate01_p6_button7:
+    name: Toggle 7
+    entities:
+    - switch.DUMMY
+   
+  hasp_plate01_p6_button8:
+    name: Toggle 8
+    entities:
+    - switch.DUMMY
+    
+  hasp_plate01_p6_button9:
+    name: Toggle 9
+    entities:
+    - switch.DUMMY
+    
+  hasp_plate01_p6_button10:
+    name: Toggle 10
+    entities:
+    - switch.DUMMY
+
+  hasp_plate01_p6_button11:
+    name: Toggle 11
+    entities:
+    - switch.DUMMY
+    
+  hasp_plate01_p6_button12:
+    name: Toggle 12
+    entities:
+    - switch.DUMMY
+    
+    
