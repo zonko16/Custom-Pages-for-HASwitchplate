@@ -24,15 +24,14 @@ automation:
       entity_id: sensor.dark_sky_humidity
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'  
+    - platform: state
+      entity_id: sensor.YOUR_TEMPERATURE_SENSOR
     condition:
     - condition: state
       entity_id: 'binary_sensor.plate01_connected'
       state: 'on'
-    - platform: state
-    # Fill in your Temperature Sensor here
-      entity_id: sensor.YOUR_TEMPERATURE_SENSOR
-    action:
 
+    action:
 # Inside/Outside Label
     - service: mqtt.publish
       data:
