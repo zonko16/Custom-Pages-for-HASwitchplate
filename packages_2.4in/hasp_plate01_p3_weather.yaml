@@ -25,7 +25,7 @@ automation:
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'  
     - platform: state
-      entity_id: sensor.YOUR_TEMPERATURE_SENSOR
+      entity_id: sensor.YOUR_TEMPERATURE_SENSOR #replace with your Temp Sesnor
     condition:
     - condition: state
       entity_id: 'binary_sensor.plate01_connected'
@@ -182,3 +182,13 @@ automation:
             {{ 18 }}
           {%- endif %}
 
+####################################################################
+# Toggles the Label and Temp/Humidity displayed on Page 3. Thanks @madrian
+#  - alias: hasp_plate01_p0_ChangeToTempInOut
+#    trigger:
+#    - platform: mqtt
+#      topic: 'hasp/plate01/state/p[3].b[6]'
+#      payload: 'ON' 
+#    action:
+#    - service: input_boolean.toggle
+#      entity_id: input_boolean.hasp_plate01_p3_temperatureswitch

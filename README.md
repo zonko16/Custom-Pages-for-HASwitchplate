@@ -7,8 +7,7 @@ Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) crea
 Special thanks to @aderusha for creating HASwitchPlate and @madrian for spending hours of beta testing with me. 
 
 **UPDATE:**  
-The first version used two pages for switching the temperature displayed between In and Out. 
-The new version does the same but only needs page 3 for the same outcome. If you already flashed your Nextion Panel before, reflash the ```HASwitchPlate_2.4.tft``` and replace ```hasp_plate01_p0_pages.yaml``` and  ```hasp_plate01_p3_weather.yaml``` with the new ones.
+You're now able to use two pages of toggles. If you are on **Page 6 (Toggles)** press the page button in the navigation bar again to access page 2 and vice versa. Setting up your entities for page 6 has also been considerably simplified, see **Step 4** in the *Quick Start* guide.   
 
 **QUICK START**
 
@@ -21,6 +20,16 @@ The new version does the same but only needs page 3 for the same outcome. If you
 
 4. Change the entities and Labels for Page 3,6 and 8 to your liking.
 Entities that need to be changed are called like **switch.YOUR_ENTITY** **senor.YOUR_TEMPERATURE** and so on.
+**IMPORTANT UPDATE:** This step hast been considerably simplified for page 6. 
+- Open ```hasp_plate01_p6_entities.yaml```
+- In there you'll find 
+```
+hasp_plate01_p6_button1-12(16):
+  name: Toggle 1-12(16)
+  entities:
+  - switch.DUMMY
+```
+- replace **switch.DUMMY** with the component you are using for ever single button.
 
 5. (3.2" users skip this step) If you're using a **second temperature/humidity** and want to switch between In and  Out by clicking on the displayed temperature uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
 

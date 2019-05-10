@@ -9,22 +9,7 @@ This will replace your all your previous settings of page 3,6 and 8. Backup your
 
 You'll need a [Darksky API](https://darksky.net/dev) to use the weather component. Place your API key into ```hasp_plate01_00_components.yaml```. 
 
-If you have a temperature and humidity sensor inside, you can have the temperature change from Out to In by clicking on the actual temperature. 
-To set this up you have to replace ```sensor.your_indoor_temp``` and ```sensor.your_indoor_humidity```with your own entities.
-Additionally uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
 
-```
-####################################################################
-# Toggles the Label and Temp/Humidity displayed on Page 3. Thanks @madrian
-#  - alias: hasp_plate01_p0_ChangeToTempInOut
-#    trigger:
-#    - platform: mqtt
-#      topic: 'hasp/plate01/state/p[3].b[6]'
-#      payload: 'ON' 
-#    action:
-#    - service: input_boolean.toggle
-#      entity_id: input_boolean.hasp_plate01_p3_temperatureswitch
-```
 
 
 
@@ -34,8 +19,8 @@ Additionally uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
 - Open ```hasp_plate01_p6_entities.yaml```
 - In there you'll find 
 ```
-hasp_plate01_p6_button1-12:
-  name: Toggle 1-12
+hasp_plate01_p6_button1-16:
+  name: Toggle 1-16
   entities:
   - switch.DUMMY
 ```
