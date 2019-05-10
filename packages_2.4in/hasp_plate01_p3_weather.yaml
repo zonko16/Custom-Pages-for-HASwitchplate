@@ -32,7 +32,6 @@ automation:
       state: 'on'
 
     action:
-
 # Inside/Outside Label
     - service: mqtt.publish
       data:
