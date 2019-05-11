@@ -1,5 +1,4 @@
 If you're using the 2.4" Nextion panel paste this directory into your already existing ```/config/packages/plate01``` folder. 
-Don't copy hasp_plate01_p4_clock.yaml, hasp_plate01_p4_weather.yaml and hasp_plate01_p4_colorconfig.yaml into your config if you're NOT using a second temperature sensor.
 
 **Important:** You need to go through the basic setup of [HASwitchPlate](https://github.com/aderusha/HASwitchPlate) from @aderusha to use these custom Pages.
 
@@ -9,9 +8,7 @@ This will replace your all your previous settings of page 3,6 and 8. Backup your
 
 You'll need a [Darksky API](https://darksky.net/dev) to use the weather component. Place your API key into ```hasp_plate01_00_components.yaml```. 
 
-If you have a temperature and humidity sensor inside, you can have the temperature change from Out to In by clicking on the actual temperature. 
-To set this up you have to replace ```sensor.your_indoor_temp``` and ```sensor.your_indoor_humidity```with your own entities.
-Additionally uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
+
 
 ```
 ####################################################################
@@ -39,6 +36,6 @@ hasp_plate01_p6_toggle1-12:
   entities:
   - switch.DUMMY
 ```
-- replace **switch.DUMMY** with the component you are using for ever single button.
+- replace **switch.DUMMY** with the component you are using for ever single button and set corresponding name
 
 

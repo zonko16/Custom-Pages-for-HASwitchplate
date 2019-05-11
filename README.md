@@ -29,7 +29,7 @@ hasp_plate01_p6_toggle1-12(16):
   entities:
   - switch.DUMMY
 ```
-- replace **switch.DUMMY** with the component you are using for ever single button.
+- replace **switch.DUMMY** with the component you are using for ever single button and set the name for your toggle.
 
 5. (3.2" users skip this step) If you're using a **second temperature/humidity** and want to switch between In and  Out by clicking on the displayed temperature uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
 
