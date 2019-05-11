@@ -25,7 +25,7 @@ Entities that need to be changed are called like **switch.YOUR_ENTITY** **senor.
 - Open ```hasp_plate01_p6_entities.yaml```
 - In there you'll find 
 ```
-hasp_plate01_p6_button1-12(16):
+hasp_plate01_p6_toggle1-12(16):
   name: Toggle 1-12(16)
   entities:
   - switch.DUMMY
@@ -58,8 +58,6 @@ You'll need a [Darksky API](https://darksky.net/dev) to use the weather componen
 
 
 **_Page 6 Toggles Setup_**
-
-For the **Toggles Page** you'll need to set up your entities. You have to replace every ```switch.your_entity*``` in ```hasp_plate01_p6_toggles.yaml``` with your **own entities**.
 
 Lines commented with ```#Change payload (b*) to the name for b*```  are for setting the title of each toggle. Starting with **_button4_** in the **_top left_**, **_button5_** at **_top right_** and so on.
 

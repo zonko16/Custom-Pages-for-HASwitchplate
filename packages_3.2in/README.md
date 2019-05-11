@@ -19,7 +19,7 @@ You'll need a [Darksky API](https://darksky.net/dev) to use the weather componen
 - Open ```hasp_plate01_p6_entities.yaml```
 - In there you'll find 
 ```
-hasp_plate01_p6_button1-16:
+hasp_plate01_p6_toggle1-16:
   name: Toggle 1-16
   entities:
   - switch.DUMMY
