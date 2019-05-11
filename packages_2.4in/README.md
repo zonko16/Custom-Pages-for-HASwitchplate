@@ -34,14 +34,11 @@ Additionally uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
 - Open ```hasp_plate01_p6_entities.yaml```
 - In there you'll find 
 ```
-hasp_plate01_p6_button1-12:
+hasp_plate01_p6_toggle1-12:
   name: Toggle 1-12
   entities:
   - switch.DUMMY
 ```
 - replace **switch.DUMMY** with the component you are using for ever single button.
-
-
-Lines commented with ```#Change payload (b*) to the name for b*```  are for setting the title of each toggle. Starting with **_button4_** in the **_top left_**, **_button5_** at **_top right_** and so on.
 
 

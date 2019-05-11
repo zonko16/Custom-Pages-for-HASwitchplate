@@ -19,7 +19,7 @@ You'll need a [Darksky API](https://darksky.net/dev) to use the weather componen
 - Open ```hasp_plate01_p6_entities.yaml```
 - In there you'll find 
 ```
-hasp_plate01_p6_button1-16:
+hasp_plate01_p6_toggle1-16:
   name: Toggle 1-16
   entities:
   - switch.DUMMY
@@ -27,6 +27,5 @@ hasp_plate01_p6_button1-16:
 - replace **switch.DUMMY** with the component you are using for ever single button.
 
 
-Lines commented with ```#Change payload (b*) to the name for b*```  are for setting the title of each toggle. Starting with **_button4_** in the **_top left_**, **_button5_** at **_top right_** and so on.
 
 
