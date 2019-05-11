@@ -38,9 +38,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[12].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "Toggle 1"
+            "{{ state_attr('group.hasp_plate01_p6_toggle1', 'friendly_name') }}"
           {% else %}
-            "Toggle 9"
+            "{{ state_attr('group.hasp_plate01_p6_toggle9', 'friendly_name') }}"
           {% endif %}
     #Label Toggle 2/10
     - service: mqtt.publish
@@ -52,9 +52,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[13].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "Toggle 2"
+            "{{ state_attr('group.hasp_plate01_p6_toggle2', 'friendly_name') }}"
           {%- else -%}
-            "Toggle 10"
+            "{{ state_attr('group.hasp_plate01_p6_toggle10', 'friendly_name') }}"
           {%- endif %}
     #Label Toggle 3/11
     - service: mqtt.publish
@@ -66,9 +66,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[14].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "Toggle 3"
+            "{{ state_attr('group.hasp_plate01_p6_toggle3', 'friendly_name') }}"
           {%- else -%}
-            "Toggle 11"
+            "{{ state_attr('group.hasp_plate01_p6_toggle11', 'friendly_name') }}"
           {%- endif %}
     #Label Toggle 4/12
     - service: mqtt.publish
@@ -80,9 +80,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[15].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "Toggle 4"
+            "{{ state_attr('group.hasp_plate01_p6_toggle4', 'friendly_name') }}"
           {%- else -%}
-            "Toggle 12"
+            "{{ state_attr('group.hasp_plate01_p6_toggle12', 'friendly_name') }}"
           {%- endif %}
     #Label Toggle 5/13
     - service: mqtt.publish
@@ -94,9 +94,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[16].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "Toggle 5"
+            "{{ state_attr('group.hasp_plate01_p6_toggle5', 'friendly_name') }}"
           {%- else -%}
-            "Toggle 13"
+            "{{ state_attr('group.hasp_plate01_p6_toggle13', 'friendly_name') }}"
           {%- endif %}
     #Label Toggle 6/14
     - service: mqtt.publish
@@ -108,9 +108,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[17].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "Toggle 6"
+            "{{ state_attr('group.hasp_plate01_p6_toggle6', 'friendly_name') }}"
           {%- else -%}
-            "Toggle 14"
+            "{{ state_attr('group.hasp_plate01_p6_toggle14', 'friendly_name') }}"
           {%- endif %}
     #Label Toggle 7/15
     - service: mqtt.publish
@@ -122,9 +122,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[18].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "Toggle 7"
+            "{{ state_attr('group.hasp_plate01_p6_toggle7', 'friendly_name') }}"
           {%- else -%}
-            "Toggle 15"
+            "{{ state_attr('group.hasp_plate01_p6_toggle15', 'friendly_name') }}"
           {%- endif %}
     #Label Toggle 8/16
     - service: mqtt.publish
@@ -136,9 +136,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[19].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "Toggle 8"
+            "{{ state_attr('group.hasp_plate01_p6_toggle8', 'friendly_name') }}"
           {%- else -%}
-            "Toggle 16"
+            "{{ state_attr('group.hasp_plate01_p6_toggle16', 'friendly_name') }}"
           {%- endif %}
 
 

@@ -30,7 +30,7 @@ hasp_plate01_p6_toggle1-12(16):
   entities:
   - switch.DUMMY
 ```
-- replace **switch.DUMMY** with the component you are using for ever single button.
+- replace **switch.DUMMY** with the component you are using for ever single button and set the name for your toggle.
 
 5. (3.2" users skip this step) If you're using a **second temperature/humidity** and want to switch between In and  Out by clicking on the displayed temperature uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
 
@@ -54,11 +54,7 @@ hasp_plate01_p6_toggle1-12(16):
 
 You'll need a [Darksky API](https://darksky.net/dev) to use the weather component. Place your API key into ```hasp_plate01_00_components.yaml```. 
 
-~~**Important:** If you're not using two temperature sensors or you don't want you use two, flash your Nextion Panel with [HASwitchPlate_2.4.tft](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/blob/master/Nextion%20HMI/HASwitchPlate_2.4.tft). If you want to use two sensors use [HASwitchPlate_ChangeTemperature.tft](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/blob/master/Nextion%20HMI/HASwitchPlate_2.4_ChangeTemperature.tft).For Now it will use Page 3 and Page 4 to have two sensors in the "same place". This is just a workaround for now and will be changed in the future to only use one page.~~
 
 
-**_Page 6 Toggles Setup_**
-
-Lines commented with ```#Change payload (b*) to the name for b*```  are for setting the title of each toggle. Starting with **_button4_** in the **_top left_**, **_button5_** at **_top right_** and so on.
 
 
