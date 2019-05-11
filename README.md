@@ -6,8 +6,9 @@ Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) crea
 
 Special thanks to @aderusha for creating HASwitchPlate and @madrian for spending hours of beta testing with me. 
 
-**UPDATE:**  
-You're now able to use two pages of toggles. If you are on **Page 6 (Toggles)** press the page button in the navigation bar again to access page 2 and vice versa. Setting up your entities for page 6 has also been considerably simplified, see **Step 4** in the *Quick Start* guide.   
+**UPDATE 0.2:**  
+- Your now able to switch between two pages on Page 6 (Toggles) by pressing the toggles button in the Navigation Bar again.
+- Simplified setting up entities for Page6 (Toggles). See Step 4 in Quick start.
 
 **QUICK START**
 

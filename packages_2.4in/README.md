@@ -35,7 +35,10 @@ hasp_plate01_p6_toggle1-12:
   name: Toggle 1-12
   entities:
   - switch.DUMMY
+  
 ```
-- replace **switch.DUMMY** with the component you are using for ever single button and set corresponding name
+
+- replace **switch.DUMMY** with the component you are using for ever single button and set corresponding nam
+
 
 
