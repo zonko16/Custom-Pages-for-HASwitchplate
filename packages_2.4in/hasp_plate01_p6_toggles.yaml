@@ -117,8 +117,8 @@ automation:
 ##############################################################################################
 # Actions for Toggle Pressed
 
-  # Toggle Toggle1/9 when p[6].b[4] pressed
-  - alias: hasp_plate01_p6_Toggle1
+  # Toggle Toggle1/7 when p[6].b[4] pressed
+  - alias: hasp_plate01_p6_Toggle1_7
     trigger:
     - platform: mqtt
       topic: 'hasp/plate01/state/p[6].b[4]'
@@ -130,7 +130,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == 'off' -%}
             group.hasp_plate01_p6_toggle1
           {%- else -%}
-            group.hasp_plate01_p6_toggle9
+            group.hasp_plate01_p6_toggle7
           {%- endif %}
 
   # Toggle Toggle2 when p[6].b[5] pressed
@@ -146,7 +146,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == 'off' -%}
             group.hasp_plate01_p6_toggle2
           {%- else -%}
-            group.hasp_plate01_p6_toggle10
+            group.hasp_plate01_p6_toggle8
           {%- endif %}
 
   # Toggle Toggle3 when p[6].b[6] pressed
@@ -162,7 +162,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == 'off' -%}
             group.hasp_plate01_p6_toggle3
           {%- else -%}
-            group.hasp_plate01_p6_toggle11
+            group.hasp_plate01_p6_toggle9
           {%- endif %}
       
    # Toggle Button 4 when p6.b7 pressed
@@ -178,7 +178,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             group.hasp_plate01_p6_toggle4
           {%- else -%}
-            group.hasp_plate01_p6_toggle12
+            group.hasp_plate01_p6_toggle10
           {%- endif %} 
       
    # Toggle Button 5 when p6.b8
@@ -194,7 +194,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             group.hasp_plate01_p6_toggle5
           {%- else -%}
-            group.hasp_plate01_p6_toggle13
+            group.hasp_plate01_p6_toggle11
           {%- endif %} 
     
     # Toggle Button 6 p4.b9
@@ -210,7 +210,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             group.hasp_plate01_p6_toggle6
           {%- else -%}
-            group.hasp_plate01_p6_toggle14
+            group.hasp_plate01_p6_toggle12
           {%- endif %} 
  
  
