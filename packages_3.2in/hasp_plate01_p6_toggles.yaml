@@ -280,7 +280,6 @@ automation:
   # Toggle colors on p[6].b[4] when Toggle [1] changes
   - alias: hasp_plate01_p6_ToggleColor1
     trigger:
-      payload: 'ON'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle1
     - platform: state
@@ -291,31 +290,15 @@ automation:
       to: 'off'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[12].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle1', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[4].picc'
         payload_template: >-
-          {% if states.group.hasp_plate01_p6_toggle1.state == "on" -%}
+         {% if is_state('group.hasp_plate01_p6_toggle1', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle1', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -332,31 +315,15 @@ automation:
       to: 'off'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[13].pco'
-        payload_template: >-
-         {% if states.group.hasp_plate01_p6_toggle2.state == "on" -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[5].picc'
         payload_template: >-
-          {% if states.group.hasp_plate01_p6_toggle2.state == "on" -%}
+          {% if is_state('group.hasp_plate01_p6_toggle2', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle2', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -373,21 +340,8 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[14].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle3', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[6].picc'
@@ -411,28 +365,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[6].b[7].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle4', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[15].picc'
+        topic: 'hasp/plate01/command/p[6].b[7].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle4', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle4', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
    
@@ -449,28 +390,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[16].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle5', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[8].picc'
         payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle5', 'on') -%}
+          {% if is_state('group.hasp_plate01_p6_toggle5', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle5', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
           
@@ -487,28 +415,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[17].pco'
-        payload_template: >-
-          {% if states.group.hasp_plate01_p6_toggle6.sstate == "on" -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[9].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle6', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle6', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
      
@@ -525,28 +440,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[18].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle7', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[10].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle7', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle7', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
          
@@ -563,28 +465,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[16].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle8', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[11].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle8', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle8', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -603,28 +492,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[13].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle9', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[4].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle9', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle9', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -641,28 +517,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[13].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle10', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[5].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle10', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle10', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -679,28 +542,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[14].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle11', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[6].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle11', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle11', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
           
@@ -717,28 +567,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[15].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle12', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[7].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle12', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle12', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}}
             {{ 2 }}
           {%- endif %}
 
@@ -755,28 +592,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[16].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle13', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[8].picc'
         payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle13', 'on') -%}
+          {% if is_state('group.hasp_plate01_p6_toggle13', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle13', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -793,28 +617,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[17].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle14', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[9].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle14', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {%- else -%}
+           {% elif is_state('group.hasp_plate01_p6_toggle14', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -831,28 +642,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[18].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle15', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[10].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle15', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle15', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -869,27 +667,15 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
     action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/p[6].b[19].pco'
-        payload_template: >-
-          {% if is_state('group.hasp_plate01_p6_toggle16', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
-          {%- else -%}
-            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
-          {%- endif %}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[11].picc'
         payload_template: >-
           {% if is_state('group.hasp_plate01_p6_toggle16', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {%- else -%}
+          {% elif is_state('group.hasp_plate01_p6_toggle16', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {% endif %}
           
