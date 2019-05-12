@@ -10,86 +10,86 @@ group:
   hasp_plate01_p6_toggle1:
     name: Toggle 1
     entities:
-    - switch.DUMMY
+    - switch.DUMMY1
  
   hasp_plate01_p6_toggle2:
     name: Toggle 2
     entities:
-    - switch.DUMMY
+    - switch.DUMMY2
       
   hasp_plate01_p6_toggle3:
     name: Toggle 3
     entities:
-    - switch.DUMMY
+    - switch.DUMMY3
     
   hasp_plate01_p6_toggle4:
     name: Toggle 4
     entities:
-    - switch.DUMMY
+    - switch.DUMMY4
 
     
   hasp_plate01_p6_toggle5:
     name: Toggle 5
     entities:
-    - switch.DUMMY
+    - switch.DUMMY5
     
     
   hasp_plate01_p6_toggle6:
     name: Toggle 6
     entities:
-    - switch.DUMMY
+    - switch.DUMMY6
 
   hasp_plate01_p6_toggle7:
     name: Toggle 7
     entities:
-    - switch.DUMMY
+    - switch.DUMMY7
 
   hasp_plate01_p6_toggle8:
     name: Toggle 8
     entities:
-    - switch.DUMMY    
+    - switch.DUMMY8    
 
 ########################################################
 #Page 6: Toggles Page 2 components 
   hasp_plate01_p6_toggle9:
     name: Toggle 9
     entities:
-    - switch.DUMMY
+    - switch.DUMMY9
     
   hasp_plate01_p6_toggle10:
     name: Toggle 10
     entities:
-    - switch.DUMMY
+    - switch.DUMMY10
 
   hasp_plate01_p6_toggle11:
     name: Toggle 11
     entities:
-    - switch.DUMMY
+    - switch.DUMMY11
     
   hasp_plate01_p6_toggle12:
     name: Toggle 12
     entities:
-    - switch.DUMMY
+    - switch.DUMMY12
 
   hasp_plate01_p6_toggle13:
     name: Toggle 13
     entities:
-    - switch.DUMMY
+    - switch.DUMMY13
 
   hasp_plate01_p6_toggle14:
     name: Toggle 14
     entities:
-    - switch.DUMMY
+    - switch.DUMMY14
 
   hasp_plate01_p6_toggle15:
     name: Toggle 15
     entities:
-    - switch.DUMMY
+    - switch.DUMMY15
 
   hasp_plate01_p6_toggle16:
     name: Toggle 16
     entities:
-    - switch.DUMMY
+    - switch.DUMMY16
 
     
     
