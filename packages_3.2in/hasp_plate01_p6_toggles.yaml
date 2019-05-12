@@ -382,6 +382,10 @@ automation:
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle1
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle9
     - platform: homeassistant
       event: start
     - platform: state
@@ -425,6 +429,10 @@ automation:
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle2
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle10
     - platform: homeassistant
       event: start
     - platform: state
@@ -465,6 +473,10 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
     - platform: state
+      entity_id: group.hasp_plate01_p6_toggle3
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle11
+    - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
     - platform: homeassistant
@@ -503,6 +515,10 @@ automation:
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle4
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle12
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -544,6 +560,10 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
     - platform: state
+      entity_id: group.hasp_plate01_p6_toggle5
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle13
+    - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
     - platform: homeassistant
@@ -584,6 +604,10 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
     - platform: state
+      entity_id: group.hasp_plate01_p6_toggle6
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle14
+    - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
     - platform: homeassistant
@@ -616,3 +640,92 @@ automation:
           {%- elif is_state('group.hasp_plate01_p6_toggle14', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
+
+  # Toggle colors on p[6].b[9] when Toggle [6] changes
+  - alias: hasp_plate01_p6_ToggleColor6
+    trigger:
+    - platform: state
+      entity_id: input_boolean.hasp_plate01_p6_switchtoggles
+      to: 'off'
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle7
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle15
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedforegroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
+    
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[18].pco'
+        payload_template: >-
+          {% if states.group.hasp_plate01_p6_toggle6.sstate == "on" -%}
+            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
+          {%- else -%}
+            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
+          {%- endif %}
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[10].picc'
+        payload_template: >-
+          {% if is_state('group.hasp_plate01_p6_toggle7', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            {{ 1 }}
+          {%- elif is_state('group.hasp_plate01_p6_toggle7', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            {{ 2 }}
+          {%- elif is_state('group.hasp_plate01_p6_toggle15', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            {{ 1 }}
+          {%- elif is_state('group.hasp_plate01_p6_toggle15', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            {{ 2 }}
+          {%- endif %}
+
+  # Toggle colors on p[6].b[9] when Toggle [6] changes
+  - alias: hasp_plate01_p6_ToggleColor6
+    trigger:
+    - platform: state
+      entity_id: input_boolean.hasp_plate01_p6_switchtoggles
+      to: 'off'
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle8
+    - platform: state
+      entity_id: group.hasp_plate01_p6_toggle16
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: input_number.hasp_plate01_selectedforegroundcolor
+    - platform: state
+      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
+    
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[19].pco'
+        payload_template: >-
+          {% if states.group.hasp_plate01_p6_toggle6.sstate == "on" -%}
+            {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
+          {%- else -%}
+            {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
+          {%- endif %}
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[6].b[11].picc'
+        payload_template: >-
+          {% if is_state('group.hasp_plate01_p6_toggle8', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            {{ 1 }}
+          {%- elif is_state('group.hasp_plate01_p6_toggle8', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            {{ 2 }}
+          {%- elif is_state('group.hasp_plate01_p6_toggle16', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            {{ 1 }}
+          {%- elif is_state('group.hasp_plate01_p6_toggle16', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            {{ 2 }}
+          {%- endif %}
+
