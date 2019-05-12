@@ -8,15 +8,16 @@ input_boolean:
 ##############################################################################
 # Automations for handling toggle state buttons on page 6
 automation:
+  ##Beta! Don't uncomment1!
   # Toggles input_boolean which switches between Toggle Page 1 and Toggle Page 2
-  - alias: hasp_plate01_p6_SwitchTogglesPages
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[6].b[2]'
-      payload: 'ON'
-    action:
-    - service: input_boolean.toggle
-      entity_id: input_boolean.hasp_plate01_p6_switchtoggles
+  #- alias: hasp_plate01_p6_SwitchTogglesPages
+  #  trigger:
+  #  - platform: mqtt
+  #    topic: 'hasp/plate01/state/p[6].b[2]'
+  #    payload: 'ON'
+  #  action:
+  #  - service: input_boolean.toggle
+  #    entity_id: input_boolean.hasp_plate01_p6_switchtoggles
   #Set font and text for toggle buttons on device connection
   - alias: hasp_plate01_p6_ToggleInit
     trigger:
@@ -609,7 +610,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[15].pco'
         payload_template: >-
-          {% if states.group.hasp_plate01_p6_toggle6.sstate == "on" -%}
+          {% if states.group.hasp_plate01_p6_toggle6.state == "on" -%}
             {{ states.input_number.hasp_plate01_selectedforegroundcolor.state | int }}
           {%- else -%}
             {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state | int }}
