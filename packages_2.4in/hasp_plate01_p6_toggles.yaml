@@ -359,6 +359,9 @@ automation:
       topic: 'hasp/plate01/state/p[6].b[2]'
       payload: 'ON'
     - platform: state
+      entity_id: input_boolean.hasp_plate01_p6_switchtoggles
+      to: 'off'
+    - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
     - platform: state
@@ -366,10 +369,6 @@ automation:
       to: 'off'
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
     - platform: state
       entity_id: input_number.hasp_plate01_selectedforegroundcolor
     - platform: state
