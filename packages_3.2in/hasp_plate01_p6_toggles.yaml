@@ -280,7 +280,6 @@ automation:
   # Toggle colors on p[6].b[4] when Toggle [1] changes
   - alias: hasp_plate01_p6_ToggleColor1
     trigger:
-      payload: 'ON'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle1
     - platform: state
