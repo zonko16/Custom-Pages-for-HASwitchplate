@@ -280,8 +280,6 @@ automation:
   # Toggle colors on p[6].b[4] when Toggle [1] changes
   - alias: hasp_plate01_p6_ToggleColor1
     trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[6].b[2]'
       payload: 'ON'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle1
@@ -366,7 +364,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor3
     trigger:
     - platform: state
-      entity_id: switch.esszi_stehlampe
+      entity_id: group.hasp_plate01_p6_toggle3
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
