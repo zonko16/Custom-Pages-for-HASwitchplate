@@ -24,8 +24,9 @@ automation:
       entity_id: sensor.dark_sky_humidity
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'  
+    #replace with your Temp Sesnor
     - platform: state
-      entity_id: sensor.YOUR_TEMPERATURE_SENSOR #replace with your Temp Sesnor
+      entity_id: sensor.YOUR_TEMPERATURE_SENSOR 
     condition:
     - condition: state
       entity_id: 'binary_sensor.plate01_connected'
