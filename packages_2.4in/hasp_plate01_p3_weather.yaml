@@ -79,7 +79,7 @@ automation:
             "{{ states.sensor.dark_sky_humidity.state }}%"
           {%- endif %}
 # Forecast
-# Textfield of "now" weather icon
+# Label of "now" weather icon
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[12].font'
@@ -93,27 +93,25 @@ automation:
       data_template:
         topic: 'hasp/plate01/command/p[3].b[9].pic'
         payload_template: >-
-          {% if states.sensor.dark_sky_icon_0d.state == "clear-day" -%}
+          {% if states.sensor.dark_sky_icon.state == "clear-day" -%}
             {{ 15 }}
-          {%- elif states.sensor.dark_sky_icon_0d.state == "clear-night" -%}
-            {{ 15 }}
-          {%- elif states.sensor.dark_sky_icon_0d.state == "rain" -%}
+          {%- elif states.sensor.dark_sky_icon.state == "clear-night" -%}
+            {{ 20 }}
+          {%- elif states.sensor.dark_sky_icon.state == "rain" -%}
             {{ 13 }}
-          {%- elif states.sensor.dark_sky_icon_0d.state == "partly-cloudy-day" -%}
+          {%- elif states.sensor.dark_sky_icon.state == "partly-cloudy-day" -%}
             {{ 14 }}
-          {%- elif states.sensor.dark_sky_icon_0d.state == "partly-cloudy-night" -%}
-            {{ 14 }}
-          {%- elif states.sensor.dark_sky_icon_0d.state == "cloudy" -%}
-            {{ 12 }}
-          {%- elif states.sensor.dark_sky_icon_0d.state == "fog" -%}
+          {%- elif states.sensor.dark_sky_icon.state == "partly-cloudy-night" -%}
+            {{ 15 }}
+          {%- elif states.sensor.dark_sky_icon.state == "fog" -%}
+            {{ 19 }}
+          {%- elif states.sensor.dark_sky_icon.state == "snow" -%}
             {{ 17 }}
-          {%- elif states.sensor.dark_sky_icon_0d.state == "snow" -%}
-            {{ 16 }}
-          {%- elif states.sensor.dark_sky_icon_0d.state == "sleet" -%}
-            {{ 16 }}
+          {%- elif states.sensor.dark_sky_icon.state == "sleet" -%}
+            {{ 18 }}
           {%- endif %}
 
-# Textfield for 24h weather icon
+# Label for 24h weather icon
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[13].font'
@@ -131,27 +129,27 @@ automation:
       data_template:
         topic: 'hasp/plate01/command/p[3].b[10].pic'
         payload_template: >-
-          {% if states.sensor.dark_sky_icon_1d.state == "clear-day" -%}
+          {% if states.sensor.dark_sky_icon_2.state == "clear-day" -%}
             {{ 15 }}
-          {%- elif states.sensor.dark_sky_icon_1d.state == "clear-night" -%}
-            {{ 15 }}
-          {%- elif states.sensor.dark_sky_icon_1d.state == "rain" -%}
+          {%- elif states.sensor.dark_sky_icon_2.state == "clear-night" -%}
+            {{ 20 }}
+          {%- elif states.sensor.dark_sky_icon_2.state == "rain" -%}
             {{ 13 }}
-          {%- elif states.sensor.dark_sky_icon_1d.state == "partly-cloudy-day" -%}
+          {%- elif states.sensor.dark_sky_icon_2.state == "partly-cloudy-day" -%}
             {{ 14 }}
-          {%- elif states.sensor.dark_sky_icon_1d.state == "partly-cloudy-night" -%}
-            {{ 14 }}
-          {%- elif states.sensor.dark_sky_icon_1d.state == "cloudy" -%}
+          {%- elif states.sensor.dark_sky_icon_2.state == "partly-cloudy-night" -%}
+            {{ 15 }}
+          {%- elif states.sensor.dark_sky_icon_2.state == "cloudy" -%}
             {{ 12 }}
-          {%- elif states.sensor.dark_sky_icon_1d.state == "fog" -%}
+          {%- elif states.sensor.dark_sky_icon_2.state == "fog" -%}
+            {{ 19 }}
+          {%- elif states.sensor.dark_sky_icon_2.state == "snow" -%}
             {{ 17 }}
-          {%- elif states.sensor.dark_sky_icon_1d.state == "snow" -%}
-            {{ 16 }}
-          {%- elif states.sensor.dark_sky_icon_1d.state == "sleet" -%}
-            {{ 16 }}
+          {%- elif states.sensor.dark_sky_icon_2.state == "sleet" -%}
+            {{ 18 }}
           {%- endif %}
 
-# Textfield for 48h weather icon
+# Label for 48h weather icon
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[14].font'
@@ -165,23 +163,23 @@ automation:
       data_template:
         topic: 'hasp/plate01/command/p[3].b[11].pic'
         payload_template: >-
-          {% if states.sensor.dark_sky_icon_2d.state == "clear-day" -%}
+          {% if states.sensor.dark_sky_icon_3.state == "clear-day" -%}
             {{ 15 }}
-          {%- elif states.sensor.dark_sky_icon_2d.state == "clear-night" -%}
+          {%- elif states.sensor.dark_sky_icon_3.state == "clear-night" -%}
             {{ 20 }}
-          {%- elif states.sensor.dark_sky_icon_2d.state == "rain" -%}
+          {%- elif states.sensor.dark_sky_icon_3.state == "rain" -%}
             {{ 13 }}
-          {%- elif states.sensor.dark_sky_icon_2d.state == "partly-cloudy-day" -%}
+          {%- elif states.sensor.dark_sky_icon_3.state == "partly-cloudy-day" -%}
             {{ 14 }}
-          {%- elif states.sensor.dark_sky_icon_2d.state == "partly-cloudy-night" -%}
+          {%- elif states.sensor.dark_sky_icon_3.state == "partly-cloudy-night" -%}
             {{ 15 }}
-          {%- elif states.sensor.dark_sky_icon_2d.state == "cloudy" -%}
+          {%- elif states.sensor.dark_sky_icon_3.state == "cloudy" -%}
             {{ 12 }}
-          {%- elif states.sensor.dark_sky_icon_2d.state == "fog" -%}
+          {%- elif states.sensor.dark_sky_icon_3.state == "fog" -%}
             {{ 19 }}
-          {%- elif states.sensor.dark_sky_icon_2d.state == "snow" -%}
+          {%- elif states.sensor.dark_sky_icon_3.state == "snow" -%}
             {{ 17 }}
-          {%- elif states.sensor.dark_sky_icon_2d.state == "sleet" -%}
+          {%- elif states.sensor.dark_sky_icon_3.state == "sleet" -%}
             {{ 18 }}
           {%- endif %}
 
