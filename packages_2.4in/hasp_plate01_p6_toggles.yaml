@@ -238,7 +238,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'off'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[4].picc'
@@ -267,7 +267,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'off'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[5].picc'
@@ -296,7 +296,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'off'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[6].picc'
@@ -325,7 +325,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'off'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[7].picc'
@@ -354,7 +354,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'off'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[8].picc'
@@ -383,7 +383,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'off'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[9].picc'
@@ -414,7 +414,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'on'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[4].picc'
@@ -443,7 +443,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'on'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[5].picc'
@@ -473,7 +473,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'on'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[6].picc'
@@ -502,7 +502,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'on'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[7].picc'
@@ -531,7 +531,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'on'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[8].picc'
@@ -560,7 +560,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       state: 'on'
     action:
-    - wait_template: {{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[9].picc'
