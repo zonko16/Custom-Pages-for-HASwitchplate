@@ -27,13 +27,10 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[9].txt'
-        payload_template: >-
-          {% if states.input_boolean.hasp_plate01_p3_temperatureswitch == "on" -%}
-            {{  Out }}
-          {%- else -%}
-            {{ In }}
-          {%- endif %}
+        payload: {{ In }}
+
     # In Temp
+    # Replace sensor.YOUR_TEMPERATURE_SENSOR with your temperature sensor
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[6].font'
@@ -41,26 +38,19 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[6].txt'
-        payload_template: >-
-          {% if states.input_boolean.hasp_plate01_p3_temperatureswitch == "on" -%}
-            '"{{ states.sensor.dark_sky_temperature.state }}°C"'
-          {%- else -%}
-            '"{{ states.sensor.YOUR_TEMPERATURE_SENSOR.state }}°C"'
-          {%- endif %}
+        payload_template: '"{{ states.sensor.YOUR_TEMPERATURE_SENSOR.state }}°C"'
+       
 
     # In Humidity
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[11].font'
         payload: '7'
+    # Replace sensor.YOUR_HUMIDITY_SENSOR with your humidity sensor
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[11].txt'
-        payload_template: >-
-          {% if states.input_boolean.hasp_plate01_p3_tempertureswitch == "on" -%}
-            '"{{ states.sensor.dark_sky_humidity.state }}%"'
-          {%- else -%}
-            '"{{ states.sensor.YOUR_HUMIDITY_SENSOR.state }}%"'
+        payload_template: '"{{ states.sensor.YOUR_HUMIDITY_SENSOR.state }}%"'
 
     # Out
     - service: mqtt.publish
