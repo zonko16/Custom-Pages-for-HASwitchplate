@@ -237,6 +237,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') }}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[4].picc'
@@ -264,6 +265,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[5].picc'
@@ -291,6 +293,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[6].picc'
@@ -318,6 +321,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[7].picc'
@@ -345,6 +349,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[8].picc'
@@ -372,6 +377,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[9].picc'
@@ -394,13 +400,14 @@ automation:
       entity_id: group.hasp_plate01_p6_toggle7
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
-      to: 'off'
+      to: 'on'
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[4].picc'
@@ -421,13 +428,14 @@ automation:
       entity_id: group.hasp_plate01_p6_toggle8
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
-      to: 'off'
+      to: 'on'
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[5].picc'
@@ -456,6 +464,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[6].picc'
@@ -483,6 +492,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[7].picc'
@@ -510,6 +520,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[8].picc'
@@ -537,6 +548,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
+    - wait_template: "{{ is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on')}}"
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[6].b[9].picc'
