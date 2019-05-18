@@ -123,7 +123,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[17].txt'
-        payload_template: '"24h"'
+        payload_template: '"{{(as_timestamp(now())+ (86400)) | timestamp_custom("%a",true)}}"'
     #Icon  24h
     - service: mqtt.publish
       data:
@@ -159,7 +159,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[18].txt'
-        payload_template: '"48h"'
+        payload_template: '"{{(as_timestamp(now())+ (172800)) | timestamp_custom("%a",true)}}"'
 
     - service: mqtt.publish
       data_template:
