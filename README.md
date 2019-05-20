@@ -18,6 +18,7 @@ Preview
 ![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/master/Preview.png)
 
 **Alternative Theme**
+
 ![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/test/preview_alternate_theme.png)
 
 
