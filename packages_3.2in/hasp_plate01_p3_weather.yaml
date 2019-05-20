@@ -91,7 +91,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[16].txt'
-        payload_template: '"now"'
+        payload_template: '"Now"'
 # Icon Now
     - service: mqtt.publish
       data_template:
