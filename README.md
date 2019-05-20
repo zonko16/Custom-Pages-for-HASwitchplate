@@ -1,12 +1,8 @@
 # Custom-Pages-for-HASwitchplate
 Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) created by @aderusha
 
-![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/master/Preview.png)
-![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/master/preview_alternate_theme.png)
-
-Special thanks to @aderusha for creating HASwitchPlate and @madrian for spending hours of beta testing with me. 
-
-## Changelog
+Changelog
+====
 
 #### UPDATE 0.3
 - **Alternate Theme** now available.
@@ -16,7 +12,17 @@ Special thanks to @aderusha for creating HASwitchPlate and @madrian for spending
 - Your now able to switch between two pages on Page 6 (Toggles) by pressing the toggles button in the Navigation Bar again.
 - Simplified setting up entities for Page6 (Toggles). See Step 4 in Quick start.
 
-## QUICK START
+Preview
+===
+**Standard Theme**
+![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/master/Preview.png)
+
+**Alternative Theme**
+![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/test/preview_alternate_theme.png)
+
+
+QUICK START
+=====
 
 1. Install HASP as usual but use the [HASwitchplate_2.4.tft](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/blob/master/Nextion%20HMI/HASwitchPlate_2.4.tft) provided by this repository instead. 
 
@@ -60,7 +66,7 @@ hasp_plate01_p6_toggle1-12(16):
 
 You'll need a [Darksky API](https://darksky.net/dev) to use the weather component. Place your API key into ```hasp_plate01_00_components.yaml```. 
 
-
+Special thanks to **@aderusha** for creating HASwitchPlate and **@madrian** for spending hours of beta testing with me. 
 
 
 
