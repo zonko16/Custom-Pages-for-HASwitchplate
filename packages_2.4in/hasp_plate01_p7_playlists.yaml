@@ -19,6 +19,9 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
+    - platform: mqtt
+      topic: 'hasp/plate01/command/page'
+      payload: '7'
     - platform: state
       entity_id: 'input_number.hasp_plate01_activepage'
       to: '7'
@@ -26,7 +29,7 @@ automation:
     # Font/text Toggle 1/9
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[7].p[3].font'
+        topic: 'hasp/plate01/command/p[7].b[3].font'
         payload: '7'
     - service: mqtt.publish
       data:
@@ -84,7 +87,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist1
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].p[3]'
+      topic: 'hasp/plate01/state/p[7].b[3]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -95,7 +98,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist2
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].p[4]'
+      topic: 'hasp/plate01/state/p[7].b[4]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -106,7 +109,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist3
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].p[5]'
+      topic: 'hasp/plate01/state/p[7].b[5]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -117,7 +120,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist4
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].p[6]'
+      topic: 'hasp/plate01/state/p[7].b[6]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -128,7 +131,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist5
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].p[7]'
+      topic: 'hasp/plate01/state/p[7].b[7]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -139,7 +142,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist6
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].p[8]'
+      topic: 'hasp/plate01/state/p[7].b[8]'
       payload: 'ON'
     action:
     - service: script.turn_on
