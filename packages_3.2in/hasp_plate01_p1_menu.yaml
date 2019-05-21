@@ -27,51 +27,51 @@ automation:
     # Text/font Home button
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[10].font'
+        topic: 'hasp/plate01/command/p[1].b[5].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[10].txt'
+        topic: 'hasp/plate01/command/p[1].b[5].txt'
         payload: '"Home"'
         
     # Text/font Sliders label
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[9].font'
+        topic: 'hasp/plate01/command/p[1].b[4].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[9].txt'
+        topic: 'hasp/plate01/command/p[1].b[4].txt'
         payload: '"Sliders"'
       
     # Text/font Menu Button Thermostat label
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[8].font'
+        topic: 'hasp/plate01/command/p[1].b[3].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[8].txt'
+        topic: 'hasp/plate01/command/p[1].b[3].txt'
         payload: '"Thermostat"'
      
     # Text/font menu button Playlist label
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[7].font'
+        topic: 'hasp/plate01/command/p[1].b[2].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[7].txt'
+        topic: 'hasp/plate01/command/p[1].b[2].txt'
         payload: '"Playlist"'
       
     # Text/font Label - button scenes
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[6].font'
+        topic: 'hasp/plate01/command/p[1].b[1].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[6].txt'
+        topic: 'hasp/plate01/command/p[1].b[1].txt'
         payload: '"Scenes"'
 
 #####################################
@@ -80,7 +80,7 @@ automation:
   - alias: hasp_plate01_p1_HomeButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[1]'
+      topic: 'hasp/plate01/state/p[1].b[10]'
       payload: 'ON'
     action:
     - service: mqtt.publish
@@ -91,7 +91,7 @@ automation:
   - alias: hasp_plate01_p1_SlidersButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[2]'
+      topic: 'hasp/plate01/state/p[1].b[9]'
       payload: 'ON'
     action:
     - service: mqtt.publish
@@ -102,7 +102,7 @@ automation:
   - alias: hasp_plate01_p1_ThermostatButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[3]'
+      topic: 'hasp/plate01/state/p[1].b[8]'
       payload: 'ON'
     action:
     - service: mqtt.publish
@@ -113,7 +113,7 @@ automation:
   - alias: hasp_plate01_p1_PlaylistButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[4]'
+      topic: 'hasp/plate01/state/p[1].b[7]'
       payload: 'ON'
     action:
     - service: mqtt.publish
@@ -124,7 +124,7 @@ automation:
   - alias: hasp_plate01_p1_ScenesButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[5]'
+      topic: 'hasp/plate01/state/p[1].b[6]'
       payload: 'ON'
     action:
     - service: mqtt.publish
