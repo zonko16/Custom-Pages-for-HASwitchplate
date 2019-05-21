@@ -49,7 +49,7 @@ automation:
     action:
     - service: light.turn_on
       data_template:
-        entity_id: group.wz_decke
+        entity_id: light.light_1
         brightness_pct: '{{ trigger.payload }}'
 
   - alias: hasp_plate01_p4_Slider2UpdateHass
@@ -59,7 +59,7 @@ automation:
     action:
     - service: light.turn_on
       data_template:
-        entity_id: group.wz_decke
+        entity_id: light.light_2
         white_value: '{{ trigger.payload }}'
 
   - alias: hasp_plate01_p4_Slider3UpdateHass

@@ -1,5 +1,16 @@
 automation:
-
+#Go back to the Media Page by pressing the back button
+  - alias: hasp_plate01_p7_BackButtonAction
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[7].b[1]'
+      payload: 'ON'
+    action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: 'input_number.hasp_plate01_activepage'
+        value: '8'
+        
   #Set font and text for toggle buttons on device connection
   - alias: hasp_plate01_p7_ToggleInit
     trigger:
@@ -78,7 +89,7 @@ automation:
     action:
     - service: script.turn_on
       data:
-        entity_id: script.spotify_deine_top_2018
+        entity_id: script.spotify_PLAYLIST
 
   #Activate Playlist2
   - alias: hasp_plate01_p7_ActivatePlaylist2
@@ -89,7 +100,7 @@ automation:
     action:
     - service: script.turn_on
       data:
-        entity_id: script.spotify_60s
+        entity_id: script.spotify_PLAYLIST
 
   #Acitvate Playlist3
   - alias: hasp_plate01_p7_ActivatePlaylist3
@@ -100,7 +111,7 @@ automation:
     action:
     - service: script.turn_on
       data:
-        entity_id: script.spotify_dein_mix
+        entity_id: script.spotify_PLAYLIST
 
   #Activate Playlist4
   - alias: hasp_plate01_p7_ActivatePlaylist4
@@ -111,7 +122,7 @@ automation:
     action:
     - service: script.turn_on
       data:
-        entity_id: script.spotify_trapnation
+        entity_id: script.spotify_PLAYLIST
 
   #Activate Playlist5
   - alias: hasp_plate01_p7_ActivatePlaylist5
@@ -122,7 +133,7 @@ automation:
     action:
     - service: script.turn_on
       data:
-        entity_id: script.spotify_legendary
+        entity_id: script.spotify_PLAYLIST
 
   #Activate Playlist6
   - alias: hasp_plate01_p7_ActivatePlaylist6
@@ -133,4 +144,4 @@ automation:
     action:
     - service: script.turn_on
       data:
-        entity_id: script.spotify_dinner_with_friends
+        entity_id: script.spotify_PLAYLIST

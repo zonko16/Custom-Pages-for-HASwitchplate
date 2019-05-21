@@ -23,19 +23,10 @@ automation:
   - alias: hasp_plate01_p0_PageButton1Action
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[1]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[5].b[1]'
-      payload: 'ON'
-    - platform: mqtt
       topic: 'hasp/plate01/state/p[6].b[1]'
       payload: 'ON'
     - platform: mqtt
       topic: 'hasp/plate01/state/p[8].b[1]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[9].b[1]'
       payload: 'ON'
     action:
     - service: input_number.set_value
@@ -51,19 +42,7 @@ automation:
       topic: 'hasp/plate01/state/p[3].b[2]'
       payload: 'ON'
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[2]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[5].b[2]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[6].b[2]'
-      payload: 'ON'
-    - platform: mqtt
       topic: 'hasp/plate01/state/p[8].b[2]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[9].b[2]'
       payload: 'ON'
     action:
     - service: input_number.set_value
@@ -75,30 +54,58 @@ automation:
 # select hasp_plate01_pagebutton3page in response to page button 3
   - alias: hasp_plate01_p0_PageButton3Action
     trigger:
-    
     - platform: mqtt
       topic: 'hasp/plate01/state/p[3].b[3]'
       payload: 'ON'
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[3]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[5].b[3]'
-      payload: 'ON'
-    - platform: mqtt
       topic: 'hasp/plate01/state/p[6].b[3]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[8].b[3]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[9].b[3]'
       payload: 'ON'
     action:
     - service: input_number.set_value
       data_template:
         entity_id: 'input_number.hasp_plate01_activepage'
         value: '{{states.input_number.hasp_plate01_pagebutton3page.state|int}}'
+
+##############################################################################
+# Go back to the Menu if Back button gets pressed
+  - alias: hasp_plate01_p0_PageButton3Action
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[2].b[1]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[4].b[1]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[1]'
+      payload: 'ON'
+    action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: 'input_number.hasp_plate01_activepage'
+        value: '1'
+
+##############################################################################
+# Go back to the Home/Weather page if Back button gets pressed
+  - alias: hasp_plate01_p0_PageButton3Action
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[2].b[2]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[4].b[2]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[2]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[7].b[2]'
+      payload: 'ON'
+    action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: 'input_number.hasp_plate01_activepage'
+        value: '3'
 
 ##############################################################################
 # Update hasp_plate01_p0_active_page when changed at the panel
