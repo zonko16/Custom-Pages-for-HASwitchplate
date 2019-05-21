@@ -29,51 +29,51 @@ automation:
       # Label - Scene 1
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[12].font'
+        topic: 'hasp/plate01/command/p[2].b[3].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[12].txt'
+        topic: 'hasp/plate01/command/p[2].b[3].txt'
         payload: '"Script1"'
      
      # Label - Scene 2
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[11].font'
+        topic: 'hasp/plate01/command/p[2].b[4].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[11].txt'
+        topic: 'hasp/plate01/command/p[2].b[4].txt'
         payload: '"Script2"'
       
 # Label - Scene 3
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[10].font'
+        topic: 'hasp/plate01/command/p[2].b[5].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[10].txt'
+        topic: 'hasp/plate01/command/p[2].b[5].txt'
         payload: '"Fernsehen"'
     
     # Label - Scene 4
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[9].font'
+        topic: 'hasp/plate01/command/p[2].b[6].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[9].txt'
+        topic: 'hasp/plate01/command/p[2].b[6].txt'
         payload: '"Essen"'
 
     # Label - Scene 5
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[8].font'
+        topic: 'hasp/plate01/command/p[2].b[7].font'
         payload: '7'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[2].b[8].txt'
+        topic: 'hasp/plate01/command/p[2].b[7].txt'
         payload: '"Kochen"'
 
 #####################################
@@ -106,7 +106,7 @@ automation:
   - alias: hasp_plate01_p2_Scene1Action
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[2].b[3]'
+      topic: 'hasp/plate01/state/p[2].b[12]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -117,7 +117,7 @@ automation:
   - alias: hasp_plate01_p2_ThermostatButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[2].b[4]'
+      topic: 'hasp/plate01/state/p[2].b[11]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -128,7 +128,7 @@ automation:
   - alias: hasp_plate01_p2_PlaylistsButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[2].b[5]'
+      topic: 'hasp/plate01/state/p[2].b[10]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -139,7 +139,7 @@ automation:
   - alias: hasp_plate01_p2_ScenesButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[2].b[6]'
+      topic: 'hasp/plate01/state/p[2].b[9]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -150,7 +150,7 @@ automation:
   - alias: hasp_plate01_p2_ScenesButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[2].b[7]'
+      topic: 'hasp/plate01/state/p[2].b[8]'
       payload: 'ON'
     action:
     - service: script.turn_on

@@ -45,7 +45,7 @@ automation:
   - alias: hasp_plate01_p4_Slider1UpdateHass
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[3].val'
+      topic: 'hasp/plate01/state/p[4].b[6].val'
     action:
     - service: light.turn_on
       data_template:
@@ -55,7 +55,7 @@ automation:
   - alias: hasp_plate01_p4_Slider2UpdateHass
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[4].val'
+      topic: 'hasp/plate01/state/p[4].b[7].val'
     action:
     - service: light.turn_on
       data_template:
@@ -65,7 +65,7 @@ automation:
   - alias: hasp_plate01_p4_Slider3UpdateHass
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[5].val'
+      topic: 'hasp/plate01/state/p[4].b[8].val'
     action:
     - service: light.turn_on
       data_template:
