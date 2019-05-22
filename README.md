@@ -19,7 +19,7 @@ Preview
 
 **Alternative Theme**
 
-![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/test/preview_alternate_theme.png)
+![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/beta/preview_alternate_theme.png)
 
 
 QUICK START
