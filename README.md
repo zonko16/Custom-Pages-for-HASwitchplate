@@ -5,7 +5,7 @@ Changelog
 ====
 
 #### UPDATE 0.3
-- **Alternate Theme** now available.
+- **Alternative Theme** now available.
   Replace the firmware with the new one according to your panel. Nothing else has to be changed. The firmwares with the new theme end with ```_alternate_theme_*.yaml```.
 
 #### UPDATE 0.2:  
