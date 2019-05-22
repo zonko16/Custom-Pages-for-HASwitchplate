@@ -86,7 +86,7 @@ automation:
         value: '1'
 
 ##############################################################################
-# Go back to the Home/Weather page if Back button gets pressed
+# Go back to the Home/Weather page if Home button gets pressed
   - alias: hasp_plate01_p0_PageButton3Action
     trigger:
     - platform: mqtt
