@@ -80,7 +80,7 @@ automation:
   - alias: hasp_plate01_p1_HomeButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[10]'
+      topic: 'hasp/plate01/state/p[1].b[6]'
       payload: 'ON'
     action:
     - service: mqtt.publish
@@ -91,7 +91,7 @@ automation:
   - alias: hasp_plate01_p1_SlidersButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[9]'
+      topic: 'hasp/plate01/state/p[1].b[7]'
       payload: 'ON'
     action:
     - service: mqtt.publish
@@ -113,7 +113,7 @@ automation:
   - alias: hasp_plate01_p1_PlaylistButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[7]'
+      topic: 'hasp/plate01/state/p[1].b[9]'
       payload: 'ON'
     action:
     - service: mqtt.publish
@@ -124,7 +124,7 @@ automation:
   - alias: hasp_plate01_p1_ScenesButtonAction
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[6]'
+      topic: 'hasp/plate01/state/p[1].b[10]'
       payload: 'ON'
     action:
     - service: mqtt.publish

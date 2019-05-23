@@ -9,6 +9,19 @@ input_boolean:
 # Automations to display the weather forecast and current temp on page 3
 
 automation:
+
+
+####################################################################
+# Toggles the Label and Temp/Humidity displayed on Page 3. Thanks @madrian
+#  - alias: hasp_plate01_p0_ChangeToTempInOut
+#    trigger:
+#    - platform: mqtt
+#      topic: 'hasp/plate01/state/p[3].b[6]'
+#      payload: 'ON' 
+#    action:
+#    - service: input_boolean.toggle
+#      entity_id: input_boolean.hasp_plate01_p3_temperatureswitch
+
   # Display weather details on page 3 when weather updates or on HASP init
   # Pressing on the displayed temperature will switch to the temperature inside your home if an entity is provided. Thanks @madrian for helping me with this part
   # An Darksky API needs to be provided in "hasp_plate01_00_components.yaml"
