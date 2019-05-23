@@ -121,7 +121,7 @@ automation:
     action:
     - service: script.turn_on
       data:
-        entity_id: script.routine_mahlzeit
+        entity_id: script.DUMMY
 
 # Scene 5    
   - alias: hasp_plate01_p2_ScenesButtonAction
