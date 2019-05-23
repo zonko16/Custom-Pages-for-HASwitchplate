@@ -34,7 +34,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[3].txt'
-        payload_template: "{{ state_attr('script.spotify_deine_top_2018', 'friendly_name') }}"
+        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
     #Font/text Toggle 2/10
     - service: mqtt.publish
       data:
@@ -43,7 +43,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[4].txt'
-        payload_template: '"60s Alternative"'
+        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
     #Font/text Toggle 3/11
     - service: mqtt.publish
       data:
@@ -52,7 +52,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[5].txt'
-        payload_template: "{{ state_attr('script.spotify_dein_mix', 'friendly_name') }}"
+        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
     #Font/text Toggle 4/12
     - service: mqtt.publish
       data:
@@ -61,7 +61,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[6].txt'
-        payload_template: "{{ state_attr('script.spotify_trapnation', 'friendly_name') }}"
+        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
     #Font/text Toggle 5/13
     - service: mqtt.publish
       data:
@@ -70,7 +70,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[7].txt'
-        payload_template: "{{ state_attr('script.spotify_legendary', 'friendly_name') }}"
+        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
     #Font/text Toggle 6/14
     - service: mqtt.publish
       data:
@@ -79,7 +79,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[8].txt'
-        payload_template: "{{ state_attr('script.spotify_dinner_with_friends', 'friendly_name') }}"
+        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
 
 ########################################################################
 #Switch to playlist on button press
@@ -87,7 +87,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist1
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[3]'
+      topic: 'hasp/plate01/state/p[7].b[9]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -98,7 +98,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist2
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[4]'
+      topic: 'hasp/plate01/state/p[7].b[10]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -109,7 +109,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist3
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[5]'
+      topic: 'hasp/plate01/state/p[7].b[11]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -120,7 +120,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist4
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[6]'
+      topic: 'hasp/plate01/state/p[7].b[12]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -131,7 +131,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist5
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[7]'
+      topic: 'hasp/plate01/state/p[7].b[13]'
       payload: 'ON'
     action:
     - service: script.turn_on
@@ -142,7 +142,7 @@ automation:
   - alias: hasp_plate01_p7_ActivatePlaylist6
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[8]'
+      topic: 'hasp/plate01/state/p[7].b[14]'
       payload: 'ON'
     action:
     - service: script.turn_on
