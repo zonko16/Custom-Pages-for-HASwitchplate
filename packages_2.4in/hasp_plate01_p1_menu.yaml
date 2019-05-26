@@ -10,8 +10,9 @@ automation:
       payload: 'ON'
     action:
     - service: mqtt.publish
-      topic: 'hasp/plate01/command/page'
-      payload: '1'
+      data:
+        topic: 'hasp/plate01/command/page'
+        payload: '1'
       
 # Set labels for each button
   
