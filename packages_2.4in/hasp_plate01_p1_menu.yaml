@@ -1,6 +1,18 @@
 #####################################
 automation:
-##########################################
+########################################
+# Open Menu by pressing the Menu Button on the weather page
+
+  - alias: hasp_plate01_p1_OpenMenu
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[3].b[1]'
+      payload: 'ON'
+    action:
+    - service: mqtt.publish
+      topic: 'hasp/plate01/command/page'
+      payload: '1'
+      
 # Set labels for each button
   
   # Initialize button labels
