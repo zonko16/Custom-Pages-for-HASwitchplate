@@ -1,16 +1,6 @@
 
 #####################################
 automation:
-  - alias: hasp_plate01_p2_accessmenu
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[3].b[1]'
-      payload: 'ON'
-    action:
-    - service: input_number.set_value
-      data: 
-        entity_id: 'input_number.hasp_plate01_activepage'
-        value: '1'
         
 ##########################################
 # Set labels for each button
@@ -23,9 +13,7 @@ automation:
       to: 'on'
     - platform: homeassistant
       event: start
-      
-    action:   
-      
+    action:
       # Label - Scene 1
     - service: mqtt.publish
       data:

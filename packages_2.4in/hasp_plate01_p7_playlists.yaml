@@ -7,9 +7,9 @@ automation:
       payload: 'ON'
     action:
     - service: input_number.set_value
-      data_template:
-        entity_id: 'input_number.hasp_plate01_activepage'
-        value: '8'
+      data:
+        topic: 'hasp/plate01/command/page'
+        payload: '8'
         
   #Set font and text for toggle buttons on device connection
   - alias: hasp_plate01_p7_ToggleInit

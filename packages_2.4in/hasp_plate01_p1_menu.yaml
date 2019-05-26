@@ -1,16 +1,5 @@
 #####################################
 automation:
-  - alias: hasp_plate01_p1_accessmenu
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[3].b[1]'
-      payload: 'ON'
-    action:
-    - service: mqtt.publish
-      data: 
-        topic: 'hasp/plate01/command/page'
-        payload: '1'
-        
 ##########################################
 # Set labels for each button
   
