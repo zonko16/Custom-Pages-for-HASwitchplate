@@ -80,10 +80,10 @@ automation:
       topic: 'hasp/plate01/state/p[5].b[1]'
       payload: 'ON'
     action:
-    - service: input_number.set_value
+    - service: mqtt.publish
       data:
-        entity_id: 'input_number.hasp_plate01_activepage'
-        value: '1'
+        topic: 'hasp/plate01/command/page'
+        payload: '1'
 
 ##############################################################################
 # Go back to the Home/Weather page if Home button gets pressed
@@ -102,10 +102,10 @@ automation:
       topic: 'hasp/plate01/state/p[7].b[2]'
       payload: 'ON'
     action:
-    - service: input_number.set_value
+    - service: mqtt.publish
       data:
-        entity_id: 'input_number.hasp_plate01_activepage'
-        value: '3'
+        topic: 'hasp/plate01/command/page'
+        payload: '3'
 
 ##############################################################################
 # Update hasp_plate01_p0_active_page when changed at the panel
