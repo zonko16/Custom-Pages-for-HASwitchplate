@@ -5,7 +5,7 @@ Changelog
 ====
 
 #### UPDATE 0.3
-- **Alternate Theme** now available.
+- **Alternative Theme** now available.
   Replace the firmware with the new one according to your panel. Nothing else has to be changed. The firmwares with the new theme end with ```_alternate_theme_*.yaml```.
 
 #### UPDATE 0.2:  
@@ -19,7 +19,7 @@ Preview
 
 **Alternative Theme**
 
-![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/test/preview_alternate_theme.png)
+![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/beta/preview_alternate_theme.png)
 
 
 QUICK START

@@ -25,7 +25,7 @@ automation:
   # Display weather details on page 3 when weather updates or on HASP init
   # Pressing on the displayed temperature will switch to the temperature inside your home if an entity is provided. Thanks @madrian for helping me with this part
   # An Darksky API needs to be provided in "hasp_plate01_00_components.yaml"
-  - alias: hasp_plate01_p3_switchtotemperature_indoor
+  - alias: hasp_plate01_p3_InitPage
     trigger: 
     - platform: time_pattern
       seconds: 00
