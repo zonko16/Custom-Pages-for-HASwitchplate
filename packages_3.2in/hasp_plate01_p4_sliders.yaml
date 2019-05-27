@@ -19,7 +19,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: 'hasp/plate01/command/p[4].b[3].txt'
-          payload_template: "{{ state_attr('group.wz_decke', 'friendly_name') }}"
+          payload: '"Slider1"'
     #Text/font slider2 
       - service: mqtt.publish
         data:
@@ -28,7 +28,7 @@ automation:
       - service: mqtt.publish
         data:
           topic: 'hasp/plate01/command/p[4].b[4].txt'
-          payload_template: "{{ state_attr('light.light_2', 'friendly_name') }}"
+          payload_template: '"Slider2"'
     #Text/font slider3
       - service: mqtt.publish
         data:
@@ -37,7 +37,7 @@ automation:
       - service: mqtt.publish
         data: 
           topic: 'hasp/plate01/command/p[4].b[5].txt'
-          payload_template: "{{ state_attr('light.light_3', 'friendly_name') }}"
+          payload_template: '"Slider3"'
 
 ##############################################################################################
 # Set value in HASS when slider in HASP changes
@@ -50,7 +50,7 @@ automation:
     - service: light.turn_on
       data_template:
         entity_id: light.light_1
-        brightness_pct: '{{ trigger.payload }}'
+        brightness: '{{ trigger.payload }}'
 
   - alias: hasp_plate01_p4_Slider2UpdateHass
     trigger:
@@ -60,14 +60,51 @@ automation:
     - service: light.turn_on
       data_template:
         entity_id: light.light_2
-        white_value: '{{ trigger.payload }}'
+        brightness: '{{ trigger.payload }}'
 
-  - alias: hasp_plate01_p4_Slider3UpdateHass
+ 
+  # When the light is changed in Hass, update HASP to move the dimmer
+  - alias: hasp_plate01_p4_Slider1UpdateHASP
     trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[8].val'
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: light.light_1
     action:
-    - service: light.turn_on
+    - service: mqtt.publish
       data_template:
-        entity_id: light.light_3
-        brightness_pct: '{{ trigger.payload }}'
+        topic: 'hasp/plate01/command/p[4].b[6].val'
+        payload_template: '{{states.light.light_1.attributes.brightness|default(0)|int}}'
+
+  - alias: hasp_plate01_p4_Slider2UpdateHASP
+    trigger:
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: light.light_2
+    action:
+    - service: mqtt.publish
+      data_template:
+        topic: 'hasp/plate01/command/p[4].b[7].val'
+        payload_template: '{{states.light.light_2.attributes.brightness|default(0)|int}}'
+
+  - alias: hasp_plate01_p4_Slider3UpdateHASP
+    trigger:
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: light.light_3
+    action:
+    - service: mqtt.publish
+      data_template:
+        topic: 'hasp/plate01/command/p[4].b[8].val'
+        payload_template: '{{states.light.light_3.attributes.brightness|default(0)|int}}'
