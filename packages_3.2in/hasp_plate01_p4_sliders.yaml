@@ -63,7 +63,7 @@ automation:
         brightness: '{{ trigger.payload }}'
 
  
-  # When the light is changed in Hass, update HASP to move the dimmer
+  # When light slider is changed in Hass, update HASP to move the dimmer
   - alias: hasp_plate01_p4_Slider1UpdateHASP
     trigger:
     - platform: state

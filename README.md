@@ -8,6 +8,11 @@ Changelog
 - **Alternative Theme** now available.
   Replace the firmware with the new one according to your panel. Nothing else has to be changed. The firmwares with the new theme end with ```_alternate_theme_*.yaml```.
 
+- New Pages added
+  There is a set of new Pages added to HASP.
+  Pressing button 1 on the Date/Weather page will open up a menu where you can access further functions
+  The extended funcionalty will only work with the alternate theme for now. Follow Instructions to get the new Pages working
+
 #### UPDATE 0.2:  
 - Your now able to switch between two pages on Page 6 (Toggles) by pressing the toggles button in the Navigation Bar again.
 - Simplified setting up entities for Page6 (Toggles). See Step 4 in Quick start.
@@ -30,9 +35,14 @@ QUICK START
 2. Replace the yaml files in ```config/packages/plate01``` with the ones provided in this repository.
     - For the **2.4" Panel** use .yamls in [packages_2.4in/](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/tree/master/packages_2.4in) 
     - For the **3.2" Panel** use .yamls in [packages_3.2in/](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/tree/master/packages_3.2in)
+
+  **Update 0.3:** You can access a Menu with extra pages using the new **alternative Theme**.
+  Coming from previous release add/replace ```hasp_plate01_p0_pages.yaml```, ```hasp_plate01_p1_menu.yaml```, ```hasp_palte01_p2_scripts.yaml```, ```hasp_plate01_p4_sliders.yaml```, ```hasp_plate01_p7_playlist.yaml´``
+  It's recommended to deactivate any colorconfig.yaml as colors are already set in the firmware.
+
 3. Replace YOUR_API_KEY in ```hasp_plate01_00_components.yaml``` with your own Darksky API 
 
-4. Change the entities and Labels for Page 3,6 and 8 to your liking.
+4. Replace the entities and names to your liking for every page in the different YAML files.
 Entities that need to be changed are called like **switch.YOUR_ENTITY**, **senor.YOUR_TEMPERATURE** and so on.
 **IMPORTANT UPDATE:** This step hast been considerably simplified for page 6. 
 - Open ```hasp_plate01_p6_entities.yaml```
