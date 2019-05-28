@@ -184,33 +184,3 @@ automation:
           {%- endif %}
 
 
-#######################################
-##                                   ##
-##           Weather Icons           ##
-##                                   ##
-#######################################
-
-##---- Icons ----##
-
-# cloudy: pic12
-# rainy:  pic13
-# partly_cloud: pic14
-# partly_cloudy_night: 15
-# sunny: pic15
-# clear night: 20
-# snow: pic16
-# fog: pic17
-# sleet: pic18
-# wind: ?
-
-
-
-##---- Buttons & Textfields ----##
-# today_text:16
-# today_icon: 13
-
-# 1d_text:17
-# tomorrow_icon: 14
-
-# 3_text: 18
-# 3_icon: 15

@@ -40,7 +40,7 @@ QUICK START
   Coming from previous release add/replace ```hasp_plate01_p0_pages.yaml```, ```hasp_plate01_p1_menu.yaml```, ```hasp_palte01_p2_scripts.yaml```, ```hasp_plate01_p4_sliders.yaml```, ```hasp_plate01_p7_playlist.yaml´``
   It's recommended to deactivate any colorconfig.yaml as colors are already set in the firmware.
 
-3. Replace YOUR_API_KEY in ```hasp_plate01_00_components.yaml``` with your own Darksky API 
+3. Replace YOUR_API_KEY in ```hasp_plate01_00_components.yaml``` your own Darksky API 
 
 4. Replace the entities and names to your liking for every page in the different YAML files.
 Entities that need to be changed are called like **switch.YOUR_ENTITY**, **senor.YOUR_TEMPERATURE** and so on.
@@ -55,7 +55,8 @@ hasp_plate01_p6_toggle1-12(16):
 ```
 - replace **switch.DUMMY** with the component you are using for ever single button and set the name for your toggle.
 
-5. (3.2" users skip this step) If you're using a **second temperature/humidity** and want to switch between In and  Out by clicking on the displayed temperature uncomment lines 280 to 288 in ```hasp_plate01_p0_pages.yaml```:
+5. (3.2" users skip this step) If you're using a **second temperature/humidity** and want to switch between In and  Out by clicking on the displayed temperature uncomment lines 16 to 23 in ```hasp_plate01_p3_weather.yaml```
+(Coming from previous releases these lines were in ```hasp_plate01_p0_components.yaml``` if switching temperature doesn't work copy below lines into ```hasp_plate01_p3_weather.yaml```):
 
 ```
 ####################################################################
