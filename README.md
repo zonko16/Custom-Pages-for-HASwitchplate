@@ -10,7 +10,7 @@ Changelog
 
 - New Pages added
   There is a set of new Pages added to HASP.
-  Pressing button 1 on the Date/Weather page will open up a menu where you can access further functions
+  Pressing button 1 (Hamburger Icon) on the Date/Weather page will open up a menu where you can access further functions
   The extended funcionalty will only work with the alternate theme for now. Follow Instructions to get the new Pages working
 
 #### UPDATE 0.2:  
