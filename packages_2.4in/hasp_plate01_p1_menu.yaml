@@ -30,7 +30,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[1].font'
-        payload: '7'
+        payload: '9'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[1].txt'
@@ -40,7 +40,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[2].font'
-        payload: '7'
+        payload: '9'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[2].txt'
@@ -50,7 +50,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[3].font'
-        payload: '7'
+        payload: '9'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[3].txt'
@@ -60,17 +60,17 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[4].font'
-        payload: '7'
+        payload: '9'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[4].txt'
-        payload: '"Playlist"'
+        payload: '"3D Printer"'
       
     # Text/font Label - button scenes
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[5].font'
-        payload: '7'
+        payload: '9'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[5].txt'
@@ -121,7 +121,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/page'
-        payload: '7'
+        payload: '9'
       
   - alias: hasp_plate01_p1_ScenesButtonAction
     trigger:
