@@ -134,3 +134,5 @@ automation:
       data_template:
         topic: 'hasp/plate01/command/page'
         payload: '{{ states.input_number.hasp_plate01_activepage.state|int }}'
+
+
