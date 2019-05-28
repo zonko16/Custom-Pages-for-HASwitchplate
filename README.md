@@ -8,7 +8,8 @@ Changelog
 
   You need to flash the new firmware for the Nextion panel. 
   Add ```hasp_plate01_p5_thermostat.yaml``` to your config and replace ```climate.DUMMY``` with your thermostat component.
-  
+
+  ![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/beta/Thermostat.png)
      
 #### UPDATE 0.3
 - **Alternative Theme** available.
