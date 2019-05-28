@@ -49,18 +49,18 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[5].b[9].txt'
-        payload_template: "{{ state_attr('climate.DUMMY', 'temperature') }}"
+        payload_template: '"{{ state_attr("climate.DUMMY", "temperature") }}°"'
 
     # CurrentIndoorTemperature
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[5].b[10].font'
-        payload: '0'
+        payload: '1'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[5].b[10].txt'
-        payload_template: "{{ state_attr('climate.DUMMY', 'current_temperature') }}"
-
+        payload_template: '"{{ state_attr("climate.DUMMY", "current_temperature") }}°"'
+        
   # Show active mode
   - alias: hasp_plate01_p6_ToggleColor1
     trigger:
@@ -79,7 +79,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[5].b[3].picc'
         payload_template: >-
-          {% if state_attr('climate.study', 'operation_mode') == "heat" -%}
+          {% if state_attr('climate.DUMMY', 'operation_mode') == "heat" -%}
             31
           {%- else -%}
             30
@@ -88,7 +88,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[5].b[4].picc'
         payload_template: >-
-          {% if state_attr('climate.study', 'operation_mode') == "cool" -%}
+          {% if state_attr('climate.DUMMY', 'operation_mode') == "off" -%}
             31
           {%- else -%}
             30
@@ -97,7 +97,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[5].b[5].picc'
         payload_template: >-
-          {% if state_attr('climate.study', 'operation_mode') == "auto" -%}
+          {% if state_attr('climate.DUMMY', 'operation_mode') == "auto" -%}
             31
           {%- else -%}
             30
@@ -121,10 +121,10 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[5].b[6].picc'
         payload_template: >-
-          {% if is_state('climate.study', 'off') -%}
-            30
-          {%- else -%}
+          {% if is_state('climate.DUMMY', 'off') -%}
             31
+          {%- else -%}
+            30
           {%- endif %}
 
 #####################################################################################
