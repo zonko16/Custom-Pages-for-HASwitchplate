@@ -1,0 +1,88 @@
+automation:
+  - alias: hasp_plate01_p9_ToggleOnOff
+    trigger: 
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[9].[3]'
+      payload: 'ON'
+    action:
+    - service_template: >-
+        {% if is_state('switch.3d_printer', 'off') -%}
+          homeassistant.turn_on
+        {%- else -%}
+          homeassistant.turn_off
+        {%- endif %}
+      data:
+        entity_id: switch.OCTOPRINT
+  - alias: hasp_plate01_p9_OnOffButton
+    trigger:
+    - platform: state 
+      entity: switch.octoprint
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/state/p[9].b[3]'
+        payload_template: >-
+          {% if is_state('switch.3d_printer', 'off') -%}
+            {{32}}
+          {%- else %}
+            {{33}}
+
+  - alias: hasp_plate01_p9_ShowPrinting
+    trigger:
+    - platform: state
+      entity: sensor.octoprint_current_state
+    condition:  
+    - condition: 'binary_sensor.plate01_connected'
+      state: 'on'
+    action:
+    - service: mqtt.publish
+      topic: 'hasp/plate01/state/p[9].b[4]'
+      payload_template: >-
+        {% if is_state('sensor.octoprint_current_state', 'operational') -%}
+          {{33}}
+        {%-else -%}
+          {{32}}
+        {%- endif %}
+
+######################################################################################
+  - alias: hasp_plate01_p9_UpdateStats
+    trigger:
+    - platform: time_pattern
+      seconds: 00
+    condition:
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      state: 'on'
+    action:
+    # Job Percentage
+    - service: mqtt.publish
+      topic: 'hasp/plate01/state/p[9].b[5].font'
+      payload: '10'
+    - service: mqtt.publish
+      topic: 'hasp/plate01/state/p[9].b[5].txt'
+      payload_template: "{{ states.sensor.octoprin_job_percentage.state }}"
+    
+    # Time remaining
+    - service: mqtt.publish
+      topic: 'hasp/plate01/state/p[9].b[6].font'
+      payload: '9'
+    - service: mqtt.publish
+      topic: 'hasp/plate01/state/p[9].b[6].txt'
+      payload_template: "{{ states.sensor.octoprint_time_remaining.state | float /60 }}"
+    
+    # Heatbet Temperature
+    - service: mqtt.publish
+      topic: 'hasp/plate01/state/p[9].b[7].font'
+      payload: '9'
+    - service: mqtt.publish
+      topic: 'hasp/plate01/state/p[9].b[7].txt'
+      payload_template: '"{{ states.sensor.octoprint_actual_bed_temp.state }}/{{ states.sensor.octoprint_target_bed_temp.state }}"'
+    
+    # Nozzle Temperature
+    - service: mqtt.publish
+      topic: 'hasp/plate01/state/p[9].b[7].font'
+      payload: '9'
+    - service: mqtt.publish
+      topic: 'hasp/plate01/state/p[9].b[7].txt'
+      payload_template: ''"{{ states.sensor.octoprint_actual_tool0_temp.state }}/{{ states.sensor.octoprint_target_tool0_temp.state }}"'
+    
