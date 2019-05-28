@@ -3,7 +3,13 @@ Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) crea
 
 Changelog
 ====
+#### UPDATE 0.32
+- **Major: Add Thermostat Page to alternative theme**
 
+  You need to flash the new firmware for the Nextion panel. 
+  Add ```hasp_plate01_p5_thermostat.yaml``` to your config and replace ```climate.DUMMY``` with your thermostat component.
+  
+     
 #### UPDATE 0.3
 - **Alternative Theme** now available.
   Replace the firmware with the new one according to your panel. Nothing else has to be changed. The firmwares with the new theme end with ```_alternate_theme_*.yaml```.
