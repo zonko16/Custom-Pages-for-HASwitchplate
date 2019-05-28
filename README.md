@@ -20,6 +20,8 @@ Changelog
   Pressing button 1 (Hamburger Icon) on the Date/Weather page will open up a menu where you can access further functions
   The extended funcionalty will only work with the alternate theme for now. Follow Instructions to get the new Pages working
 
+  ![alt text](https://raw.githubusercontent.com/zonko16/Custom-Pages-for-HASwitchplate/beta/Menu.png)
+
 #### UPDATE 0.2:  
 - Your now able to switch between two pages on Page 6 (Toggles) by pressing the toggles button in the Navigation Bar again.
 - Simplified setting up entities for Page6 (Toggles). See Step 4 in Quick start.
