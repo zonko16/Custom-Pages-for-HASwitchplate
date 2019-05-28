@@ -84,5 +84,4 @@ automation:
       payload: '9'
     - service: mqtt.publish
       topic: 'hasp/plate01/state/p[9].b[7].txt'
-      payload_template: ''"{{ states.sensor.octoprint_actual_tool0_temp.state }}/{{ states.sensor.octoprint_target_tool0_temp.state }}"'
-    
+      payload_template: '"{{ states.sensor.octoprint_actual_tool0_temp.state }}/{{ states.sensor.octoprint_target_tool0_temp.state }}"'
