@@ -1,5 +1,11 @@
+########################################################################
+# Automations for a thermostate
+# Replace all climate.DUMMY with your own thermostate
+
 automation:
-  #Set font and text for toggle buttons on device connection
+
+#############################################################
+#Init font and text for thermostate buttons on device connection
   - alias: hasp_plate01_p6_ToggleInit
     trigger:
     - platform: state
