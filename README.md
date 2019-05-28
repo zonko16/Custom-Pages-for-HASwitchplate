@@ -11,7 +11,7 @@ Changelog
   
      
 #### UPDATE 0.3
-- **Alternative Theme** now available.
+- **Alternative Theme** available.
   Replace the firmware with the new one according to your panel. Nothing else has to be changed. The firmwares with the new theme end with ```_alternate_theme_*.yaml```.
 
 - New Pages added
