@@ -75,7 +75,7 @@ hasp_plate01_p6_toggle1-12(16):
 
 **_Page 3 Weather Setup_**
 
-You'll need a [Darksky API](https://darksky.net/dev) to use the weather component. Place your API key into ```hasp_plate01_00_components.yaml```. 
+You'll need a [Darksky API](https://darksky.net/dev) to use the weather component. Place your API key into ```hasp_plate01_p3_weather.yaml```. 
 
 Special thanks to **@aderusha** for creating HASwitchPlate and **@madrian** for spending hours of beta testing with me. 
 
