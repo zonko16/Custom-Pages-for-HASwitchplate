@@ -79,6 +79,9 @@ automation:
     - platform: mqtt
       topic: 'hasp/plate01/state/p[5].b[1]'
       payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[9].b[1]'
+      payload: 'ON'
     action:
     - service: mqtt.publish
       data:
@@ -100,6 +103,9 @@ automation:
       payload: 'ON'
     - platform: mqtt
       topic: 'hasp/plate01/state/p[7].b[2]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[9].b[2]'
       payload: 'ON'
     action:
     - service: mqtt.publish
