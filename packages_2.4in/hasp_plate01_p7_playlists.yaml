@@ -6,7 +6,7 @@ automation:
       topic: 'hasp/plate01/state/p[7].b[1]'
       payload: 'ON'
     action:
-    - service: input_number.set_value
+    - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/page'
         payload: '8'
@@ -102,7 +102,7 @@ automation:
       payload: 'ON'
     action:
     - service: script.turn_on
-      data:
+      data    :
         entity_id: script.spotify_PLAYLIST
 
   #Acitvate Playlist3
@@ -113,7 +113,7 @@ automation:
       payload: 'ON'
     action:
     - service: script.turn_on
-      data:
+      data    :
         entity_id: script.spotify_PLAYLIST
 
   #Activate Playlist4
@@ -124,7 +124,7 @@ automation:
       payload: 'ON'
     action:
     - service: script.turn_on
-      data:
+      data    :
         entity_id: script.spotify_PLAYLIST
 
   #Activate Playlist5
@@ -135,7 +135,7 @@ automation:
       payload: 'ON'
     action:
     - service: script.turn_on
-      data:
+      data    :
         entity_id: script.spotify_PLAYLIST
 
   #Activate Playlist6
@@ -146,5 +146,5 @@ automation:
       payload: 'ON'
     action:
     - service: script.turn_on
-      data:
+      data    :
         entity_id: script.spotify_PLAYLIST
