@@ -23,31 +23,10 @@ automation:
   - alias: hasp_plate01_p0_PageButton1Action
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[1]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[2].b[1]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[3].b[1]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[1]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[5].b[1]'
-      payload: 'ON'
-    - platform: mqtt
       topic: 'hasp/plate01/state/p[6].b[1]'
       payload: 'ON'
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[1]'
-      payload: 'ON'
-    - platform: mqtt
       topic: 'hasp/plate01/state/p[8].b[1]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[9].b[1]'
       payload: 'ON'
     action:
     - service: input_number.set_value
@@ -60,31 +39,10 @@ automation:
   - alias: hasp_plate01_p0_PageButton2Action
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[2]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[2].b[2]'
-      payload: 'ON'
-    - platform: mqtt
       topic: 'hasp/plate01/state/p[3].b[2]'
       payload: 'ON'
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[2]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[5].b[2]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[6].b[2]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[2]'
-      payload: 'ON'
-    - platform: mqtt
       topic: 'hasp/plate01/state/p[8].b[2]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[9].b[2]'
       payload: 'ON'
     action:
     - service: input_number.set_value
@@ -97,37 +55,63 @@ automation:
   - alias: hasp_plate01_p0_PageButton3Action
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[3]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[2].b[3]'
-      payload: 'ON'
-    - platform: mqtt
       topic: 'hasp/plate01/state/p[3].b[3]'
       payload: 'ON'
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[4].b[3]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[5].b[3]'
-      payload: 'ON'
-    - platform: mqtt
       topic: 'hasp/plate01/state/p[6].b[3]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[3]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[8].b[3]'
-      payload: 'ON'
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[9].b[3]'
       payload: 'ON'
     action:
     - service: input_number.set_value
       data_template:
         entity_id: 'input_number.hasp_plate01_activepage'
         value: '{{states.input_number.hasp_plate01_pagebutton3page.state|int}}'
+
+##############################################################################
+# Go back to the Menu if Back button gets pressed
+  - alias: hasp_plate01_p0_BackButtonAction
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[2].b[1]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[4].b[1]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[1]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[9].b[1]'
+      payload: 'ON'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/page'
+        payload: '1'
+
+##############################################################################
+# Go back to the Home/Weather page if Home button gets pressed
+  - alias: hasp_plate01_p0_HomeButtonAction
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[2].b[2]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[4].b[2]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[2]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[7].b[2]'
+      payload: 'ON'
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[9].b[2]'
+      payload: 'ON'
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/page'
+        payload: '3'
 
 ##############################################################################
 # Update hasp_plate01_p0_active_page when changed at the panel
@@ -156,128 +140,5 @@ automation:
       data_template:
         topic: 'hasp/plate01/command/page'
         payload: '{{ states.input_number.hasp_plate01_activepage.state|int }}'
-      
-##############################################################################
-# Set page button text across all pages to the value selected in the interface
-
-# set page button text on each page to hasp-plate01-PageButton1Label
-  - alias: hasp_plate01_p0_PageButton1_Text
-    trigger:
-    - platform: state
-      entity_id: input_text.hasp_plate01_pagebutton1label
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/json'
-        payload_template: >-
-          [{%- for i in range(1,10) -%}"p[{{i}}].b[1].txt=\"{{states.input_text.hasp_plate01_pagebutton1label.state}}\"",{%- endfor -%}]
-
-# set page button text on each page to hasp-plate01-PageButton2Label
-  - alias: hasp_plate01_p0_PageButton2_Text
-    trigger:
-    - platform: state
-      entity_id: input_text.hasp_plate01_pagebutton2label
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/json'
-        payload_template: >-
-          [{%- for i in range(1,10) -%}"p[{{i}}].b[2].txt=\"{{states.input_text.hasp_plate01_pagebutton2label.state}}\"",{%- endfor -%}]
-
-# set page button text on each page to hasp-plate01-PageButton3Label
-  - alias: hasp_plate01_p0_PageButton3_Text
-    trigger:
-    - platform: state
-      entity_id: input_text.hasp_plate01_pagebutton3label
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/json'
-        payload_template: >-
-          [{%- for i in range(1,10) -%}"p[{{i}}].b[3].txt=\"{{states.input_text.hasp_plate01_pagebutton3label.state}}\"",{%- endfor -%}]
-
-##############################################################################
-# Set page button colors across selected pages to show active page button
-  - alias: hasp_plate01_p0_PageButtonColors
-    trigger:
-    - platform: state
-      entity_id: input_number.hasp_plate01_pagebutton1page
-    - platform: state
-      entity_id: input_number.hasp_plate01_pagebutton2page
-    - platform: state
-      entity_id: input_number.hasp_plate01_pagebutton3page
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/json'
-        payload_template: >-
-          [{%- for i in range(1,10) -%}"p[{{i}}].b[1].pco={% if i == states.input_number.hasp_plate01_pagebutton1page.state|int -%}
-              {{ states.input_number.hasp_plate01_selectedforegroundcolor.state|int }}
-            {%- else -%}
-              {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state|int }}
-            {%- endif %}",
-          {%- endfor -%}
-          {%- for i in range(1,10) -%}"p[{{i}}].b[1].bco={% if i == states.input_number.hasp_plate01_pagebutton1page.state|int -%}
-              {{ states.input_number.hasp_plate01_selectedbackgroundcolor.state|int }}
-            {%- else -%}
-              {{ states.input_number.hasp_plate01_unselectedbackgroundcolor.state|int }}
-            {%- endif %}",
-          {%- endfor -%}
-          {%- for i in range(1,10) -%}"p[{{i}}].b[2].pco={% if i == states.input_number.hasp_plate01_pagebutton2page.state|int -%}
-              {{ states.input_number.hasp_plate01_selectedforegroundcolor.state|int }}
-            {%- else -%}
-              {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state|int }}
-            {%- endif %}",
-          {%- endfor -%}
-          {%- for i in range(1,10) -%}"p[{{i}}].b[2].bco={% if i == states.input_number.hasp_plate01_pagebutton2page.state|int -%}
-              {{ states.input_number.hasp_plate01_selectedbackgroundcolor.state|int }}
-            {%- else -%}
-              {{ states.input_number.hasp_plate01_unselectedbackgroundcolor.state|int }}
-            {%- endif %}",
-          {%- endfor -%}
-          {%- for i in range(1,10) -%}"p[{{i}}].b[3].pco={% if i == states.input_number.hasp_plate01_pagebutton3page.state|int -%}
-              {{ states.input_number.hasp_plate01_selectedforegroundcolor.state|int }}
-            {%- else -%}
-              {{ states.input_number.hasp_plate01_unselectedforegroundcolor.state|int }}
-            {%- endif %}",
-          {%- endfor -%}
-          {%- for i in range(1,10) -%}"p[{{i}}].b[3].bco={% if i == states.input_number.hasp_plate01_pagebutton3page.state|int -%}
-              {{ states.input_number.hasp_plate01_selectedbackgroundcolor.state|int }}
-            {%- else -%}
-              {{ states.input_number.hasp_plate01_unselectedbackgroundcolor.state|int }}
-            {%- endif %}",
-          {%- endfor -%}]
 
 
-
-
-
-  

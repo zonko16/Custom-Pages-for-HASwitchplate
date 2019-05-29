@@ -1,28 +1,29 @@
 ##############################################################################
 # Automations to set colors on HASP Page 6
 
-automation:
-  - alias: hasp_plate01_p6_ColorConfig
-    trigger:
-    - platform: state
-      entity_id: 'binary_sensor.plate01_connected'
-      to: 'on'
-    - platform: homeassistant
-      event: start
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_selectedforegroundcolor
-    - platform: state
-      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/json'
-        payload_template: >-
-          [{%- for i in range(12,19) -%}"p[6].b[{{i}}].pco={{ states.input_number.hasp_plate01_selectedforegroundcolor.state|int }}",{%- endfor -%}
-           {%- for i in range(4,11) -%}"p[6].b[{{i}}].picc=1",{%- endfor -%}
-          {%- for i in range(12,19) -%}"p[6].b[{{i}}].pco2={{ states.input_number.hasp_plate01_unselectedforegroundcolor.state|int }}",{%- endfor -%}
-           {%- for i in range(4,11) -%}"p[6].b[{{i}}].picc2=2",{%- endfor -%}]
+#automation:
+#  - alias: hasp_plate01_p6_ColorConfig
+#    trigger:
+#    - platform: state
+#      entity_id: 'binary_sensor.plate01_connected'
+#      to: 'on'
+#    - platform: homeassistant
+#      event: start
+#    - platform: state
+#      entity_id: input_number.hasp_plate01_selectedbackgroundcolor
+#    - platform: state
+#      entity_id: input_number.hasp_plate01_unselectedbackgroundcolor
+#    - platform: state
+#      entity_id: input_number.hasp_plate01_selectedforegroundcolor
+#    - platform: state
+#      entity_id: input_number.hasp_plate01_unselectedforegroundcolor
+#    action:
+#    - service: mqtt.publish
+#      data:
+#        topic: 'hasp/plate01/command/json'
+#        payload_template: >-
+#          [{%- for i in range(12,17) -%}"p[6].b[{{i}}].pco=14791",{%- endfor -%}
+#          {%- for i in range(18,19) -%}"p[6].b[{{i}}].pco=55034",{%- endfor -%}
+#          {%- for i in range(4,11) -%}"p[6].b[{{i}}].picc=21",{%- endfor -%}
+#          {%- for i in range(12,19) -%}"p[6].b[{{i}}].pco2={{ states.input_number.hasp_plate01_unselectedforegroundcolor.state|int }}",{%- endfor -%}
+#          {%- for i in range(4,11) -%}"p[6].b[{{i}}].picc2=22",{%- endfor -%}]

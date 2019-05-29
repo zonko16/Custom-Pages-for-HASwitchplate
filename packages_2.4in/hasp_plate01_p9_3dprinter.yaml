@@ -1,0 +1,4 @@
+
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[1]'
+      payload: 'ON'

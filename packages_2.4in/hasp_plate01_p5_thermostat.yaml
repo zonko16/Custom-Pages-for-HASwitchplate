@@ -1,0 +1,211 @@
+########################################################################
+# Automations for a thermostate
+# Replace all climate.DUMMY with your own thermostate
+
+automation:
+
+#############################################################
+#Init font and text for thermostate buttons on device connection
+  - alias: hasp_plate01_p6_ToggleInit
+    trigger:
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    - platform: mqtt
+      topic: 'hasp/plate01/command/page'
+      payload: '5'
+    - platform: state
+      entity_id: climate.DUMMY
+    action:
+    # Label 1
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[3].font'
+        payload: '0'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[3].txt'
+        payload: '"Heat"'
+    #Label 2
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[4].font'
+        payload: '0'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[4].txt'
+        payload: '"Cool"'
+    #Label 3
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[5].font'
+        payload: '0'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[5].txt'
+        payload: '"Auto"'
+    
+    # TargetTemperature
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[9].font'
+        payload: '2'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[9].txt'
+        payload_template: '"{{ state_attr("climate.DUMMY", "temperature") }}°"'
+
+    # CurrentIndoorTemperature
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[10].font'
+        payload: '1'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[10].txt'
+        payload_template: '"{{ state_attr("climate.DUMMY", "current_temperature") }}°"'
+        
+  # Show active mode
+  - alias: hasp_plate01_p6_ToggleColor1
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/command/page'
+      payload: '5'
+    - platform: state
+      entity_id: climate.DUMMY
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[3].picc'
+        payload_template: >-
+          {% if state_attr('climate.DUMMY', 'operation_mode') == "heat" -%}
+            31
+          {%- else -%}
+            30
+          {%- endif %}
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[4].picc'
+        payload_template: >-
+          {% if state_attr('climate.DUMMY', 'operation_mode') == "cool" -%}
+            31
+          {%- else -%}
+            30
+          {%- endif %}
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[5].picc'
+        payload_template: >-
+          {% if state_attr('climate.DUMMY', 'operation_mode') == "auto" -%}
+            31
+          {%- else -%}
+            30
+          {%- endif %}
+
+  # Power button On/Off state 
+  - alias: hasp_plate01_p6_ToggleColor1
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/command/page'
+      payload: '5'
+    - platform: state
+      entity_id: climate.DUMMY
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+    action:
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[5].b[6].picc'
+        payload_template: >-
+          {% if is_state('climate.DUMMY', 'off') -%}
+            31
+          {%- else -%}
+            30
+          {%- endif %}
+
+#####################################################################################
+# Toggle Thermostat On/Off
+  - alias: hasp_plate01_p5_ThermostatOnOff
+    trigger: 
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[6]'
+      payload: 'ON'
+    action:
+    - service_template: >-
+        {%- if is_state('climate.DUMMY', 'off') -%}
+          climate.turn_on
+        {%- else -%}
+          climate.turn_off
+        {%- endif %}
+      data:
+        entity_id: climate.DUMMY
+
+# Increase target temperature in HASS when button pressed in HASP
+  - alias: hasp_plate01_p5_IncreaseTemp
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[7]'
+      payload: 'ON'
+    action: 
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.DUMMY
+        temperature: "{{ state_attr('climate.DUMMY', 'temperature') | float + 0.5 }}"
+
+# Decrease target temperature in HASS when button pressed in HASP
+  - alias: hasp_plate01_p5_DecreaseTemp
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[8]'
+      payload: 'ON'
+    action: 
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.DUMMY
+        temperature: "{{ state_attr('climate.DUMMY', 'temperature') | float - 0.5 }}"
+
+# Set thermostat to Heat
+  - alias: hasp_plate01_p5_heatmode
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[3]'
+      payload: 'ON'
+    action:
+    - service: climate.set_operation_mode
+      data: 
+        entity_id: climate.DUMMY
+        operation_mode: Heat
+
+# Set thermostat to Cool
+  - alias: hasp_plate01_p5_CoolMode
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[4]'
+      payload: 'ON'
+    action:
+    - service: climate.set_operation_mode
+      data: 
+        entity_id: climate.DUMMY
+        operation_mode: Cool
+
+# Set thermostat to Heat
+  - alias: hasp_plate01_p5_AutoMode
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[5].b[5]'
+      payload: 'ON'
+    action:
+    - service: climate.set_operation_mode
+      data: 
+        entity_id: climate.DUMMY
+        operation_mode: Auto

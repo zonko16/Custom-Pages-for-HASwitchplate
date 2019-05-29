@@ -1,0 +1,136 @@
+
+#####################################
+automation:
+  - alias: hasp_plate01_p2_accessmenu
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[3].b[1]'
+      payload: 'ON'
+    action:
+    - service: input_number.set_value
+      data: 
+        entity_id: 'input_number.hasp_plate01_activepage'
+        value: '1'
+        
+##########################################
+# Set labels for each button
+  
+  # Initialize button labels
+  - alias: hasp_plate01_p2_ButtonInit
+    trigger:
+    - platform: state
+      entity_id: 'binary_sensor.plate01_connected'
+      to: 'on'
+    - platform: homeassistant
+      event: start
+      
+    action:   
+      
+      # Label - Scene 1
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[3].font'
+        payload: '7'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[3].txt'
+        payload: '"Script1"'
+     
+     # Label - Scene 2
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[4].font'
+        payload: '7'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[4].txt'
+        payload: '"Script2"'
+      
+# Label - Scene 3
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[5].font'
+        payload: '7'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[5].txt'
+        payload: '"Script3"'
+    
+    # Label - Scene 4
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[6].font'
+        payload: '7'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[6].txt'
+        payload: '"Script4"'
+
+    # Label - Scene 5
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[7].font'
+        payload: '7'
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[2].b[7].txt'
+        payload: '"Script5"'
+
+################################################################
+# Scene 1
+  - alias: hasp_plate01_p2_Scene1Action
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[2].b[12]'
+      payload: 'ON'
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.DUMMY
+
+# Scene 2    
+  - alias: hasp_plate01_p2_ThermostatButtonAction
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[2].b[11]'
+      payload: 'ON'
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.DUMMY
+
+# Scene 3
+  - alias: hasp_plate01_p2_PlaylistsButtonAction
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[2].b[10]'
+      payload: 'ON'
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.DUMMY
+      
+# Scene 4     
+  - alias: hasp_plate01_p2_ScenesButtonAction
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[2].b[9]'
+      payload: 'ON'
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.DUMMY
+
+# Scene 5    
+  - alias: hasp_plate01_p2_ScenesButtonAction
+    trigger:
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[2].b[8]'
+      payload: 'ON'
+    action:
+    - service: script.turn_on
+      data:
+        entity_id: script.DUMMY
+        
+  
+        
