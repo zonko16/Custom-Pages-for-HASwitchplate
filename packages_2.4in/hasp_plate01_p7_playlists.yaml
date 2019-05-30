@@ -1,3 +1,75 @@
+###########################################################################
+# Scripts to setup up playlists for the playlists page,
+# accessed by pressing the media_player button
+# if already on media_player page
+# To use the scripts replace USER and PLAYLIST_ID in media_content_id
+# with the user and id of your desired playlist.
+# For further instructions how to get the needed ID 
+# visit: https://support.spotify.com/us/article/sharing-music/
+
+script:
+#Playlist 1
+  hasp_spotify_playlist_1:
+    alias: 'Playlist 1'
+    sequence:
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.spotify
+          media_content_id: 'spotify:user:USER:playlist:PLAYLIST_ID'
+          media_content_type: playlist
+
+#Playlist 2
+  hasp_spotify_playlist_2:
+    alias: 'Playlist 2'
+    sequence:
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.spotify
+          media_content_id: 'spotify:user:USER:playlist:PLAYLIST_ID'
+          media_content_type: playlist
+
+#Playlist 3
+hasp_spotify_playlist_3:
+    alias: 'Playlist 3'
+    sequence:
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.spotify
+          media_content_id: 'spotify:user:USER:playlist:PLAYLIST_ID'
+          media_content_type: playlist
+
+#Playlist 4
+hasp_spotify_playlist_4:
+    alias: 'Playlist 4'
+    sequence:
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.spotify
+          media_content_id: 'spotify:user:USER:playlist:PLAYLIST_ID'
+          media_content_type: playlist
+
+#Playlist 5
+hasp_spotify_playlist_5:
+    alias: 'Playlist 5'
+    sequence:
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.spotify
+          media_content_id: 'spotify:user:USER:playlist:PLAYLIST_ID'
+          media_content_type: playlist
+
+#Playlist 6
+hasp_spotify_playlist_6:
+    alias: 'Playlist 6'
+    sequence:
+      - service: media_player.play_media
+        data_template:
+          entity_id: media_player.spotify
+          media_content_id: 'spotify:user:USER:playlist:PLAYLIST_ID'
+          media_content_type: playlist
+
+
+#############################################################################
 automation:
 #Go back to the Media Page by pressing the back button
   - alias: hasp_plate01_p7_BackButtonAction
@@ -10,7 +82,7 @@ automation:
       data:
         topic: 'hasp/plate01/command/page'
         payload: '8'
-        
+################################################################
   #Set font and text for toggle buttons on device connection
   - alias: hasp_plate01_p7_ToggleInit
     trigger:
@@ -26,7 +98,7 @@ automation:
       entity_id: 'input_number.hasp_plate01_activepage'
       to: '7'
     action:
-    # Font/text Toggle 1/9
+    # Font/text Playlist 1
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[3].font'
@@ -34,8 +106,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[3].txt'
-        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
-    #Font/text Toggle 2/10
+        payload_template: "{{ state_attr('script.hasp_spotify_playlist_1', 'friendly_name') }}"
+    #Font/text Playlist 2
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[4].font'
@@ -43,8 +115,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[4].txt'
-        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
-    #Font/text Toggle 3/11
+        payload_template: "{{ state_attr('script.hasp_spotify_playlist_2', 'friendly_name') }}"
+    #Font/text Playlist 3
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[5].font'
@@ -52,8 +124,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[5].txt'
-        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
-    #Font/text Toggle 4/12
+        payload_template: "{{ state_attr('script.hasp_spotify_playlist_3', 'friendly_name') }}"
+    #Font/text Playlist 4
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[6].font'
@@ -61,8 +133,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[6].txt'
-        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
-    #Font/text Toggle 5/13
+        payload_template: "{{ state_attr('script.hasp_spotify_playlist_4', 'friendly_name') }}"
+    #Font/text Playlist 5
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[7].font'
@@ -70,8 +142,8 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[7].txt'
-        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
-    #Font/text Toggle 6/14
+        payload_template: "{{ state_attr('script.hasp_spotify_playlist_5', 'friendly_name') }}"
+    #Font/text Playlist 6
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[8].font'
@@ -79,7 +151,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[8].txt'
-        payload_template: "{{ state_attr('script.spotify_playlist', 'friendly_name') }}"
+        payload_template: "{{ state_attr('script.hasp_spotify_playlist_6', 'friendly_name') }}"
 
 ########################################################################
 #Switch to playlist on button press
@@ -92,7 +164,7 @@ automation:
     action:
     - service: script.turn_on
       data:
-        entity_id: script.spotify_PLAYLIST
+        entity_id: script.hasp_spotify_playlist_1
 
   #Activate Playlist2
   - alias: hasp_plate01_p7_ActivatePlaylist2
@@ -103,7 +175,7 @@ automation:
     action:
     - service: script.turn_on
       data    :
-        entity_id: script.spotify_PLAYLIST
+        entity_id: script.hasp_spotify_playlist_2
 
   #Acitvate Playlist3
   - alias: hasp_plate01_p7_ActivatePlaylist3
@@ -114,7 +186,7 @@ automation:
     action:
     - service: script.turn_on
       data    :
-        entity_id: script.spotify_PLAYLIST
+        entity_id: script.hasp_spotify_playlist_3
 
   #Activate Playlist4
   - alias: hasp_plate01_p7_ActivatePlaylist4
@@ -125,7 +197,7 @@ automation:
     action:
     - service: script.turn_on
       data    :
-        entity_id: script.spotify_PLAYLIST
+        entity_id: script.hasp_spotify_playlist_4
 
   #Activate Playlist5
   - alias: hasp_plate01_p7_ActivatePlaylist5
@@ -136,7 +208,7 @@ automation:
     action:
     - service: script.turn_on
       data    :
-        entity_id: script.spotify_PLAYLIST
+        entity_id: script.hasp_spotify_playlist_5
 
   #Activate Playlist6
   - alias: hasp_plate01_p7_ActivatePlaylist6
@@ -147,4 +219,4 @@ automation:
     action:
     - service: script.turn_on
       data    :
-        entity_id: script.spotify_PLAYLIST
+        entity_id: script.hasp_spotify_playlist_6

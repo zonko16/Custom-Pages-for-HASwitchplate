@@ -30,7 +30,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[1].font'
-        payload: '9'
+        payload: '0'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[1].txt'
@@ -40,7 +40,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[2].font'
-        payload: '9'
+        payload: '0'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[2].txt'
@@ -50,7 +50,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[3].font'
-        payload: '9'
+        payload: '0'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[3].txt'
@@ -60,7 +60,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[4].font'
-        payload: '9'
+        payload: '0'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[4].txt'
@@ -70,7 +70,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[5].font'
-        payload: '9'
+        payload: '0'
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[1].b[5].txt'

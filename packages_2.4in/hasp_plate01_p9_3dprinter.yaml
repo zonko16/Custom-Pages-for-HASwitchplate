@@ -1,4 +1,9 @@
+#########################################################################
+# Setup for a 3d Page
+#
+
 automation:
+#########################################################################
   - alias: hasp_plate01_p9_ToggleOnOff
     trigger: 
     - platform: mqtt
@@ -13,6 +18,9 @@ automation:
         {%- endif %}
       data:
         entity_id: switch.3d_drucker
+
+#########################################################################
+# Change State of ON/OFF Button
   - alias: hasp_plate01_p9_OnOffButton
     trigger:
     - platform: mqtt
@@ -30,6 +38,7 @@ automation:
           {%- else %}
             {{33}}
 
+# Represent if the 3D printer is printing or paused/off
   - alias: hasp_plate01_p9_ShowPrintingStatus
     trigger:
     - platform: state
@@ -62,7 +71,9 @@ automation:
       entity_id: switch.3d_drucker
       state: 'on'
     action:
-    # Job Percentage
+
+#Display current print stats
+  # Job Percentage
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/state/p[9].b[5].font'
@@ -72,7 +83,7 @@ automation:
         topic: 'hasp/plate01/state/p[9].b[5].txt'
         payload_template: "{{ states.sensor.cr_10_job_percentage.state }}"
     
-    # Time remaining
+  # Time remaining
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/state/p[9].b[6].font'
@@ -82,7 +93,7 @@ automation:
         topic: 'hasp/plate01/state/p[9].b[6].txt'
         payload_template: "{{ states.sensor.cr_10_time_remaining.state | float /60 }}"
     
-    # Heatbet Temperature
+  # Heatbet Temperature
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/state/p[9].b[7].font'
@@ -92,7 +103,7 @@ automation:
         topic: 'hasp/plate01/state/p[9].b[7].txt'
         payload_template: '"{{ states.sensor.cr_10_actual_bed_temp.state }}/{{ states.sensor.cr_10_target_bed_temp.state }}"'
     
-    # Nozzle Temperature
+  # Nozzle Temperature
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/state/p[9].b[7].font'

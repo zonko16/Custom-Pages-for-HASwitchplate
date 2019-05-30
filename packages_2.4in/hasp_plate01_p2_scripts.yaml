@@ -13,7 +13,7 @@ automation:
     - platform: homeassistant
       event: start
     action:
-      # Label - Scene 1
+    # Label - Scene 1
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[2].b[3].font'
@@ -23,7 +23,7 @@ automation:
         topic: 'hasp/plate01/command/p[2].b[3].txt'
         payload: '"Script1"'
      
-     # Label - Scene 2
+    # Label - Scene 2
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[2].b[4].font'
@@ -33,7 +33,7 @@ automation:
         topic: 'hasp/plate01/command/p[2].b[4].txt'
         payload: '"Script2"'
       
-# Label - Scene 3
+  # Label - Scene 3
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[2].b[5].font'
@@ -43,7 +43,7 @@ automation:
         topic: 'hasp/plate01/command/p[2].b[5].txt'
         payload: '"Script3"'
     
-    # Label - Scene 4
+  # Label - Scene 4
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[2].b[6].font'
@@ -53,7 +53,7 @@ automation:
         topic: 'hasp/plate01/command/p[2].b[6].txt'
         payload: '"Script4"'
 
-    # Label - Scene 5
+  # Label - Scene 5
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[2].b[7].font'
@@ -63,7 +63,7 @@ automation:
         topic: 'hasp/plate01/command/p[2].b[7].txt'
         payload: '"Script5"'
 
-#####################################
+########################################################
 #  Switch to page on button press
 
 # Scene 1
