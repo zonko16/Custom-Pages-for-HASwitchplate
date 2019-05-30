@@ -42,7 +42,7 @@ automation:
   - alias: hasp_plate01_p9_ShowPrintingStatus
     trigger:
     - platform: state
-      entity_id: sensor.cr_10_current_state
+      entity_id: sensor.octoprint_current_state
     condition:  
     - condition: state
       entity_id: 'binary_sensor.plate01_connected'
@@ -52,7 +52,7 @@ automation:
       data:
         topic: 'hasp/plate01/state/p[9].b[4]'
         payload_template: >-
-          {% if is_state('sensor.cr_10_current_state', 'operational') -%}
+          {% if is_state('sensor.octoprint_current_state', 'operational') -%}
             {{33}}
           {%-else -%}
             {{32}}
@@ -81,7 +81,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/state/p[9].b[5].txt'
-        payload_template: "{{ states.sensor.cr_10_job_percentage.state }}"
+        payload_template: "{{ states.sensor.octoprint_job_percentage.state }}"
     
   # Time remaining
     - service: mqtt.publish
@@ -91,7 +91,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/state/p[9].b[6].txt'
-        payload_template: "{{ states.sensor.cr_10_time_remaining.state | float /60 }}"
+        payload_template: "{{ states.sensor.octoprint_time_remaining.state | float /60 }}"
     
   # Heatbet Temperature
     - service: mqtt.publish
@@ -101,7 +101,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/state/p[9].b[7].txt'
-        payload_template: '"{{ states.sensor.cr_10_actual_bed_temp.state }}/{{ states.sensor.cr_10_target_bed_temp.state }}"'
+        payload_template: '"{{ states.sensor.octoprint_actual_bed_temp.state }}/{{ states.sensor.octoprint_target_bed_temp.state }}"'
     
   # Nozzle Temperature
     - service: mqtt.publish
@@ -111,4 +111,4 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/state/p[9].b[7].txt'
-        payload_template: '"{{ states.sensor.cr_10_actual_tool0_temp.state }}/{{ states.sensor.cr_10_target_tool0_temp.state }}"'
+        payload_template: '"{{ states.sensor.octoprint_actual_tool0_temp.state }}/{{ states.sensor.octoprint_target_tool0_temp.state }}"'
