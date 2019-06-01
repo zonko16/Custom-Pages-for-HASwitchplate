@@ -25,6 +25,15 @@ panel_iframe:
 # Custom Page 3: Weather Component
 # This is the Darksky sensor which will be used for the forecast and the temperature/humidity
 # You have to get your own API key to use it.
+sensor:
+  - platform: mqtt
+    name: plate01 Sensor
+    state_topic: "hasp/plate01/status"
+    availability_topic: "hasp/plate01/status"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+    json_attributes_topic:  "hasp/plate01/sensor"
+
   - platform: darksky
     api_key: YOUR_API_KEY
     forecast:
@@ -79,15 +88,6 @@ binary_sensor:
     availability_topic: "hasp/plate01/status"
     payload_available: "ON"
     payload_not_available: "OFF"
-
-sensor:
-  - platform: mqtt
-    name: plate01 Sensor
-    state_topic: "hasp/plate01/status"
-    availability_topic: "hasp/plate01/status"
-    payload_available: "ON"
-    payload_not_available: "OFF"
-    json_attributes_topic:  "hasp/plate01/sensor"
 
 input_text:
   hasp_plate01_pagebutton1label:
