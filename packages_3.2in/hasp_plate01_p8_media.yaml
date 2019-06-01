@@ -22,18 +22,7 @@ sensor:
 
 
 automation:
-##############################################################################
-# Open Playlists when pressing Media Player button in NavBar
-  - alias: hasp_plate01_p8_OpenPlaylistPage
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[8].b[3]'
-      payload: 'ON'
-    action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: 'input_number.hasp_plate01_activepage'
-        value: '7'
+
 ##############################################################################
 # Automations to display media player info on page 5
 
