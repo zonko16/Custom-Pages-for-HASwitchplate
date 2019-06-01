@@ -4,7 +4,7 @@ Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) crea
 Changelog
 ====
 #### UPDATE 0.33
-- **Minor: Pressing a button that changes pages now is coded in the Nextion Firmware. This change makes going through pages more responsive. If you're coming from an earlier release turn off every automation that switches pages or delete them in the YAML files.
+- **Minor: Pressing a button that changes pages now is coded in the Nextion Firmware. This change makes going through pages more responsive. If you're coming from an earlier release turn off every automation that switches pages or delete them in the YAML files. Or replace ```hasp_plate01_p0_pages.yaml```
 #### UPDATE 0.32
 - **Major: Add Thermostat Page to alternative theme**
 
