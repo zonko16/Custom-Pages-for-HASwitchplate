@@ -14,24 +14,8 @@ sensor:
 
 
 automation:
-
 ##############################################################################
 # Automations to display media player info on page 8
-
-# Initialize button text/font/pictures for media page
-#  - alias: hasp_plate01_p8_MediaInit
-#    trigger:
-#    - platform: state
-#      entity_id: 'binary_sensor.plate01_connected'
-#      to: 'on'
-#    - platform: homeassistant
-#      event: start
-#    action:
-#    - service: mqtt.publish
-#      data:
-#        topic: 'hasp/plate01/command/p[8].b[8].pic'
-#        payload: '22'
-
 
   # Play/Pause button action
   - alias: hasp_plate01_p8_MediaPauseButton6

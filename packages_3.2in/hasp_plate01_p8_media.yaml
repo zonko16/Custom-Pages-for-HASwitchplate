@@ -24,7 +24,7 @@ sensor:
 automation:
 
 ##############################################################################
-# Automations to display media player info on page 5
+# Automations to display media player info on page 8
 
 
 # Initialize button text/font for media controls on start
