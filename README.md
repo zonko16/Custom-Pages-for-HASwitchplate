@@ -4,6 +4,7 @@ Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) crea
 Features
 ====
 * Two themes to choose from
+* Access Weather/Time, Toggles and Media Player via NavBar Buttons
 * Menu Page to access:
   - Thermostat
   - Sliders
