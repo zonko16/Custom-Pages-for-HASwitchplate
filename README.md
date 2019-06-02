@@ -5,7 +5,7 @@ Changelog
 ====
 #### UPDATE 0.32
 - **Major: Add Thermostat Page to alternative theme**
-
+- **Minor: Pressing a button that changes pages now is coded in the Nextion Firmware. This change makes going through pages more responsive. If you're coming from an earlier release turn off every automation that switches pages or delete them in the YAML files. Or replace ```hasp_plate01_p0_pages.yaml```
   You need to flash the new firmware for the Nextion panel. 
   Add ```hasp_plate01_p5_thermostat.yaml``` to your config and replace every ```climate.DUMMY``` in the file with your thermostat component.
 

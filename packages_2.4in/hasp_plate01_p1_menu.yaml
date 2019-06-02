@@ -29,21 +29,21 @@ automation:
     # Text/font Home button
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[1].font'
+        topic: 'hasp/plate01/command/p[1].b[5].font'
         payload: '9'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[1].txt'
+        topic: 'hasp/plate01/command/p[1].b[5].txt'
         payload: '"Home"'
         
     # Text/font Sliders label
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[2].font'
+        topic: 'hasp/plate01/command/p[1].b[4].font'
         payload: '9'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[2].txt'
+        topic: 'hasp/plate01/command/p[1].b[4].txt'
         payload: '"Sliders"'
       
     # Text/font Menu Button Thermostat label
@@ -59,77 +59,19 @@ automation:
     # Text/font menu button Playlist label
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[4].font'
+        topic: 'hasp/plate01/command/p[1].b[2].font'
         payload: '9'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[4].txt'
+        topic: 'hasp/plate01/command/p[1].b[2].txt'
         payload: '"3D Printer"'
       
     # Text/font Label - button scenes
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[5].font'
+        topic: 'hasp/plate01/command/p[1].b[1].font'
         payload: '9'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/command/p[1].b[5].txt'
+        topic: 'hasp/plate01/command/p[1].b[1].txt'
         payload: '"Scenes"'
-
-#####################################
-#  Switch to page on button press
-# Home button 
-  - alias: hasp_plate01_p1_HomeButtonAction
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[6]'
-      payload: 'ON'
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/page'
-        payload: '3'
-      
-  - alias: hasp_plate01_p1_SlidersButtonAction
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[7]'
-      payload: 'ON'
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/page'
-        payload: '4'
-      
-  - alias: hasp_plate01_p1_ThermostatButtonAction
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[8]'
-      payload: 'ON'
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/page'
-        payload: '5'
-      
-  - alias: hasp_plate01_p1_PlaylistButtonAction
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[9]'
-      payload: 'ON'
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/page'
-        payload: '9'
-      
-  - alias: hasp_plate01_p1_ScenesButtonAction
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[1].b[10]'
-      payload: 'ON'
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/page'
-        payload: '2'

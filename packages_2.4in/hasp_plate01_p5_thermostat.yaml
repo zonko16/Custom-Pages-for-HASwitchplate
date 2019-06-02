@@ -184,7 +184,7 @@ automation:
     - service: climate.set_operation_mode
       data: 
         entity_id: climate.DUMMY
-        operation_mode: Heat
+        operation_mode: 'heat'
 
 # Set thermostat to Cool
   - alias: hasp_plate01_p5_CoolMode
@@ -196,7 +196,7 @@ automation:
     - service: climate.set_operation_mode
       data: 
         entity_id: climate.DUMMY
-        operation_mode: Cool
+        operation_mode: 'cool'
 
 # Set thermostat to Heat
   - alias: hasp_plate01_p5_AutoMode
@@ -208,4 +208,4 @@ automation:
     - service: climate.set_operation_mode
       data: 
         entity_id: climate.DUMMY
-        operation_mode: Auto
+        operation_mode: 'auto'
