@@ -4,8 +4,10 @@ Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) crea
 Changelog
 ====
 #### UPDATE 0.32
-- **Major: Add Thermostat Page to alternative theme**
-- **Minor: Pressing a button that changes pages now is coded in the Nextion Firmware.** This change makes going through pages more responsive. If you're coming from an earlier release turn off every automation that switches pages or delete them in the YAML files. Or replace ```hasp_plate01_p0_pages.yaml```
+- **Major: Add Thermostat Page**:
+  To use the thermostat add ```hasp_plate01_p5_thermostat.yaml``` to your HASP folder and replace the entities with your thermostat.
+- **Migrate all pages to standard theme**
+- **Pressing a button that changes pages now is coded in the Nextion Firmware.** This change makes going through pages more responsive. If you're coming from an earlier release turn off every automation that switches pages or delete them in the YAML files. Or replace ```hasp_plate01_p0_pages.yaml```
   You need to flash the new firmware for the Nextion panel. 
   Add ```hasp_plate01_p5_thermostat.yaml``` to your config and replace every ```climate.DUMMY``` in the file with your thermostat component.
 
@@ -45,8 +47,8 @@ QUICK START
     - For the **2.4" Panel** use .yamls in [packages_2.4in/](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/tree/master/packages_2.4in) 
     - For the **3.2" Panel** use .yamls in [packages_3.2in/](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/tree/master/packages_3.2in)
 
-  **Update 0.3:** You can access a Menu with extra pages using the new **alternative Theme**.
-  Coming from previous release add/replace ```hasp_plate01_p0_pages.yaml```, ```hasp_plate01_p1_menu.yaml```, ```hasp_palte01_p2_scripts.yaml```, ```hasp_plate01_p4_sliders.yaml```, ```hasp_plate01_p7_playlist.yaml´``
+  **Update 0.3:** Access a Menu with extra pages.
+  Coming from previous release add/replace ```hasp_plate01_p0_pages.yaml```, ```hasp_plate01_p1_menu.yaml```, ```hasp_palte01_p2_scripts.yaml```, ```hasp_plate01_p4_sliders.yaml```, ```hasp_plate01_p7_playlist.yaml```
   It's recommended to deactivate any colorconfig.yaml as colors are already set in the firmware.
 
 3. Replace YOUR_API_KEY in ```hasp_plate01_00_components.yaml``` your own Darksky API 
