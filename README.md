@@ -1,6 +1,18 @@
 # Custom-Pages-for-HASwitchplate
 Custom pages for [HASwitchplate](https://github.com/aderusha/HASwitchPlate) created by @aderusha
 
+Features
+====
+* Two themes to choose from
+* Menu Page to access:
+  - Thermostat
+  - Sliders
+  - 3D Printer
+  - Scripts
+* Playlists for Media Player:
+  - Access by pressing Media Player NavBar Button while on the Media Player page
+* Two pages for toggles by pressing the toggles page button
+
 Changelog
 ====
 #### UPDATE 0.32
