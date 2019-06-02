@@ -11,13 +11,13 @@ automation:
       payload: 'ON'
     action:
     - service_template: >-
-        {% if is_state('switch.3d_drucker', 'off') -%}
+        {% if is_state('switch.3d_printer', 'off') -%}
           homeassistant.turn_on
         {%- else -%}
           homeassistant.turn_off
         {%- endif %}
       data:
-        entity_id: switch.3d_drucker
+        entity_id: switch.3d_printer
 
 #########################################################################
 # Change State of ON/OFF Button
@@ -27,13 +27,13 @@ automation:
       topic: 'hasp/plate01/command/page'
       payload: '9'
     - platform: state 
-      entity_id: switch.3d_drucker
+      entity_id: switch.3d_printer
     action:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/state/p[9].b[3]'
         payload_template: >-
-          {% if is_state('switch.3d_drucker', 'off') -%}
+          {% if is_state('switch.3d_printer', 'off') -%}
             {{32}}
           {%- else %}
             {{33}}
@@ -68,7 +68,7 @@ automation:
       payload: '9'
     condition:
     - condition: state
-      entity_id: switch.3d_drucker
+      entity_id: switch.3d_printer
       state: 'on'
     action:
 
