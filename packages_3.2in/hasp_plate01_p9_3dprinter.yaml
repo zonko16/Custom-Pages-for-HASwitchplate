@@ -85,11 +85,11 @@ automation:
           {% if is_state('sensor.octoprint_current_state', 'unknown') -%}
             "Offline"
           {%- elif is_state('sensor.octoprint_current_state', 'Operational') -%}
-            '"Online"'
+            "Online"
           {%- elif is_state('sensor.octoprint_current_state', 'Printing') -%}
-            '"{{ states.sensor.octoprint_time_remaining.state | float /60 }}"'
+            "{{ states.sensor.octoprint_time_remaining.state | float /60 }}"
           {%- elif is_state('sensor.octoprint_current_state', 'Paused') -%}
-             '"Paused"'
+            "Paused"
           {%- endif %}
           
   # Job Percentage
