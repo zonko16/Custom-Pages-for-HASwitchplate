@@ -16,6 +16,9 @@ Features
 
 Changelog
 ====
+#### UPDATE 0.33
+- Fix automation trigger on page change for p5, p6, p7, p9
+
 #### UPDATE 0.32
 - **Major: Add Thermostat Page**:
   To use the thermostat add ```hasp_plate01_p5_thermostat.yaml``` to your HASP folder and replace the entities with your thermostat.
