@@ -19,7 +19,7 @@ automation:
   - alias: hasp_plate01_p9_OnOffButton
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '9'
     - platform: state 
       entity_id: switch.3d_printer

@@ -8,7 +8,7 @@ automation:
     - platform: homeassistant
       event: start
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '7'
     - platform: state
       entity_id: 'input_number.hasp_plate01_activepage'
