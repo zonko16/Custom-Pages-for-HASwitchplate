@@ -77,11 +77,11 @@ then
   read -e -p "Enter script_4:" -i "script.SCRIPT_4" input_script_4
   read -e -p "Enter script_5:" -i "script.SCRIPT_5" input_script_5
 
-script.SCRIPT_1 =`echo "input_script_1"`
-script.SCRIPT_2 =`echo "input_script_2"`
-script.SCRIPT_3 =`echo "input_script_3"`
-script.SCRIPT_4 =`echo "input_script_4"`
-script.SCRIPT_5 =`echo "input_script_5"`
+SCRIPT_1 =`echo "input_script_1"`
+SCRIPT_2 =`echo "input_script_2"`
+SCRIPT_3 =`echo "input_script_3"`
+SCRIPT_4 =`echo "input_script_4"`
+SCRIPT_5 =`echo "input_script_5"`
 
 
 
@@ -142,7 +142,14 @@ wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchpl
 tar -zxf $hasp_temp_dir/packages.tar.gz -C $hasp_temp_dir
 rm $hasp_temp_dir/packages.tar.gz
 
-# Write Toggle Variables to yaml
+# Write Scripts Variables to yaml
+sed -i -- 's/script.SCRIPT_1/' "$SCRIPT_1"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -- 's/script.SCRIPT_2/' "$SCRIPT_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -- 's/script.SCRIPT_3/' "$SCRIPT_3"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -- 's/script.SCRIPT_4/' "$SCRIPT_4"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -- 's/script.SCRIPT_5/' "$SCRIPT_5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+
+# Write Toggles Page variables to yaml
 sed -i -- 's/TOGGLE1_DUMMY/' "$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
 sed -i -- 's/TOGGLE2_DUMMY/' "$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
 sed -i -- 's/TOGGLE3_DUMMY/' "$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
