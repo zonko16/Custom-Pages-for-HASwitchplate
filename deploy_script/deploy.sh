@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 input_node_name = "$@"
 # Page 2 Scripts
 input_script_1 = "$@"
