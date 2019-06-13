@@ -52,18 +52,111 @@ input_playlist_5 = "$@"
 input_playlist_6 = "$@"
 
 # Page 8 Media
-input_media_player =
+input_media_player = "$@"
 
-
-
-
-if [ "$input_node_name" == "" ]
+if [ ! -f configuration.yaml ]
 then
-  read -e -p "Enter your HASP device name(Only lower case, numbers and _ allowed)" -i "plate01" input_node_name
+  echo "WARNING: 'configuration.yaml' not found in current directory."
+  echo "Searching for Home Assistant 'configuration.yaml'..."
+  configfile=$(find / -name configuration.yaml 2>/dev/null)
+  count=$(echo "$configfile" | wc -l)
+  if [ $count == 1 ]
+  then
+    configdir=$(dirname "${configfile}")
+    cd $configdir
+    echo "INFO: configuration.yaml found under: $configdir"
+  else
+    echo "ERROR: Failed to locate the active 'configuration.yaml'"
+    echo "       Please run this script from the homeassistant"
+    echo "       configuration folder for your environment."
+    exit 1
+  fi
 fi
 
-hasp_node = `echo "$input_node_name"`
+# Check for write access to configuration.yaml
+if [ ! -w configuration.yaml ]
+then
+  echo "ERROR: Cannot write to 'configuration.yaml'."
+  exit 1
+fi
 
+# Check that a new device name has been supplied and ask the user if we're missing
+hasp_input_name="$@"
+
+if [ "$hasp_input_name" == "" ]
+then
+  read -e -p "Enter the new HASP device name (lower case letters, numbers, and '_' only): " -i "plate01" hasp_input_name
+fi
+
+# If it's still empty just pout and quit
+if [ "$hasp_input_name" == "" ]
+then
+  echo "ERROR: No device name provided"
+  exit 1
+fi
+
+# Santize the requested devicename to work with hass
+hasp_device=`echo "$hasp_input_name" | tr '[:upper:]' '[:lower:]' | tr ' [:punct:]' '_'`
+
+# Warn the user if we had rename anything
+if [[ "$hasp_input_name" != "$hasp_device" ]]
+then
+  echo "WARNING: Sanitized device name to \"$hasp_device\""
+fi
+
+# Check to see if packages are being included
+if ! grep "^  packages: \!include_dir_named packages" configuration.yaml > /dev/null
+then
+  if grep "^  packages: " configuration.yaml > /dev/null
+  then
+    echo "==========================================================================="
+    echo "WARNING: Conflicting packages definition found in 'configuration.yaml'."
+    echo "         Please add the following statement to your configuration:"
+    echo ""
+    echo "homeassistant:"
+    echo "  packages: !include_dir_named packages"
+    echo "==========================================================================="
+  else
+    sed -i 's/^homeassistant:.*/homeassistant:\n  packages: !include_dir_named packages/' configuration.yaml
+  fi
+fi
+
+# Enable recorder if not enabled to persist relevant values
+if ! grep "^recorder:" configuration.yaml > /dev/null
+then
+  echo "recorder:" >> configuration.yaml
+fi
+
+# Warn if MQTT is not enabled
+if ! grep "^mqtt:" configuration.yaml > /dev/null
+then
+  echo "==========================================================================="
+  echo "WARNING: Required MQTT broker configuration not setup in configuration.yaml"
+  echo "HASP WILL NOT FUNCTION UNTIL THIS HAS BEEN CONFIGURED!  The embedded option"
+  echo "offered my Home Assistant is buggy, so deploying Mosquitto is recommended."
+  echo ""
+  echo "Home Assistant MQTT configuration: https://www.home-assistant.io/docs/mqtt/broker/#run-your-own"
+  echo "Install Mosquitto: sudo apt-get install mosquitto mosquitto-clients"
+  echo "==========================================================================="
+fi
+
+# Hass has a bug where packaged automations don't work unless you have at least one
+# automation manually created outside of the packages.  Attempt to test for that and
+# create a dummy automation if an empty automations.yaml file is found.
+if grep "^automation: \!include automations.yaml" configuration.yaml > /dev/null
+then
+  if [ -f automations.yaml ]
+  then
+    if [[ $(< automations.yaml) == "[]" ]]
+    then
+      echo "WARNING: empty automations.yaml found, creating DUMMY automation for package compatibility"
+      echo "- action: []" > automations.yaml
+      echo "  id: DUMMY" >> automations.yaml
+      echo "  alias: DUMMY Can Be Deleted After First Automation Has Been Added" >> automations.yaml
+      echo "  trigger: []" >> automations.yaml
+    fi
+  fi
+fi
 
 # Page 2 scripts setup
 echo "Page 2: Scripts Setup"
