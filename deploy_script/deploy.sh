@@ -181,17 +181,17 @@ SCRIPT_5 =`echo "input_script_5"`
 
 
 
-echo "Page 6: Toggles Setup"
-echo ""
-echo "Enter entity IDs and names for each switch."
-echo "The switches will be ordered using following schema:"
-echo ""
-echo "toggle_1 - toggle_2"
-echo "toggle_3 - toggle_4"
-echo "toggle_5 - toggle_6"
-echo "toggle_6 - toggle_7"
-
 if [ "$input_toggle_1" == "" ]
+  echo "Page 6: Toggles Setup"
+  echo ""
+  echo "Enter entity IDs and names for each switch."
+  echo "The switches will be ordered using following schema:"
+  echo ""
+  echo "toggle_1 - toggle_2"
+  echo "toggle_3 - toggle_4"
+  echo "toggle_5 - toggle_6"
+  echo "toggle_6 - toggle_7"
+  echo ""
   read -e -p "Enter toggle_1 entity id:" -i "DUMMY" input_toggle_1
   read -e -p "Enter toggle_1 name:" -i "DUMMY" input_toggle_1_name
   read -e -p "Enter toggle_2 entity id:" -i "DUMMY" input_toggle_2
