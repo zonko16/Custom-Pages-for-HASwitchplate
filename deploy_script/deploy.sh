@@ -76,6 +76,7 @@ then
   read -e -p "Enter script_3:" -i "script.SCRIPT_3" input_script_3
   read -e -p "Enter script_4:" -i "script.SCRIPT_4" input_script_4
   read -e -p "Enter script_5:" -i "script.SCRIPT_5" input_script_5
+fi
 
 SCRIPT_1 =`echo "input_script_1"`
 SCRIPT_2 =`echo "input_script_2"`
