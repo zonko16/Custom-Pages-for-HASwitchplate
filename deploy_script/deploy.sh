@@ -1,4 +1,20 @@
 input_node_name = "$@"
+# Page 2 Scripts
+input_script_1 = "$@"
+input_script_2 = "$@"
+input_script_3 = "$@"
+input_script_4 = "$@"
+input_script_5 = "$@"
+
+# Page 3 Weather/Time input variables
+
+input_in_temp = "$@"
+input_in_humidity = "$@"
+input_out_temp = "$@"
+input_out_humidity = "$@"
+
+# Page 5 Thermostat
+input_thermostat = "$@"
 
 # Page 6 variables
 input_toggle_1 = "$@"
@@ -19,6 +35,17 @@ input_toggle_6_name = "$@"
 input_toggle_7_name = "$@"
 input_toggle_8_name = "$@"
 
+# Page 7 Playlists
+input_playlist_1 = "$@"
+input_playlist_2 = "$@"
+input_playlist_3 = "$@"
+input_playlist_4 = "$@"
+input_playlist_5 = "$@"
+input_playlist_6 = "$@"
+
+# Page 8 Media
+input_media_player =
+
 if [ "$input_node_name" == "" ]
 then
   read -e -p "Enter your HASP device name(Only lower case, numbers and _ allowed)" -i "plate01" input_node_name
@@ -38,65 +65,41 @@ echo "toggle_6 - toggle_7"
 
 if [ "$input_toggle_1" == "" ]
   read -e -p "Enter toggle_1 entity id:" -i "DUMMY" input_toggle_1
-fi
-
-if [ "$input_toggle_1_name" == "" ]
   read -e -p "Enter toggle_1 name:" -i "DUMMY" input_toggle_1_name
 fi
 
-if [ "$input_toggle_2"" == "" ]
-  read -e -p "Enter toggle_2" entity id:" -i "DUMMY" input_toggle_2"
-fi
-
-if [ "$input_toggle_2_name" == "" ]
+if [ "$input_toggle_2" == "" ]
+  read -e -p "Enter toggle_2" entity id:" -i "DUMMY" input_toggle_2
   read -e -p "Enter toggle_2 name:" -i "DUMMY" input_toggle_3_name
 fi
 
 if [ "$input_toggle_3" == "" ]
   read -e -p "Enter toggle_3 entity id:" -i "DUMMY" input_toggle_3
-fi
-
-if [ "$input_toggle_3_name" == "" ]
   read -e -p "Enter toggle_3 name:" -i "DUMMY" input_toggle_3_name
 fi
 
 if [ "$input_toggle_4" == "" ]
   read -e -p "Enter toggle_4 entity id:" -i "DUMMY" input_toggle_4
-fi
-
-if [ "$input_toggle_4_name" == "" ]
   read -e -p "Enter toggle_4 name:" -i "DUMMY" input_toggle_4_name
 fi
 
 if [ "$input_toggle_5" == "" ]
   read -e -p "Enter toggle_5 entity id:" -i "DUMMY" input_toggle_5
-fi
-
-if [ "$input_toggle_5_name" == "" ]
   read -e -p "Enter toggle_5 name:" -i "DUMMY" input_toggle_5_name
 fi
 
 if [ "$input_toggle_6" == "" ]
   read -e -p "Enter toggle_6 entity id:" -i "DUMMY" input_toggle_6
-fi
-
-if [ "$input_toggle_6_name" == "" ]
   read -e -p "Enter toggle_6 name:" -i "DUMMY" input_toggle_6_name
 fi
 
 if [ "$input_toggle_7" == "" ]
   read -e -p "Enter toggle_7 entity id:" -i "DUMMY" input_toggle_7
-fi
-
-if [ "$input_toggle_7_name" == "" ]
   read -e -p "Enter toggle_7 name:" -i "DUMMY" input_toggle_7_name
 fi
 
 if [ "$input_toggle_8" == "" ]
   read -e -p "Enter toggle_8 entity id:" -i "DUMMY" input_toggle_8
-fi
-
-if [ "$input_toggle_8_name" == "" ]
   read -e -p "Enter toggle_8 name:" -i "DUMMY" input_toggle_8_name
 fi
 
@@ -121,8 +124,8 @@ toggle_8_name = `echo "input_toggle_8_name"`
 #Create temporary folder
 hasp_temp_dir = `mkdir -d`
 
-#
 
+# Write Toggle Variables to yaml
 sed -i -- 's/TOGGLE1_DUMMY/' "$toggle_1"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
 sed -i -- 's/TOGGLE2_DUMMY/' "$toggle_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
 sed -i -- 's/TOGGLE3_DUMMY/' "$toggle_3"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
