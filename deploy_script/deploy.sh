@@ -60,7 +60,7 @@ then
   read -e -p "Enter your HASP device name(Only lower case, numbers and _ allowed)" -i "plate01" input_node_name
 fi
 
-hasp_node = `echo "$input_node_name"
+hasp_node = `echo "$input_node_name"`
 
 
 # Page 2 scripts setup
@@ -109,26 +109,32 @@ if [ "$input_toggle_1" == "" ]
 fi
 
 # Add user input to variables
-toggle_1 = `echo "input_toggle_1"`
-toggle_1_name = `echo "input_toggle_1_name"`
-toggle_2 = `echo "input_toggle_2"`
-toggle_2_name = `echo "input_toggle_2_name"`
-toggle_3 = `echo "input_toggle_3"`
-toggle_3_name = `echo "input_toggle_3_name"`
-toggle_4 = `echo "input_toggle_4"`
-toggle_4_name = `echo "input_toggle_4_name"`
-toggle_5 = `echo "input_toggle_5"`
-toggle_5_name = `echo "input_toggle_5_name"`
-toggle_6 = `echo "input_toggle_6"`
-toggle_6_name = `echo "input_toggle_6_name"`
-toggle_7 = `echo "input_toggle_7"`
-toggle_7_name = `echo "input_toggle_7_name"`
-toggle_8 = `echo "input_toggle_8"`
-toggle_8_name = `echo "input_toggle_8_name"`
+toggle_1 =`echo "input_toggle_1" `
+toggle_1_name =`echo "input_toggle_1_name" `
+toggle_2 =`echo "input_toggle_2" `
+toggle_2_name =`echo "input_toggle_2_name"`
+toggle_3 =`echo "input_toggle_3"`
+toggle_3_name =`echo "input_toggle_3_name"`
+toggle_4 =`echo "input_toggle_4"`
+toggle_4_name =`echo "input_toggle_4_name"`
+toggle_5 =`echo "input_toggle_5"`
+toggle_5_name =`echo "input_toggle_5_name"`
+toggle_6 =`echo "input_toggle_6"`
+toggle_6_name =`echo "input_toggle_6_name"`
+toggle_7 =`echo "input_toggle_7"`
+toggle_7_name =`echo "input_toggle_7_name"`
+toggle_8 =`echo "input_toggle_8"`
+toggle_8_name =`echo "input_toggle_8_name"`
 
-#Create temporary folder
-hasp_temp_dir = `mkdir -d`
 
+# Create temporary folder
+hasp_temp_dir =`mkdir -d`
+
+
+# Download the necessary files
+wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_3.2in/package.tar.gz
+tar -zxf $hasp_temp_dir/packages.tar.gz -C $hasp_temp_dir
+rm $hasp_temp_dir/packages.tar.gz
 
 # Write Toggle Variables to yaml
 sed -i -- 's/TOGGLE1_DUMMY/' "$toggle_1"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
