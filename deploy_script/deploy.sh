@@ -6,6 +6,12 @@ input_script_3 = "$@"
 input_script_4 = "$@"
 input_script_5 = "$@"
 
+input_script_1_name = "§@"
+input_script_2_name = "§@"
+input_script_3_name = "§@"
+input_script_4_name = "§@"
+input_script_5_name = "§@"
+
 # Page 3 Weather/Time input variables
 
 input_in_temp = "$@"
@@ -46,12 +52,32 @@ input_playlist_6 = "$@"
 # Page 8 Media
 input_media_player =
 
+
+
+
 if [ "$input_node_name" == "" ]
 then
   read -e -p "Enter your HASP device name(Only lower case, numbers and _ allowed)" -i "plate01" input_node_name
 fi
 
 hasp_node = `echo "$input_node_name"
+
+
+# Page 2 scripts setup
+echo "Page 2: Scripts Setup"
+echo ""
+echo "Enter script entity IDs (i.e. script.living_room)"
+echo "Script 1: bottom - Script_5: top"
+
+if [ "$input_script_1" == ""]
+then
+  read -e -p "Enter script_1:" -i "script.SCRIPT_1" input_script_1
+  read -e -p "Enter script_2:" -i "script.SCRIPT_2" input_script_2
+  read -e -p "Enter script_3:" -i "script.SCRIPT_3" input_script_3
+  read -e -p "Enter script_4:" -i "script.SCRIPT_4" input_script_4
+  read -e -p "Enter script_5:" -i "script.SCRIPT_5" input_script_5
+
+
 
 echo "Page 6: Toggles Setup"
 echo ""
@@ -66,39 +92,18 @@ echo "toggle_6 - toggle_7"
 if [ "$input_toggle_1" == "" ]
   read -e -p "Enter toggle_1 entity id:" -i "DUMMY" input_toggle_1
   read -e -p "Enter toggle_1 name:" -i "DUMMY" input_toggle_1_name
-fi
-
-if [ "$input_toggle_2" == "" ]
-  read -e -p "Enter toggle_2" entity id:" -i "DUMMY" input_toggle_2
+  read -e -p "Enter toggle_2 entity id:" -i "DUMMY" input_toggle_2
   read -e -p "Enter toggle_2 name:" -i "DUMMY" input_toggle_3_name
-fi
-
-if [ "$input_toggle_3" == "" ]
   read -e -p "Enter toggle_3 entity id:" -i "DUMMY" input_toggle_3
   read -e -p "Enter toggle_3 name:" -i "DUMMY" input_toggle_3_name
-fi
-
-if [ "$input_toggle_4" == "" ]
   read -e -p "Enter toggle_4 entity id:" -i "DUMMY" input_toggle_4
   read -e -p "Enter toggle_4 name:" -i "DUMMY" input_toggle_4_name
-fi
-
-if [ "$input_toggle_5" == "" ]
   read -e -p "Enter toggle_5 entity id:" -i "DUMMY" input_toggle_5
   read -e -p "Enter toggle_5 name:" -i "DUMMY" input_toggle_5_name
-fi
-
-if [ "$input_toggle_6" == "" ]
   read -e -p "Enter toggle_6 entity id:" -i "DUMMY" input_toggle_6
   read -e -p "Enter toggle_6 name:" -i "DUMMY" input_toggle_6_name
-fi
-
-if [ "$input_toggle_7" == "" ]
   read -e -p "Enter toggle_7 entity id:" -i "DUMMY" input_toggle_7
   read -e -p "Enter toggle_7 name:" -i "DUMMY" input_toggle_7_name
-fi
-
-if [ "$input_toggle_8" == "" ]
   read -e -p "Enter toggle_8 entity id:" -i "DUMMY" input_toggle_8
   read -e -p "Enter toggle_8 name:" -i "DUMMY" input_toggle_8_name
 fi
