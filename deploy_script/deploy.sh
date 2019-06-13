@@ -167,9 +167,25 @@ echo "Script 1: bottom - Script_5: top"
 if [ "$input_script_1" == ""]
 then
   read -e -p "Enter script_1:" -i "script.SCRIPT_1" input_script_1
+fi
+
+if [ "$input_script_2" == ""]
+then
   read -e -p "Enter script_2:" -i "script.SCRIPT_2" input_script_2
+fi
+
+if [ "$input_script_3" == ""]
+then
   read -e -p "Enter script_3:" -i "script.SCRIPT_3" input_script_3
+fi
+
+if [ "$input_script_2" == ""]
+then
   read -e -p "Enter script_4:" -i "script.SCRIPT_4" input_script_4
+ fi
+
+if [ "$input_script_2" == ""]
+then 
   read -e -p "Enter script_5:" -i "script.SCRIPT_5" input_script_5
 fi
 
