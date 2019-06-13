@@ -8,7 +8,7 @@ automation:
     - platform: homeassistant
       event: start
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '5'
     - platform: state
       entity_id: climate.DUMMY
@@ -65,7 +65,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor1
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '5'
     - platform: state
       entity_id: climate.DUMMY
@@ -107,7 +107,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor1
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '5'
     - platform: state
       entity_id: climate.DUMMY

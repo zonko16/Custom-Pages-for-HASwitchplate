@@ -7,36 +7,32 @@ automation:
   - alias: hasp_plate01_p9_ToggleOnOff
     trigger: 
     - platform: mqtt
-      topic: 'hasp/plate01/state/p[9].[3]'
+      topic: 'hasp/plate01/state/p[9].b[3]'
       payload: 'ON'
     action:
-    - service_template: >-
-        {% if is_state('switch.3d_drucker', 'off') -%}
-          homeassistant.turn_on
-        {%- else -%}
-          homeassistant.turn_off
-        {%- endif %}
+    - service: homeassistant.toggle
       data:
-        entity_id: switch.3d_drucker
+        entity_id: switch.3d_printer
 
 #########################################################################
 # Change State of ON/OFF Button
   - alias: hasp_plate01_p9_OnOffButton
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '9'
     - platform: state 
-      entity_id: switch.3d_drucker
+      entity_id: switch.3d_printer
     action:
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/state/p[9].b[3]'
+        topic: 'hasp/plate01/command/p[9].b[3].picc'
         payload_template: >-
-          {% if is_state('switch.3d_drucker', 'off') -%}
-            {{32}}
-          {%- else %}
-            {{33}}
+          {% if is_state('switch.3d_printer', 'off') -%}
+            {{ 32 }}
+          {%- else -%}
+            {{ 33 }}
+          {%- endif %}
 
 # Represent if the 3D printer is printing or paused/off
   - alias: hasp_plate01_p9_ShowPrintingStatus
@@ -50,65 +46,78 @@ automation:
     action:
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/state/p[9].b[4]'
+        topic: 'hasp/plate01/command/p[9].b[4].picc'
         payload_template: >-
-          {% if is_state('sensor.octoprint_current_state', 'operational') -%}
-            {{33}}
+          {% if is_state('sensor.octoprint_current_state', 'printing') -%}
+            {{ 33 }}
           {%-else -%}
-            {{32}}
+            {{ 32 }}
           {%- endif %}
 
 ######################################################################################
-  - alias: hasp_plate01_p9_UpdateStats
+# Update printer stats every 30 seconds if printer page is selected
+  - alias: hasp_plate01_p9_PrinterStats
     trigger:
-    - platform: time_pattern
-      seconds: 00
-    - platform: mqtt
-      topic: 'hasp/plate01/command/page'
-      payload: '9'
+      - platform: time_pattern
+        seconds: '/30'
     condition:
     - condition: state
-      entity_id: switch.3d_drucker
-      state: 'on'
+      entity_id: 'input_number.hasp_plate01_activepage'
+      state: '9.0'
     action:
-
-#Display current print stats
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[9].b[6].font'
+        payload_template: >-
+          {% if is_state('sensor.octoprint_current_state', 'unknown') -%}
+            '0'
+          {%- elif is_state('sensor.octoprint_current_state', 'Operational') -%}
+            '0'
+          {%- elif is_state('sensor.octoprint_current_state', 'Printing') -%}
+            '1'
+          {%- elif is_state('sensor.octoprint_current_state', 'Paused') -%}
+             '0'
+          {%- endif %}
+    - service: mqtt.publish
+      data:
+        topic: 'hasp/plate01/command/p[9].b[6].txt'
+        payload_template: >-
+          {% if is_state('sensor.octoprint_current_state', 'unknown') -%}
+            "Offline"
+          {%- elif is_state('sensor.octoprint_current_state', 'Operational') -%}
+            "Online"
+          {%- elif is_state('sensor.octoprint_current_state', 'Printing') -%}
+            "{{ states.sensor.octoprint_time_remaining.state | float /60 }}"
+          {%- elif is_state('sensor.octoprint_current_state', 'Paused') -%}
+            "Paused"
+          {%- endif %}
+          
   # Job Percentage
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/state/p[9].b[5].font'
+        topic: 'hasp/plate01/command/p[9].b[5].font'
         payload: '1'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/state/p[9].b[5].txt'
-        payload_template: "{{ states.sensor.octoprint_job_percentage.state }}"
-    
-  # Time remaining
+        topic: 'hasp/plate01/command/p[9].b[5].txt'
+        payload_template: '"{{ states.sensor.octoprint_job_percentage.state }}%"'
+  
+  # Heatbed Temperature
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/state/p[9].b[6].font'
+        topic: 'hasp/plate01/command/p[9].b[7].font'
         payload: '1'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/state/p[9].b[6].txt'
-        payload_template: "{{ states.sensor.octoprint_time_remaining.state | float /60 }}"
-    
-  # Heatbet Temperature
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/state/p[9].b[7].font'
-        payload: '1'
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/state/p[9].b[7].txt'
-        payload_template: '"{{ states.sensor.octoprint_actual_bed_temp.state }}/{{ states.sensor.octoprint_target_bed_temp.state }}"'
+        topic: 'hasp/plate01/command/p[9].b[7].txt'
+        payload_template: '"{{ states.sensor.octoprint_actual_bed_temp.state }}°"'
     
   # Nozzle Temperature
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/state/p[9].b[7].font'
+        topic: 'hasp/plate01/command/p[9].b[8].font'
         payload: '1'
     - service: mqtt.publish
       data:
-        topic: 'hasp/plate01/state/p[9].b[7].txt'
-        payload_template: '"{{ states.sensor.octoprint_actual_tool0_temp.state }}/{{ states.sensor.octoprint_target_tool0_temp.state }}"'
+        topic: 'hasp/plate01/command/p[9].b[8].txt'
+        payload_template: '"{{ states.sensor.octoprint_actual_tool0_temp.state }}°"'

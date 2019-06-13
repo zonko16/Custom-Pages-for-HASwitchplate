@@ -22,27 +22,6 @@ homeassistant:
 #    url: "http://hassio.local:8123/states"
 #    icon: "mdi:cellphone-text"
 
-light:
-  - platform: mqtt
-    name: plate01 Backlight
-    command_topic: "hasp/plate01/light/switch"
-    state_topic: "hasp/plate01/light/state"
-    brightness_state_topic: "hasp/plate01/brightness/state"
-    brightness_command_topic: "hasp/plate01/brightness/set"
-    availability_topic: "hasp/plate01/status"
-    payload_available: "ON"
-    payload_not_available: "OFF"
-
-binary_sensor:
-  - platform: mqtt
-    name: plate01 Connected
-    device_class: connectivity
-    state_topic: "hasp/plate01/status"
-    payload_on: "ON"
-    payload_off: "OFF"
-    availability_topic: "hasp/plate01/status"
-    payload_available: "ON"
-    payload_not_available: "OFF"
 
 sensor:
   - platform: mqtt
@@ -88,6 +67,29 @@ sensor:
       - icon
     scan_interval:
       minutes: 30
+
+
+light:
+  - platform: mqtt
+    name: plate01 Backlight
+    command_topic: "hasp/plate01/light/switch"
+    state_topic: "hasp/plate01/light/state"
+    brightness_state_topic: "hasp/plate01/brightness/state"
+    brightness_command_topic: "hasp/plate01/brightness/set"
+    availability_topic: "hasp/plate01/status"
+    payload_available: "ON"
+    payload_not_available: "OFF"
+
+binary_sensor:
+  - platform: mqtt
+    name: plate01 Connected
+    device_class: connectivity
+    state_topic: "hasp/plate01/status"
+    payload_on: "ON"
+    payload_off: "OFF"
+    availability_topic: "hasp/plate01/status"
+    payload_available: "ON"
+    payload_not_available: "OFF"
 
 input_text:
   hasp_plate01_pagebutton1label:

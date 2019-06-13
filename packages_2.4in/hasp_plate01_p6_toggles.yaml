@@ -356,7 +356,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor1
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
@@ -384,7 +384,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor2
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle2
@@ -410,7 +410,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor3
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle3
@@ -437,7 +437,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor4
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle4
@@ -464,7 +464,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor5
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle5
@@ -491,7 +491,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor6
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle6
@@ -520,7 +520,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor7
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle7
@@ -547,7 +547,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor8
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: group.hasp_plate01_p6_toggle8
@@ -575,7 +575,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor9
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
@@ -602,7 +602,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor10
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
@@ -629,7 +629,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor11
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
@@ -656,7 +656,7 @@ automation:
   - alias: hasp_plate01_p6_ToggleColor12
     trigger:
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles

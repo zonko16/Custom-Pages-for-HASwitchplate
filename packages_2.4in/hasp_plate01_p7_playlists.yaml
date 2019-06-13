@@ -71,18 +71,6 @@ hasp_spotify_playlist_6:
 
 #############################################################################
 automation:
-#Go back to the Media Page by pressing the back button
-  - alias: hasp_plate01_p7_BackButtonAction
-    trigger:
-    - platform: mqtt
-      topic: 'hasp/plate01/state/p[7].b[1]'
-      payload: 'ON'
-    action:
-    - service: mqtt.publish
-      data:
-        topic: 'hasp/plate01/command/page'
-        payload: '8'
-################################################################
   #Set font and text for toggle buttons on device connection
   - alias: hasp_plate01_p7_ToggleInit
     trigger:
@@ -92,7 +80,7 @@ automation:
     - platform: homeassistant
       event: start
     - platform: mqtt
-      topic: 'hasp/plate01/command/page'
+      topic: 'hasp/plate01/state/page'
       payload: '7'
     - platform: state
       entity_id: 'input_number.hasp_plate01_activepage'
