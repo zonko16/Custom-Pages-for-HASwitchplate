@@ -157,8 +157,8 @@ fi
 
 # Page 2 scripts setup
 echo -n "Do you want to configure the Scripts page? "
-read -r toggle_answer
-if [ "$toggle_answer" == "${answer#[Yy]}" ]
+read -r answer
+if [ "$answer" == "${answer#[Yy]}" ]
 then
   echo "================================================="
   echo "           Page 2: Scripts Setup"
