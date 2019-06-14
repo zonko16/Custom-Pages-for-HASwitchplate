@@ -224,10 +224,10 @@ then
   if [[ "$panel_size" == "3.2" ]]
   then
     echo -e "On the 3.2in panel you can select two media player sources"
-    read -e -p "Enter \e[1mSource 1\e[0m:" media_source_1
-    read -e -p "Enter a \e[1mName \e[0mfor source 1:" media_source_1_name
-    read -e -p "Enter \e[1mSource 2\e[0m:" media_source_2
-    read -e -p "Enter a \e[1mName \e[0mfor source 2:" media_source_2_name
+    read -e -p "Enter Source 1:" media_source_1
+    read -e -p "Enter a Name for source 1:" media_source_1_name
+    read -e -p "Enter Source 2:" media_source_2
+    read -e -p "Enter a Name for source 2:" media_source_2_name
   fi
 fi
 
@@ -266,12 +266,12 @@ fi
 # Write Toggles Page variables to yaml
 if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
 then
-  sed -i -- 's/TOGGLE1_DUMMY/'"$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE2_DUMMY/'"$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE3_DUMMY/'"$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE4_DUMMY/'"$toggle_4_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE5_DUMMY/'"$toggle_5_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE6_DUMMY/'"$toggle_6_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ENTITY_T1/'"$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ENTITY_T2/'"$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ENTITY_T3/'"$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ENTITY_T4/'"$toggle_4_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ENTITY_T5/'"$toggle_5_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ENTITY_T6/'"$toggle_6_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   sed -i -- 's/TOGGLE1/'"$toggle_1_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   sed -i -- 's/TOGGLE2/'"$toggle_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   sed -i -- 's/TOGGLE3/'"$toggle_3_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
@@ -280,8 +280,8 @@ then
   sed -i -- 's/TOGGLE6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   if [[ "$panel_size" == "3.2" ]]
   then
-    sed -i -- 's/TOGGLE7_DUMMY/'"$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-    sed -i -- 's/TOGGLE8_DUMMY/'"$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/ENTITY_T7/'"$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/ENTITY_T8/'"$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
     sed -i -- 's/TOGGLE7/'"$toggle_7_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
     sed -i -- 's/TOGGLE8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   fi
