@@ -160,6 +160,7 @@ echo -n "Do you want to configure the Scripts page? "
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]
 then
+  echo ""
   echo "================================================="
   echo "           Page 2: Scripts Setup"
   echo ""
