@@ -3,51 +3,51 @@
 hasp_input_name="$@"
 
 # Page 2 Scripts
-input_script_1 = "$@"
-input_script_2 = "$@"
-input_script_3 = "$@"
-input_script_4 = "$@"
-input_script_5 = "$@"
+input_script_1="$@"
+input_script_2="$@"
+input_script_3="$@"
+input_script_4="$@"
+input_script_5="$@"
 
 # Page 3 Weather/Time input variables
 
-input_in_temp = "$@"
-input_in_humidity = "$@"
-input_out_temp = "$@"
-input_out_humidity = "$@"
+input_in_temp="$@"
+input_in_humidity="$@"
+input_out_temp="$@"
+input_out_humidity="$@"
 
 # Page 5 Thermostat
-input_thermostat = "$@"
+input_thermostat="$@"
 
 # Page 6 variables
-input_toggle_1 = "$@"
-input_toggle_2 = "$@"
-input_toggle_3 = "$@"
-input_toggle_4 = "$@"
-input_toggle_5 = "$@"
-input_toggle_6 = "$@"
-input_toggle_7 = "$@"
-input_toggle_8 = "$@"
+input_toggle_1="$@"
+input_toggle_2="$@"
+input_toggle_3="$@"
+input_toggle_4="$@"
+input_toggle_5="$@"
+input_toggle_6="$@"
+input_toggle_7="$@"
+input_toggle_8="$@"
 
-input_toggle_1_name = "$@"
-input_toggle_2_name = "$@"
-input_toggle_3_name = "$@"
-input_toggle_4_name = "$@"
-input_toggle_5_name = "$@"
-input_toggle_6_name = "$@"
-input_toggle_7_name = "$@"
-input_toggle_8_name = "$@"
+input_toggle_1_name ="$@"
+input_toggle_2_name="$@"
+input_toggle_3_name="$@"
+input_toggle_4_name="$@"
+input_toggle_5_name="$@"
+input_toggle_6_name="$@"
+input_toggle_7_name="$@"
+input_toggle_8_name="$@"
 
 # Page 7 Playlists
-input_playlist_1 = "$@"
-input_playlist_2 = "$@"
-input_playlist_3 = "$@"
-input_playlist_4 = "$@"
-input_playlist_5 = "$@"
-input_playlist_6 = "$@"
+input_playlist_1="$@"
+input_playlist_2="$@"
+input_playlist_3="$@"
+input_playlist_4="$@"
+input_playlist_5="$@"
+input_playlist_6="$@"
 
 # Page 8 Media
-input_media_player = "$@"
+input_media_player="$@"
 
 if [ ! -f configuration.yaml ]
 then
