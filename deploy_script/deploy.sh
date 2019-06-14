@@ -294,6 +294,27 @@ then
 fi
 
 
+# Setup Media Player
+echo -e "Do you want to configure the \e[1mMedia Player Page\e[0m?"
+echo -e "(y/n):"
+read -r p8_answer
+if [ "$p8_answer" != "${p8_answer#[Yy]}" ]
+then
+  read -e -p "Enter your Media Player entity:" -i "media_player.spotify" input_media_player
+  media_player=`echo "input_media_player"`
+  if [[ "$input_panel_size" == "3.2" ]]
+  then
+    echo -e "On the 3.2in panel you can select two media player sources"
+    read -e -p "Enter \e[1mSource 1\e[0m:" input_source_1
+    read -e -p "Enter a \e[1mName \e[0mfor source 1:" input_source_1_name
+    read -e -p "Enter \e[1mSource 2\e[0m:" input_source_2
+    read -e -p "Enter a \e[1mName \e[0mfor source 2:" input_source_2_name
+    source_1=`echo "$input_source_1"`
+    source_1_name=`echo "input_source_1
+  fi
+fi
+
+
 # Create temporary folder
 hasp_temp_dir=`mktemp -d`
 
@@ -302,18 +323,28 @@ wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchpl
 tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
 rm $hasp_temp_dir/3.2_packages.tar.gz
 
-# Write Scripts Variables to yaml
-sed -i -e 's/script.SCRIPT_1/'"$scene_1"'/g' -e 's/script.SCRIPT_2/'"$scene_2"'/g' -e  's/script.SCRIPT_3/'"$scene_3"'/g' -e 's/script.SCRIPT_4/'"$scene_4"'/g' -e 's/script.SCRIPT_5/'"$scene_5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+# Write SCRIPTS config to file if it was set up by user
+if [ "$p2_answer" != "${p2_answer#[Yy]}" ]
+then
+  sed -i -e 's/script.SCRIPT_1/'"$scene_1"'/g' -e 's/script.SCRIPT_2/'"$scene_2"'/g' -e  's/script.SCRIPT_3/'"$scene_3"'/g' -e 's/script.SCRIPT_4/'"$scene_4"'/g' -e 's/script.SCRIPT_5/'"$scene_5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+fi
+
+# Write WEATHER config to file if it was set up by user
 if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
   sed -i -- 's/YOUR_DARKSKY_API/'"$dark_sky_api"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_*.yaml
-  sed -i -e 's/sensor.INDOOR_TEMP/'"$in_temp"'/g' -e 's/sensor.INDOOR_HUMIDITY/'"$in_humidity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
+  sed -i -e 's/sensor.YOUR_TEMPERATURE_SENSOR/'"$in_temp"'/g' -e 's/sensor.YOUR_HUMIDITY_/'"$in_humidity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
   if [[ "$input_panel_size" == "3.2" ]]
   then
-    sed -i -e 's/sensor.INDOOR_TEMP2/'"$in_temp_2"'/g' -e 's/sensor.INDOOR_HUMIDITY/'"$in_humidity_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
-    sed -i -e 's/sensor.INDOOR_HUMIDITY2/'"$in_humidity_2"'/g' -e 's/sensor.INDOOR_HUMIDITY/'"$in_humidity_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
-# Write Thermostat Page variables
-sed -i -- 's/climate.DUMMY/'"$climate"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p5_thermostat.yaml
+    sed -i -e 's/sensor.YOUR_TEMPERATURE_SENSOR2/'"$in_temp_2"'/g' -e 's/sensor.YOUR_HUMIDITY_SENSOR2/'"$in_humidity_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
+  fi
+fi
+    
+# Write WEATHER config to file if it was set up by user
+if [ "$p5_answer" != "${p5_answer#[Yy]}" ]
+then
+  sed -i -- 's/climate.DUMMY/'"$climate"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p5_thermostat.yaml
+fi
 
 # Write Toggles Page variables to yaml
 if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
