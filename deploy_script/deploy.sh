@@ -156,7 +156,7 @@ then
 fi
 
 # Page 2 scripts setup
-echo -n "Do you want to configure the Scripts page? "
+echo -n "Do you want to configure the SCRIPTS page?(y/n) "
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]
 then
@@ -186,10 +186,9 @@ else
   echo "Continue setup without customizing Script page"
 fi
 
-echo "Do you want to configure the Toggles Page?"
-read -e -p "(y/n)" -i ""
-
-if [ "$input_toggle_conf" == "y" ]
+echo -n "Do you want to configure the TOGGLES page?(y/n) "
+read -r answer
+if [ "$answer" != "${answer#[Yy]}" ]
 then
   echo "Page 6: Toggles Setup"
   echo ""
