@@ -158,7 +158,7 @@ fi
 # Page 2 scripts setup
 echo "Do you want to configure the Scripts page? "
 read -e -n 1 -p "(y/n)": -i "" input_p2_conf
-if [ "$input_p2_conf" == "y"]
+if [ "$input_p2_conf" == "y" ]
 then
   echo "================================================="
   echo "           Page 2: Scripts Setup"
