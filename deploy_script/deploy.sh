@@ -113,9 +113,9 @@ fi
 
 ############################################
 # Page 2 scripts setup
-echo -n "Do you want to configure the \e[1mScripts \e[0mPage?(y/n) "
-read -r answer
-if [ "$answer" != "${answer#[Yy]}" ]
+echo -e -n "Do you want to configure the \e[1mScripts \e[0mPage?(y/n) "
+read -r p2_answer
+if [ "$p2_answer" != "${p2_answer#[Yy]}" ]
 then
   echo ""
   echo "================================================="
@@ -139,7 +139,7 @@ fi
 ############################################
 # Weather/Time Page configuration
 echo -e -n "Do you want to configure the \e[1mWeather Page\e[0m?(y/n) "
-read -r answer
+read -r p3_answer
 if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
   echo "================================================================"
@@ -172,7 +172,7 @@ then
   echo "================================="
   echo ""
   read -e -p "Enter your thermostat entity_id:" -i "climate.DUMMY" climate  
-  
+fi
 ############################################
 #Toggles Page Configuration
 echo -e -n "Do you want to configure the \e[1mTOGGLES Page\e[0m?(y/n) "
