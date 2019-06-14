@@ -64,7 +64,7 @@ automation:
       service: media_player.select_source
       data:
         entity_id: media_player.spotify
-        source: 'SOURCE1' # replace with your own Media Player Source
+        source: 'MEDIA_SOURCE1' # replace with your own Media Player Source
 
   # Select SOURCE2
   - alias: hasp_plate_p8_SourceKücheB11
@@ -76,7 +76,7 @@ automation:
       service: media_player.select_source
       data:
         entity_id: media_player.spotify
-        source: 'SOURCE2' # replace with your own Media Player Source
+        source: 'MEDIA_SOURCE2' # replace with your own Media Player Source
 
   # Play/Pause button action
   - alias: hasp_plate01_p8_MediaPauseButton7

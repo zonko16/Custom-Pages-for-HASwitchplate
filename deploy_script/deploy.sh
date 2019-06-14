@@ -2,55 +2,6 @@
 
 #Basic device information
 hasp_input_name="$@"
-input_panel_size="$@"
-
-# Page 2 Scripts
-input_p2_conf="$@"
-input_script_1="$@"
-input_script_2="$@"
-input_script_3="$@"
-input_script_4="$@"
-input_script_5="$@"
-
-# Page 3 Weather/Time input variables
-
-input_in_temp="$@"
-input_in_humidity="$@"
-input_dark_sky_api="$@"
-
-# Page 5 Thermostat
-input_climate="$@"
-
-# Page 6 variables
-input_toggle_conf="$@"
-input_toggle_1="$@"
-input_toggle_2="$@"
-input_toggle_3="$@"
-input_toggle_4="$@"
-input_toggle_5="$@"
-input_toggle_6="$@"
-input_toggle_7="$@"
-input_toggle_8="$@"
-
-input_toggle_1_name ="$@"
-input_toggle_2_name="$@"
-input_toggle_3_name="$@"
-input_toggle_4_name="$@"
-input_toggle_5_name="$@"
-input_toggle_6_name="$@"
-input_toggle_7_name="$@"
-input_toggle_8_name="$@"
-
-# Page 7 Playlists
-input_playlist_1="$@"
-input_playlist_2="$@"
-input_playlist_3="$@"
-input_playlist_4="$@"
-input_playlist_5="$@"
-input_playlist_6="$@"
-
-# Page 8 Media
-input_media_player="$@"
 
 if [ ! -f configuration.yaml ]
 then
@@ -102,10 +53,9 @@ then
 fi
 
 # Ask user to provide the panel size
-if [ "$input_panel_size" == "" ]
-then
-  echo "Please provide the size of your Nextion panel."
-  read -e -p "Options: (2.4 / 3.2)" -i "2.4" input_panel_size
+echo "Please provide the size of your Nextion panel."
+read -e -p "Options: (2.4 / 3.2)" -i "2.4" panel_size
+
 # Check to see if packages are being included
 if ! grep "^  packages: \!include_dir_named packages" configuration.yaml > /dev/null
 then
@@ -177,18 +127,11 @@ then
   echo ""
 
 # User Input for script entities
-  read -e -p "Enter script_1:" -i "script.SCRIPT_1" input_script_1
-  read -e -p "Enter script_2:" -i "script.SCRIPT_2" input_script_2
-  read -e -p "Enter script_3:" -i "script.SCRIPT_3" input_script_3
-  read -e -p "Enter script_4:" -i "script.SCRIPT_4" input_script_4
-  read -e -p "Enter script_5:" -i "script.SCRIPT_5" input_script_5
-
-
-  scene_1=`echo "$input_script_1"`
-  scene_2=`echo "$input_script_2"`
-  scene_3=`echo "$input_script_3"`
-  scene_4=`echo "$input_script_4"`
-  scene_5=`echo "$input_script_5"`
+  read -e -p "Enter script_1:" -i "script.SCRIPT_1" scene_1
+  read -e -p "Enter script_2:" -i "script.SCRIPT_2" scene_2
+  read -e -p "Enter script_3:" -i "script.SCRIPT_3" scene_3
+  read -e -p "Enter script_4:" -i "script.SCRIPT_4" scene_4
+  read -e -p "Enter script_5:" -i "script.SCRIPT_5" scene_5
 else
   echo "Continue setup without customizing Script page"
 fi
@@ -207,19 +150,14 @@ then
   echo "3.2in users can use an additional sensor."
   echo "================================================================"
   
-  read -e -p "Enter your Darksky API Token:" -i "YOUR_API_TOKEN" input_dark_sky_api
-  read -e -p "Enter \e[1mtemperature sensor \e[0mentity_id:" -i "sensor.INDOOR_TEMP_DUMMY" input_in_temp
-  read -e -p "Enter \e[1mhumidity sensor \e[0mentity_id:" -i "sensor.INDOOR_HUMIDITY_DUMMY" input_in_humidity
-  in_temp=`echo "input_in_temp"`
-  in_humidity=`echo "input_in_humidty"`
-  if [[ "$input_panel_size" == "$input_panel_size#3.2" ]]
+  read -e -p "Enter your Darksky API Token:" -i "YOUR_API_TOKEN" dark_sky_api
+  read -e -p "Enter \e[1mtemperature sensor \e[0mentity_id:" -i "sensor.INDOOR_TEMP_DUMMY" in_temp
+  read -e -p "Enter \e[1mhumidity sensor \e[0mentity_id:" -i "sensor.INDOOR_HUMIDITY_DUMMY" in_humidity
+  if [[ "$panel_size" == "$panel_size#3.2" ]]
   then
-    read -e -p "Enter second temperature sensor entity_id:" -i "sensor.TEMP_2" input_indoor_temp_2
-    read -e -p "Enter second humidity sensor entity_id." -i "sensor.HUMIDITY_2" input_indoor_humidity_2
-    in_temp_2=`echo "$input_indoor_temp_2"`
-    in_humidity_2=`echo "$input_indoor_humidity_2"` 
+    read -e -p "Enter second temperature sensor entity_id:" -i "sensor.TEMP_2" indoor_temp_2
+    read -e -p "Enter second humidity sensor entity_id." -i "sensor.HUMIDITY_2" indoor_humidity_2
   fi
-  dark_sky_api=`echo "input_dark_sky_api"`  
 fi
 
 
@@ -233,9 +171,7 @@ then
   echo "Page 5: Thermostat configuration"
   echo "================================="
   echo ""
-  read -e -p "Enter your thermostat entity_id:" -i "climate.DUMMY" input_climate
-  climate=`echo "$input_climate`
-  
+  read -e -p "Enter your thermostat entity_id:" -i "climate.DUMMY" climate  
   
 ############################################
 #Toggles Page Configuration
@@ -248,48 +184,31 @@ then
   echo "Enter entity IDs and names for each switch."
   echo "The switches will be ordered using following schema:"
   echo ""
-  echo "toggle_1 - toggle_2"
-  echo "toggle_3 - toggle_4"
-  echo "toggle_5 - toggle_6"
-  echo "toggle_6 - toggle_7"
+  echo "\e[1mtoggle_1 - toggle_2"
+  echo "\e[1mtoggle_3 - toggle_4"
+  echo "\e[1mtoggle_5 - toggle_6"
+  echo "\e[1mtoggle_6 - toggle_7"
   echo ""
-  read -e -p "Enter toggle_1 entity id:" -i "DUMMY" input_toggle_1
-  read -e -p "Enter toggle_1 name:" -i "DUMMY" input_toggle_1_name
-  read -e -p "Enter toggle_2 entity id:" -i "DUMMY" input_toggle_2
-  read -e -p "Enter toggle_2 name:" -i "DUMMY" input_toggle_3_name
-  read -e -p "Enter toggle_3 entity id:" -i "DUMMY" input_toggle_3
-  read -e -p "Enter toggle_3 name:" -i "DUMMY" input_toggle_3_name
-  read -e -p "Enter toggle_4 entity id:" -i "DUMMY" input_toggle_4
-  read -e -p "Enter toggle_4 name:" -i "DUMMY" input_toggle_4_name
-  read -e -p "Enter toggle_5 entity id:" -i "DUMMY" input_toggle_5
-  read -e -p "Enter toggle_5 name:" -i "DUMMY" input_toggle_5_name
-  read -e -p "Enter toggle_6 entity id:" -i "DUMMY" input_toggle_6
-  read -e -p "Enter toggle_6 name:" -i "DUMMY" input_toggle_6_name
-  # Add user input to variables
-  toggle_1_entity=`echo "input_toggle_1" `
-  toggle_1_name=`echo "input_toggle_1_name" `
-  toggle_2_entity=`echo "input_toggle_2" `
-  toggle_2_name=`echo "input_toggle_2_name"`
-  toggle_3_entity=`echo "input_toggle_3"`
-  toggle_3_name=`echo "input_toggle_3_name"`
-  toggle_4_entity=`echo "input_toggle_4"`
-  toggle_4_name=`echo "input_toggle_4_name"`
-  toggle_5_entity=`echo "input_toggle_5"`
-  toggle_5_name=`echo "input_toggle_5_name"`
-  toggle_6_entity=`echo "input_toggle_6"`
-  toggle_6_name=`echo "input_toggle_6_name"`
+  read -e -p "Enter toggle_1 entity id:" -i "DUMMY" toggle_1
+  read -e -p "Enter toggle_1 name:" -i "DUMMY" toggle_1_name
+  read -e -p "Enter toggle_2 entity id:" -i "DUMMY" toggle_2
+  read -e -p "Enter toggle_2 name:" -i "DUMMY" toggle_3_name
+  read -e -p "Enter toggle_3 entity id:" -i "DUMMY" toggle_3
+  read -e -p "Enter toggle_3 name:" -i "DUMMY" toggle_3_name
+  read -e -p "Enter toggle_4 entity id:" -i "DUMMY" toggle_4
+  read -e -p "Enter toggle_4 name:" -i "DUMMY" toggle_4_name
+  read -e -p "Enter toggle_5 entity id:" -i "DUMMY" toggle_5
+  read -e -p "Enter toggle_5 name:" -i "DUMMY" toggle_5_name
+  read -e -p "Enter toggle_6 entity id:" -i "DUMMY" toggle_6
+  read -e -p "Enter toggle_6 name:" -i "DUMMY" toggle_6_name
   
   #Setup additional switches for 3.2in users
-  if [[ "$input_panel_size"  == "3.2" ]]
+  if [[ "$panel_size"  == "3.2" ]]
   then
-    read -e -p "Enter toggle_7 entity id:" -i "DUMMY" input_toggle_7
-    read -e -p "Enter toggle_7 name:" -i "DUMMY" input_toggle_7_name
-    read -e -p "Enter toggle_8 entity id:" -i "DUMMY" input_toggle_8
-    read -e -p "Enter toggle_8 name:" -i "DUMMY" input_toggle_8_name
-    toggle_7_entity=`echo "input_toggle_7"`
-    toggle_7_name=`echo "input_toggle_7_name"`
-    toggle_8_entity=`echo "input_toggle_8"`
-    toggle_8_name=`echo "input_toggle_8_name"`
+    read -e -p "Enter toggle_7 entity id:" -i "DUMMY" toggle_7
+    read -e -p "Enter toggle_7 name:" -i "DUMMY" toggle_7_name
+    read -e -p "Enter toggle_8 entity id:" -i "DUMMY" toggle_8
+    read -e -p "Enter toggle_8 name:" -i "DUMMY" toggle_8_name
   fi
 fi
 
@@ -300,17 +219,15 @@ echo -e "(y/n):"
 read -r p8_answer
 if [ "$p8_answer" != "${p8_answer#[Yy]}" ]
 then
-  read -e -p "Enter your Media Player entity:" -i "media_player.spotify" input_media_player
-  media_player=`echo "input_media_player"`
-  if [[ "$input_panel_size" == "3.2" ]]
+  read -e -p "Enter your Media Player entity:" -i "media_player.spotify" media_player
+
+  if [[ "$panel_size" == "3.2" ]]
   then
     echo -e "On the 3.2in panel you can select two media player sources"
-    read -e -p "Enter \e[1mSource 1\e[0m:" input_source_1
-    read -e -p "Enter a \e[1mName \e[0mfor source 1:" input_source_1_name
-    read -e -p "Enter \e[1mSource 2\e[0m:" input_source_2
-    read -e -p "Enter a \e[1mName \e[0mfor source 2:" input_source_2_name
-    source_1=`echo "$input_source_1"`
-    source_1_name=`echo "input_source_1
+    read -e -p "Enter \e[1mSource 1\e[0m:" media_source_1
+    read -e -p "Enter a \e[1mName \e[0mfor source 1:" media_source_1_name
+    read -e -p "Enter \e[1mSource 2\e[0m:" media_source_2
+    read -e -p "Enter a \e[1mName \e[0mfor source 2:" media_source_2_name
   fi
 fi
 
@@ -334,7 +251,7 @@ if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
   sed -i -- 's/YOUR_DARKSKY_API/'"$dark_sky_api"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_*.yaml
   sed -i -e 's/sensor.YOUR_TEMPERATURE_SENSOR/'"$in_temp"'/g' -e 's/sensor.YOUR_HUMIDITY_/'"$in_humidity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
-  if [[ "$input_panel_size" == "3.2" ]]
+  if [[ "$panel_size" == "3.2" ]]
   then
     sed -i -e 's/sensor.YOUR_TEMPERATURE_SENSOR2/'"$in_temp_2"'/g' -e 's/sensor.YOUR_HUMIDITY_SENSOR2/'"$in_humidity_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
   fi
@@ -361,7 +278,7 @@ then
   sed -i -- 's/TOGGLE4/'"$toggle_4_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   sed -i -- 's/TOGGLE5/'"$toggle_5_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   sed -i -- 's/TOGGLE6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  if [[ "$input_panel_size" == "3.2" ]]
+  if [[ "$panel_size" == "3.2" ]]
   then
     sed -i -- 's/TOGGLE7_DUMMY/'"$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
     sed -i -- 's/TOGGLE8_DUMMY/'"$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
@@ -369,3 +286,91 @@ then
     sed -i -- 's/TOGGLE8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   fi
 fi
+
+
+if [ "$p8_answer" != "${p8_answer#[Yy]}" ]
+then
+  sed -i -e 's/media_player.spotify/'"$media_player"'/g' -e 's/MEDIA_SOURCE1/'"$media_source_1"'/g' -e 's/SOURCE1/'"$media_source_1_name"'/g' -e 's/MEDIA_SOURCE2/'"$media_source_2"'/g' -e 's/SOURCE2/'"$media_source_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
+fi
+
+
+
+#################################################################################
+#################################################################################
+# Copy files from tempdir to packages
+# Rename things if we are calling it something other than plate01
+if [[ "$hasp_input_name" != "plate01" ]]
+then
+  # rename text in contents of files
+  sed -i -- 's/plate01/'"$hasp_device"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_*.yaml
+  sed -i -- 's/plate01/'"$hasp_device"'/g' $hasp_temp_dir/hasp-examples/plate01/hasp_plate01_*.yaml
+
+  # rename files and folder - thanks to @cloggedDrain for this loop!
+  mkdir $hasp_temp_dir/packages/$hasp_device
+  for file in $hasp_temp_dir/packages/plate01/*
+  do
+    new_file=`echo $file | sed s/plate01/$hasp_device/g`
+    if [ -f $file ]
+    then
+      mv $file $new_file
+      if [ $? -ne 0 ]
+      then
+        echo "ERROR: Could not copy $file to $new_file"
+        exit 1
+      fi
+    fi
+  done
+  rm -rf $hasp_temp_dir/packages/plate01
+  # do it again for the examples
+  mkdir $hasp_temp_dir/hasp-examples/$hasp_device
+  for file in $hasp_temp_dir/hasp-examples/plate01/*
+  do
+    new_file=`echo $file | sed s/plate01/$hasp_device/g`
+    if [ -f $file ]
+    then
+      mv $file $new_file
+      if [ $? -ne 0 ]
+      then
+        echo "ERROR: Could not copy $file to $new_file"
+        exit 1
+      fi
+    fi
+  done
+  rm -rf $hasp_temp_dir/hasp-examples/plate01
+fi
+
+# Check to see if the target directories already exist
+if [[ -d ./packages/$hasp_device ]] || [[ -d ./hasp-examples/$hasp_device ]]
+then
+  echo "==========================================================================="
+  echo "WARNING: This device already exists.  You have 3 options:"
+  echo "  [r] Replace - Delete existing device and replace with new device [RECOMMENDED]"
+  echo "  [u] Update  - Overwrite existing device with new configuration, retain any additional files created"
+  echo "  [c] Canel   - Cancel the process with no changes made"
+  echo ""
+  read -e -p "Enter overwrite action [r|u|c]: " -i "r" hasp_overwrite_action
+  if [[ "$hasp_overwrite_action" == "r" ]] || [[ "$hasp_overwrite_action" == "R" ]]
+  then
+    echo "Deleting existing device and creating new device"
+    rm -rf ./packages/$hasp_device
+    rm -rf ./hasp-examples/$hasp_device
+    cp -rf $hasp_temp_dir/* .
+    rm -rf $hasp_temp_dir
+  elif [[ "$hasp_overwrite_action" == "u" ]] || [[ "$hasp_overwrite_action" == "U" ]]
+  then
+    echo "Overwriting existing device with updated files"
+    cp -rf $hasp_temp_dir/* .
+    rm -rf $hasp_temp_dir
+  else
+    echo "Exiting with no changes made"
+    rm -rf $hasp_temp_dir
+    exit 1
+  fi
+else
+  # Copy everything over and burn the evidence
+  cp -rf $hasp_temp_dir/* .
+  rm -rf $hasp_temp_dir
+fi
+
+echo "==========================================================================="
+echo "SUCCESS! Restart Home Assistant to enable HASP device $hasp_device"
