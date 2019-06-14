@@ -3,6 +3,7 @@
 hasp_input_name="$@"
 
 # Page 2 Scripts
+input_p2_conf="$@"
 input_script_1="$@"
 input_script_2="$@"
 input_script_3="$@"
@@ -20,6 +21,7 @@ input_out_humidity="$@"
 input_thermostat="$@"
 
 # Page 6 variables
+input_toggle_conf="$@"
 input_toggle_1="$@"
 input_toggle_2="$@"
 input_toggle_3="$@"
@@ -154,48 +156,37 @@ then
 fi
 
 # Page 2 scripts setup
-echo "================================================="
-echo "Page 2: Scripts Setup"
-echo ""
-echo "Enter script entity IDs (i.e. script.living_room)"
-echo "Script 1: bottom - Script_5: top"
-echo ""
-echo "================================================="
-
-if [ "$input_script_1" == "" ]
+echo "Do you want to configure the Scripts page? "
+read -e -n 1 -p "(y/n): -i "" input_p2_conf
+if [ "$input_p2_conf" == "y"]
 then
-  read -e -p "Enter script_1:" -i "SCRIPT_1" input_script_1
+  echo "================================================="
+  echo "           Page 2: Scripts Setup"
+  echo ""
+  echo "Enter script entity IDs (i.e. script.living_room)"
+  echo "Script 1: bottom - Script_5: top"
+  echo "================================================="
+  echo ""
+
+# User Input for script entities
+  read -e -p "Enter script_1:" -i "script.SCRIPT_1" input_script_1
+  read -e -p "Enter script_2:" -i "script.SCRIPT_2" input_script_2
+  read -e -p "Enter script_3:" -i "script.SCRIPT_3" input_script_3
+  read -e -p "Enter script_4:" -i "script.SCRIPT_4" input_script_4
+  read -e -p "Enter script_5:" -i "script.SCRIPT_5" input_script_5
+
+
+  scene_1=`echo "$input_script_1"`
+  scene_2=`echo "$input_script_2"`
+  scene_3=`echo "$input_script_3"`
+  scene_4=`echo "$input_script_4"`
+  scene_5=`echo "$input_script_5"`
 fi
 
-if [ "$input_script_2" == "" ]
-then
-  read -e -p "Enter script_2:" -i "SCRIPT_2" input_script_2
-fi
+echo "Do you want to configure the Toggles Page?"
+read -e -p "(y/n)" -i ""
 
-if [ "$input_script_3" == "" ]
-then
-  read -e -p "Enter script_3:" -i "SCRIPT_3" input_script_3
-fi
-
-if [ "$input_script_4" == "" ]
-then
-  read -e -p "Enter script_4:" -i "SCRIPT_4" input_script_4
-fi
-
-if [ "$input_script_5" == "" ]
-then 
-  read -e -p "Enter script_5:" -i "SCRIPT_5" input_script_5
-fi
-
-scene_1=`echo "$input_script_1" | tr '[:upper:]' '[:lower:]' | tr ' [:punct:]' '_'`
-scene_2=`echo "$input_script_2"`
-scene_3=`echo "$input_script_3"`
-scene_4=`echo "$input_script_4"`
-scene_5=`echo "$input_script_5"`
-
-
-
-if [ "$input_toggle_1" == "" ]
+if [ "$input_toggle_conf" == "y" ]
 then
   echo "Page 6: Toggles Setup"
   echo ""
@@ -223,25 +214,25 @@ then
   read -e -p "Enter toggle_7 name:" -i "DUMMY" input_toggle_7_name
   read -e -p "Enter toggle_8 entity id:" -i "DUMMY" input_toggle_8
   read -e -p "Enter toggle_8 name:" -i "DUMMY" input_toggle_8_name
-fi
 
-# Add user input to variables
-toggle_1_entity=`echo "input_toggle_1" `
-toggle_1_name=`echo "input_toggle_1_name" `
-toggle_2_entity=`echo "input_toggle_2" `
-toggle_2_name=`echo "input_toggle_2_name"`
-toggle_3_entity=`echo "input_toggle_3"`
-toggle_3_name=`echo "input_toggle_3_name"`
-toggle_4_entity=`echo "input_toggle_4"`
-toggle_4_name=`echo "input_toggle_4_name"`
-toggle_5_entity=`echo "input_toggle_5"`
-toggle_5_name=`echo "input_toggle_5_name"`
-toggle_6_entity=`echo "input_toggle_6"`
-toggle_6_name=`echo "input_toggle_6_name"`
-toggle_7_entity=`echo "input_toggle_7"`
-toggle_7_name=`echo "input_toggle_7_name"`
-toggle_8_entity=`echo "input_toggle_8"`
-toggle_8_name=`echo "input_toggle_8_name"`
+  # Add user input to variables
+  toggle_1_entity=`echo "input_toggle_1" `
+  toggle_1_name=`echo "input_toggle_1_name" `
+  toggle_2_entity=`echo "input_toggle_2" `
+  toggle_2_name=`echo "input_toggle_2_name"`
+  toggle_3_entity=`echo "input_toggle_3"`
+  toggle_3_name=`echo "input_toggle_3_name"`
+  toggle_4_entity=`echo "input_toggle_4"`
+  toggle_4_name=`echo "input_toggle_4_name"`
+  toggle_5_entity=`echo "input_toggle_5"`
+  toggle_5_name=`echo "input_toggle_5_name"`
+  toggle_6_entity=`echo "input_toggle_6"`
+  toggle_6_name=`echo "input_toggle_6_name"`
+  toggle_7_entity=`echo "input_toggle_7"`
+  toggle_7_name=`echo "input_toggle_7_name"`
+  toggle_8_entity=`echo "input_toggle_8"`
+  toggle_8_name=`echo "input_toggle_8_name"`
+fi
 
 
 # Create temporary folder
