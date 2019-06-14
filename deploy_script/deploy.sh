@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+#Basic device information
 hasp_input_name="$@"
+input_panel_size="$@"
 
 # Page 2 Scripts
 input_p2_conf="$@"
@@ -14,11 +16,10 @@ input_script_5="$@"
 
 input_in_temp="$@"
 input_in_humidity="$@"
-input_out_temp="$@"
-input_out_humidity="$@"
+input_dark_sky_api="$@"
 
 # Page 5 Thermostat
-input_thermostat="$@"
+input_climate="$@"
 
 # Page 6 variables
 input_toggle_conf="$@"
@@ -78,7 +79,6 @@ then
 fi
 
 # Check that a new device name has been supplied and ask the user if we're missing
-hasp_input_name="$@"
 
 if [ "$hasp_input_name" == "" ]
 then
@@ -101,6 +101,11 @@ then
   echo "WARNING: Sanitized device name to \"$hasp_device\""
 fi
 
+# Ask user to provide the panel size
+if [ "$input_panel_size" == "" ]
+then
+  echo "Please provide the size of your Nextion panel."
+  read -e -p "Options: (2.4 / 3.2)" -i "2.4" input_panel_size
 # Check to see if packages are being included
 if ! grep "^  packages: \!include_dir_named packages" configuration.yaml > /dev/null
 then
@@ -155,8 +160,10 @@ then
   fi
 fi
 
+
+############################################
 # Page 2 scripts setup
-echo -n "Do you want to configure the SCRIPTS page?(y/n) "
+echo -n "Do you want to configure the \e[1mScripts \e[0mPage?(y/n) "
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]
 then
@@ -186,24 +193,55 @@ else
   echo "Continue setup without customizing Script page"
 fi
 
-
+############################################
 # Weather/Time Page configuration
-echo -e -n "Do you want to configure the \e[1mWeather \e[21mPage?(y/n) "
+echo -e -n "Do you want to configure the \e[1mWeather Page\e[0m?(y/n) "
 read -r answer
-if [ "$answer" != "${answer#[Yy]}" ]
+if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
   echo "================================================================"
   echo "For weather forecast you will need an Dark Sky API"
   echo ""
   echo "If you have a temperature sensor you can customize your entity here."
   echo "The sensor can be accessed by pressing the actual temperature on the display"
+  echo "3.2in users can use an additional sensor."
   echo "================================================================"
-  read -e -p
+  
+  read -e -p "Enter your Darksky API Token:" -i "YOUR_API_TOKEN" input_dark_sky_api
+  read -e -p "Enter \e[1mtemperature sensor \e[0mentity_id:" -i "sensor.INDOOR_TEMP_DUMMY" input_in_temp
+  read -e -p "Enter \e[1mhumidity sensor \e[0mentity_id:" -i "sensor.INDOOR_HUMIDITY_DUMMY" input_in_humidity
+  in_temp=`echo "input_in_temp"`
+  in_humidity=`echo "input_in_humidty"`
+  if [[ "$input_panel_size" == "$input_panel_size#3.2" ]]
+  then
+    read -e -p "Enter second temperature sensor entity_id:" -i "sensor.TEMP_2" input_indoor_temp_2
+    read -e -p "Enter second humidity sensor entity_id." -i "sensor.HUMIDITY_2" input_indoor_humidity_2
+    in_temp_2=`echo "$input_indoor_temp_2"`
+    in_humidity_2=`echo "$input_indoor_humidity_2"` 
+  fi
+  dark_sky_api=`echo "input_dark_sky_api"`  
+fi
 
+
+############################################
+# Thermostat Page Configuration
+echo -e -n "Do you want to configure the \e[1mThermostat Page\e[0m?(y/n)"
+read -r p5_answer
+if [ "$p5_answer" != "${p5_answer#[Yy]}" ]
+then
+  echo "================================="
+  echo "Page 5: Thermostat configuration"
+  echo "================================="
+  echo ""
+  read -e -p "Enter your thermostat entity_id:" -i "climate.DUMMY" input_climate
+  climate=`echo "$input_climate`
+  
+  
+############################################
 #Toggles Page Configuration
-echo -e -n "Do you want to configure the \e[1mTOGGLES \e[21mPage?(y/n) "
-read -r answer
-if [ "$answer" != "${answer#[Yy]}" ]
+echo -e -n "Do you want to configure the \e[1mTOGGLES Page\e[0m?(y/n) "
+read -r p6_answer
+if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
 then
   echo "Page 6: Toggles Setup"
   echo ""
@@ -227,11 +265,6 @@ then
   read -e -p "Enter toggle_5 name:" -i "DUMMY" input_toggle_5_name
   read -e -p "Enter toggle_6 entity id:" -i "DUMMY" input_toggle_6
   read -e -p "Enter toggle_6 name:" -i "DUMMY" input_toggle_6_name
-  read -e -p "Enter toggle_7 entity id:" -i "DUMMY" input_toggle_7
-  read -e -p "Enter toggle_7 name:" -i "DUMMY" input_toggle_7_name
-  read -e -p "Enter toggle_8 entity id:" -i "DUMMY" input_toggle_8
-  read -e -p "Enter toggle_8 name:" -i "DUMMY" input_toggle_8_name
-
   # Add user input to variables
   toggle_1_entity=`echo "input_toggle_1" `
   toggle_1_name=`echo "input_toggle_1_name" `
@@ -245,10 +278,19 @@ then
   toggle_5_name=`echo "input_toggle_5_name"`
   toggle_6_entity=`echo "input_toggle_6"`
   toggle_6_name=`echo "input_toggle_6_name"`
-  toggle_7_entity=`echo "input_toggle_7"`
-  toggle_7_name=`echo "input_toggle_7_name"`
-  toggle_8_entity=`echo "input_toggle_8"`
-  toggle_8_name=`echo "input_toggle_8_name"`
+  
+  #Setup additional switches for 3.2in users
+  if [[ "$input_panel_size"  == "3.2" ]]
+  then
+    read -e -p "Enter toggle_7 entity id:" -i "DUMMY" input_toggle_7
+    read -e -p "Enter toggle_7 name:" -i "DUMMY" input_toggle_7_name
+    read -e -p "Enter toggle_8 entity id:" -i "DUMMY" input_toggle_8
+    read -e -p "Enter toggle_8 name:" -i "DUMMY" input_toggle_8_name
+    toggle_7_entity=`echo "input_toggle_7"`
+    toggle_7_name=`echo "input_toggle_7_name"`
+    toggle_8_entity=`echo "input_toggle_8"`
+    toggle_8_name=`echo "input_toggle_8_name"`
+  fi
 fi
 
 
@@ -261,26 +303,38 @@ tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
 rm $hasp_temp_dir/3.2_packages.tar.gz
 
 # Write Scripts Variables to yaml
-sed -i -- 's/script.SCRIPT_1/'"$scene_1"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
-sed -i -- 's/script.SCRIPT_2/'"$scene_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
-sed -i -- 's/script.SCRIPT_3/'"$scene_3"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
-sed -i -- 's/script.SCRIPT_4/'"$scene_4"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
-sed -i -- 's/script.SCRIPT_5/'"$scene_5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -e 's/script.SCRIPT_1/'"$scene_1"'/g' -e 's/script.SCRIPT_2/'"$scene_2"'/g' -e  's/script.SCRIPT_3/'"$scene_3"'/g' -e 's/script.SCRIPT_4/'"$scene_4"'/g' -e 's/script.SCRIPT_5/'"$scene_5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
+then
+  sed -i -- 's/YOUR_DARKSKY_API/'"$dark_sky_api"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_*.yaml
+  sed -i -e 's/sensor.INDOOR_TEMP/'"$in_temp"'/g' -e 's/sensor.INDOOR_HUMIDITY/'"$in_humidity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
+  if [[ "$input_panel_size" == "3.2" ]]
+  then
+    sed -i -e 's/sensor.INDOOR_TEMP2/'"$in_temp_2"'/g' -e 's/sensor.INDOOR_HUMIDITY/'"$in_humidity_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
+    sed -i -e 's/sensor.INDOOR_HUMIDITY2/'"$in_humidity_2"'/g' -e 's/sensor.INDOOR_HUMIDITY/'"$in_humidity_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
+# Write Thermostat Page variables
+sed -i -- 's/climate.DUMMY/'"$climate"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p5_thermostat.yaml
 
 # Write Toggles Page variables to yaml
-sed -i -- 's/TOGGLE1_DUMMY/'"$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE2_DUMMY/'"$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE3_DUMMY/'"$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE4_DUMMY/'"$toggle_4_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE5_DUMMY/'"$toggle_5_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE6_DUMMY/'"$toggle_6_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE7_DUMMY/'"$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE8_DUMMY/'"$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE1/'"$toggle_1_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE2/'"$toggle_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE3/'"$toggle_3_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE4/'"$toggle_4_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE5/'"$toggle_5_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE7/'"$toggle_7_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
+then
+  sed -i -- 's/TOGGLE1_DUMMY/'"$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE2_DUMMY/'"$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE3_DUMMY/'"$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE4_DUMMY/'"$toggle_4_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE5_DUMMY/'"$toggle_5_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE6_DUMMY/'"$toggle_6_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE1/'"$toggle_1_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE2/'"$toggle_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE3/'"$toggle_3_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE4/'"$toggle_4_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE5/'"$toggle_5_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/TOGGLE6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  if [[ "$input_panel_size" == "3.2" ]]
+  then
+    sed -i -- 's/TOGGLE7_DUMMY/'"$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/TOGGLE8_DUMMY/'"$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/TOGGLE7/'"$toggle_7_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/TOGGLE8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  fi
+fi
