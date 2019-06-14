@@ -247,7 +247,6 @@ toggle_8_name=`echo "input_toggle_8_name"`
 # Create temporary folder
 hasp_temp_dir=`mktemp -d`
 
-
 # Download the necessary files
 wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_3.2in/3.2_packages.tar.gz
 tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
