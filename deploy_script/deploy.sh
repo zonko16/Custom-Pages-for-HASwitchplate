@@ -245,7 +245,7 @@ toggle_8_name=`echo "input_toggle_8_name"`
 
 
 # Create temporary folder
-hasp_temp_dir =`mktemp -d`
+hasp_temp_dir=`mktemp -d`
 
 
 # Download the necessary files
