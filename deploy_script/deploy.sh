@@ -186,7 +186,22 @@ else
   echo "Continue setup without customizing Script page"
 fi
 
-echo -n "Do you want to configure the TOGGLES page?(y/n) "
+
+# Weather/Time Page configuration
+echo -n "Do you want to configure the \e[1mWeather \e[21mPage?(y/n) "
+read -r answer
+if [ "$answer" != "${answer#[Yy]}" ]
+then
+  echo "================================================================"
+  echo "For weather forecast you will need an Dark Sky API"
+  echo ""
+  echo "If you have a temperature sensor you can customize your entity here."
+  echo "The sensor can be accessed by pressing the actual temperature on the display"
+  echo "================================================================"
+  read -e -p
+
+#Toggles Page Configuration
+echo -n "Do you want to configure the \e[1mTOGGLES \e[21mPage?(y/n) "
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]
 then
