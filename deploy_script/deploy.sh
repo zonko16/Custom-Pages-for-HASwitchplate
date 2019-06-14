@@ -186,11 +186,11 @@ then
   read -e -p "Enter script_5:" -i "SCRIPT_5" input_script_5
 fi
 
-scene_1 =`echo "$input_script_1" | tr '[:upper:]' '[:lower:]' | tr ' [:punct:]' '_'`
-scene_2 =`echo "$input_script_2"`
-scene_3 =`echo "$input_script_3"`
-scene_4 =`echo "$input_script_4"`
-scene_5 =`echo "$input_script_5"`
+entityscene_1 =`echo "$input_script_1" | tr '[:upper:]' '[:lower:]' | tr ' [:punct:]' '_'`
+entityscene_2 =`echo "$input_script_2"`
+entityscene_3 =`echo "$input_script_3"`
+entityscene_4 =`echo "$input_script_4"`
+entityscene_5 =`echo "$input_script_5"`
 
 
 
@@ -249,8 +249,8 @@ hasp_temp_dir =`mkdir -d`
 
 # Download the necessary files
 wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_3.2in/3.2_packages.tar.gz
-tar -zxf $hasp_temp_dir/packages.tar.gz -C $hasp_temp_dir
-rm $hasp_temp_dir/packages.tar.gz
+tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
+rm $hasp_temp_dir/3.2_packages.tar.gz
 
 # Write Scripts Variables to yaml
 sed -i -- 's/script.SCRIPT_1/' "$SCRIPT_1"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
