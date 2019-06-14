@@ -158,7 +158,7 @@ fi
 # Page 2 scripts setup
 echo -n "Do you want to configure the Scripts page? "
 read -r answer
-if [ "$answer" == "${answer#[Yy]}" ]
+if [ "$answer" != "${answer#[Yy]}" ]
 then
   echo "================================================="
   echo "           Page 2: Scripts Setup"
