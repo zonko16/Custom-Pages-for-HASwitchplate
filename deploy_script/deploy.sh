@@ -143,7 +143,7 @@ read -r p3_answer
 if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
   echo "================================================================"
-  echo "For weather forecast you will need an Dark Sky API"
+  echo -e "For weather forecast you will need an \e[1mDark Sky API"
   echo ""
   echo "If you have a temperature sensor you can customize your entity here."
   echo "The sensor can be accessed by pressing the actual temperature on the display"
@@ -153,7 +153,7 @@ then
   read -e -p "Enter your Darksky API Token:" -i "YOUR_API_TOKEN" dark_sky_api
   read -e -p "Enter \e[1mtemperature sensor \e[0mentity_id:" -i "sensor.INDOOR_TEMP_DUMMY" in_temp
   read -e -p "Enter \e[1mhumidity sensor \e[0mentity_id:" -i "sensor.INDOOR_HUMIDITY_DUMMY" in_humidity
-  if [[ "$panel_size" == "$panel_size#3.2" ]]
+  if [[ "$panel_size" == "3.2" ]]
   then
     read -e -p "Enter second temperature sensor entity_id:" -i "sensor.TEMP_2" indoor_temp_2
     read -e -p "Enter second humidity sensor entity_id." -i "sensor.HUMIDITY_2" indoor_humidity_2
@@ -168,7 +168,7 @@ read -r p5_answer
 if [ "$p5_answer" != "${p5_answer#[Yy]}" ]
 then
   echo "================================="
-  echo "Page 5: Thermostat configuration"
+  echo -e "\e[1mPage 5: Thermostat configuration"
   echo "================================="
   echo ""
   read -e -p "Enter your thermostat entity_id:" -i "climate.DUMMY" climate  
@@ -184,10 +184,10 @@ then
   echo "Enter entity IDs and names for each switch."
   echo "The switches will be ordered using following schema:"
   echo ""
-  echo "\e[1mtoggle_1 - toggle_2"
-  echo "\e[1mtoggle_3 - toggle_4"
-  echo "\e[1mtoggle_5 - toggle_6"
-  echo "\e[1mtoggle_6 - toggle_7"
+  echo -e "\e[1mtoggle_1 - toggle_2"
+  echo -e "\e[1mtoggle_3 - toggle_4"
+  echo -e "\e[1mtoggle_5 - toggle_6"
+  echo -e "\e[1mtoggle_6 - toggle_7"
   echo ""
   read -e -p "Enter toggle_1 entity id:" -i "DUMMY" toggle_1
   read -e -p "Enter toggle_1 name:" -i "DUMMY" toggle_1_name
@@ -212,8 +212,8 @@ then
   fi
 fi
 
-
 # Setup Media Player
+echo ""
 echo -e "Do you want to configure the \e[1mMedia Player Page\e[0m?"
 echo -e "(y/n):"
 read -r p8_answer
@@ -290,7 +290,9 @@ fi
 
 if [ "$p8_answer" != "${p8_answer#[Yy]}" ]
 then
-  sed -i -e 's/media_player.spotify/'"$media_player"'/g' -e 's/MEDIA_SOURCE1/'"$media_source_1"'/g' -e 's/SOURCE1/'"$media_source_1_name"'/g' -e 's/MEDIA_SOURCE2/'"$media_source_2"'/g' -e 's/SOURCE2/'"$media_source_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
+  sed -i -e 's/media_player.spotify/'"$media_player"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
+  sed -i -e 's/MEDIA_SOURCE1/'"$media_source_1"'/g' -e 's/MEDIA_SOURCE2/'"$media_source_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
+  sed -i -e 's/SOURCE1/'"$media_source_1_name"'/g' -e 's/SOURCE2/'"$media_source_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
 fi
 
 
