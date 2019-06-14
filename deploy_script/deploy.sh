@@ -188,7 +188,7 @@ fi
 
 
 # Weather/Time Page configuration
-echo -n "Do you want to configure the \e[1mWeather \e[21mPage?(y/n) "
+echo -e -n "Do you want to configure the \e[1mWeather \e[21mPage?(y/n) "
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]
 then
@@ -201,7 +201,7 @@ then
   read -e -p
 
 #Toggles Page Configuration
-echo -n "Do you want to configure the \e[1mTOGGLES \e[21mPage?(y/n) "
+echo -e -n "Do you want to configure the \e[1mTOGGLES \e[21mPage?(y/n) "
 read -r answer
 if [ "$answer" != "${answer#[Yy]}" ]
 then
