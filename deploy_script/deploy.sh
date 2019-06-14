@@ -186,11 +186,11 @@ then
   read -e -p "Enter script_5:" -i "SCRIPT_5" input_script_5
 fi
 
-script_1 =`echo "$input_script_1" | tr '[:upper:]' '[:lower:]' | tr ' [:punct:]' '_'`
-script_2 =`echo "$input_script_2"`
-script_3 =`echo "$input_script_3"`
-SCRIPT_4 =`echo "$input_script_4"`
-SCRIPT_5 =`echo "$input_script_5"`
+scene_1 =`echo "$input_script_1" | tr '[:upper:]' '[:lower:]' | tr ' [:punct:]' '_'`
+scene_2 =`echo "$input_script_2"`
+scene_3 =`echo "$input_script_3"`
+scene_4 =`echo "$input_script_4"`
+scene_5 =`echo "$input_script_5"`
 
 
 
