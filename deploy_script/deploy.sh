@@ -253,26 +253,26 @@ tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
 rm $hasp_temp_dir/3.2_packages.tar.gz
 
 # Write Scripts Variables to yaml
-sed -i -- 's/script.SCRIPT_1/' "$SCRIPT_1"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
-sed -i -- 's/script.SCRIPT_2/' "$SCRIPT_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
-sed -i -- 's/script.SCRIPT_3/' "$SCRIPT_3"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
-sed -i -- 's/script.SCRIPT_4/' "$SCRIPT_4"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
-sed -i -- 's/script.SCRIPT_5/' "$SCRIPT_5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -- 's/script.SCRIPT_1/'"$scene_1"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -- 's/script.SCRIPT_2/'"$scene_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -- 's/script.SCRIPT_3/'"$scene_3"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -- 's/script.SCRIPT_4/'"$scene_4"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
+sed -i -- 's/script.SCRIPT_5/'"$scene_5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
 
 # Write Toggles Page variables to yaml
-sed -i -- 's/TOGGLE1_DUMMY/' "$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE2_DUMMY/' "$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE3_DUMMY/' "$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE4_DUMMY/' "$toggle_4_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE5_DUMMY/' "$toggle_5_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE6_DUMMY/' "$toggle_6_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE7_DUMMY/' "$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE8_DUMMY/' "$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE1/' "$toggle_1_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE2/' "$toggle_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE3/' "$toggle_3_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE4/' "$toggle_4_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE5/' "$toggle_5_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE6/' "$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE7/' "$toggle_7_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-sed -i -- 's/TOGGLE8/' "$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE1_DUMMY/'"$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE2_DUMMY/'"$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE3_DUMMY/'"$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE4_DUMMY/'"$toggle_4_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE5_DUMMY/'"$toggle_5_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE6_DUMMY/'"$toggle_6_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE7_DUMMY/'"$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE8_DUMMY/'"$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE1/'"$toggle_1_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE2/'"$toggle_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE3/'"$toggle_3_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE4/'"$toggle_4_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE5/'"$toggle_5_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE7/'"$toggle_7_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+sed -i -- 's/TOGGLE8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
