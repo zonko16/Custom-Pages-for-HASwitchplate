@@ -186,11 +186,11 @@ then
   read -e -p "Enter script_5:" -i "script.SCRIPT_5" input_script_5
 fi
 
-SCRIPT_1 =`echo "input_script_1"`
-SCRIPT_2 =`echo "input_script_2"`
-SCRIPT_3 =`echo "input_script_3"`
-SCRIPT_4 =`echo "input_script_4"`
-SCRIPT_5 =`echo "input_script_5"`
+SCRIPT_1 =`echo "$input_script_1"`
+SCRIPT_2 =`echo "$input_script_2"`
+SCRIPT_3 =`echo "$input_script_3"`
+SCRIPT_4 =`echo "$input_script_4"`
+SCRIPT_5 =`echo "$input_script_5"`
 
 
 
