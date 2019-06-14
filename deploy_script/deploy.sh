@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-hasp_name = "$@"
+hasp_input_name="$@"
+
 # Page 2 Scripts
 input_script_1 = "$@"
 input_script_2 = "$@"
@@ -244,7 +245,7 @@ toggle_8_name =`echo "input_toggle_8_name"`
 
 
 # Create temporary folder
-hasp_temp_dir =`mkdir -d`
+hasp_temp_dir =`mktemp -d`
 
 
 # Download the necessary files
