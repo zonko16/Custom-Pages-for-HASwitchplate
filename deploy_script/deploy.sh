@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
 
-input_node_name = "$@"
+hasp_name = "$@"
 # Page 2 Scripts
 input_script_1 = "$@"
 input_script_2 = "$@"
 input_script_3 = "$@"
 input_script_4 = "$@"
 input_script_5 = "$@"
-
-input_script_1_name = "§@"
-input_script_2_name = "§@"
-input_script_3_name = "§@"
-input_script_4_name = "§@"
-input_script_5_name = "§@"
 
 # Page 3 Weather/Time input variables
 
@@ -159,6 +153,7 @@ then
 fi
 
 # Page 2 scripts setup
+echo "================================================="
 echo "Page 2: Scripts Setup"
 echo ""
 echo "Enter script entity IDs (i.e. script.living_room)"
