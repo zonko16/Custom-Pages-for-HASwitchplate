@@ -159,6 +159,7 @@ echo ""
 echo "Enter script entity IDs (i.e. script.living_room)"
 echo "Script 1: bottom - Script_5: top"
 echo ""
+echo "================================================="
 
 if [ "$input_script_1" == "" ]
 then
