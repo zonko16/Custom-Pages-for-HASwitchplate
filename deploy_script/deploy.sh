@@ -156,9 +156,9 @@ then
 fi
 
 # Page 2 scripts setup
-echo "Do you want to configure the Scripts page? "
-read -e -n 1 -p "(y/n)": -i "" input_p2_conf
-if [ "$input_p2_conf" == "y" ]
+echo -n "Do you want to configure the Scripts page? "
+read toggle_answer
+if [ "$toggle_answer" == "${answer#[Yy]}" ]
 then
   echo "================================================="
   echo "           Page 2: Scripts Setup"
@@ -181,6 +181,8 @@ then
   scene_3=`echo "$input_script_3"`
   scene_4=`echo "$input_script_4"`
   scene_5=`echo "$input_script_5"`
+else
+  echo "Continue setup without customizing Script page"
 fi
 
 echo "Do you want to configure the Toggles Page?"
