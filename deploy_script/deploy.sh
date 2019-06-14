@@ -187,11 +187,11 @@ then
   read -e -p "Enter script_5:" -i "SCRIPT_5" input_script_5
 fi
 
-entityscene_1 =`echo "$input_script_1" | tr '[:upper:]' '[:lower:]' | tr ' [:punct:]' '_'`
-entityscene_2 =`echo "$input_script_2"`
-entityscene_3 =`echo "$input_script_3"`
-entityscene_4 =`echo "$input_script_4"`
-entityscene_5 =`echo "$input_script_5"`
+scene_1=`echo "$input_script_1" | tr '[:upper:]' '[:lower:]' | tr ' [:punct:]' '_'`
+scene_2=`echo "$input_script_2"`
+scene_3=`echo "$input_script_3"`
+scene_4=`echo "$input_script_4"`
+scene_5=`echo "$input_script_5"`
 
 
 
@@ -226,22 +226,22 @@ then
 fi
 
 # Add user input to variables
-toggle_1_entity =`echo "input_toggle_1" `
-toggle_1_name =`echo "input_toggle_1_name" `
-toggle_2_entity =`echo "input_toggle_2" `
-toggle_2_name =`echo "input_toggle_2_name"`
-toggle_3_entity =`echo "input_toggle_3"`
-toggle_3_name =`echo "input_toggle_3_name"`
-toggle_4_entity =`echo "input_toggle_4"`
-toggle_4_name =`echo "input_toggle_4_name"`
-toggle_5_entity =`echo "input_toggle_5"`
-toggle_5_name =`echo "input_toggle_5_name"`
-toggle_6_entity =`echo "input_toggle_6"`
-toggle_6_name =`echo "input_toggle_6_name"`
-toggle_7_entity =`echo "input_toggle_7"`
-toggle_7_name =`echo "input_toggle_7_name"`
-toggle_8_entity =`echo "input_toggle_8"`
-toggle_8_name =`echo "input_toggle_8_name"`
+toggle_1_entity=`echo "input_toggle_1" `
+toggle_1_name=`echo "input_toggle_1_name" `
+toggle_2_entity=`echo "input_toggle_2" `
+toggle_2_name=`echo "input_toggle_2_name"`
+toggle_3_entity=`echo "input_toggle_3"`
+toggle_3_name=`echo "input_toggle_3_name"`
+toggle_4_entity=`echo "input_toggle_4"`
+toggle_4_name=`echo "input_toggle_4_name"`
+toggle_5_entity=`echo "input_toggle_5"`
+toggle_5_name=`echo "input_toggle_5_name"`
+toggle_6_entity=`echo "input_toggle_6"`
+toggle_6_name=`echo "input_toggle_6_name"`
+toggle_7_entity=`echo "input_toggle_7"`
+toggle_7_name=`echo "input_toggle_7_name"`
+toggle_8_entity=`echo "input_toggle_8"`
+toggle_8_name=`echo "input_toggle_8_name"`
 
 
 # Create temporary folder
