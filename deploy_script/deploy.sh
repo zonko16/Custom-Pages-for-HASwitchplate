@@ -111,7 +111,7 @@ then
 fi
 
 
-############################################
+##############################################################################################################################
 # Page 2 scripts setup
 echo -e -n "Do you want to configure the \e[1mScripts \e[0mPage?(y/n) "
 read -r p2_answer
@@ -138,7 +138,7 @@ fi
 
 ############################################
 # Weather/Time Page configuration
-echo -e -n "Do you want to configure the \e[1mWeather Page\e[0m?(y/n) "
+echo -e "Do you want to configure the \e[1mWeather Page\e[0m?(y/n) "
 read -r p3_answer
 if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
@@ -163,7 +163,7 @@ fi
 
 ############################################
 # Thermostat Page Configuration
-echo -e -n "Do you want to configure the \e[1mThermostat Page\e[0m?(y/n)"
+echo -e "Do you want to configure the \e[1mThermostat Page\e[0m?(y/n)"
 read -r p5_answer
 if [ "$p5_answer" != "${p5_answer#[Yy]}" ]
 then
@@ -175,7 +175,7 @@ then
 fi
 ############################################
 #Toggles Page Configuration
-echo -e -n "Do you want to configure the \e[1mTOGGLES Page\e[0m?(y/n) "
+echo -e -n "Do you want to configure the \e[1mToggles Page\e[0m?(y/n):"
 read -r p6_answer
 if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
 then
@@ -213,12 +213,14 @@ then
 fi
 
 # Setup Media Player
-echo ""
-echo -e "Do you want to configure the \e[1mMedia Player Page\e[0m?"
-echo -e "(y/n):"
+echo -e -n "Do you want to configure the \e[1mMedia Player Page\e[0m?(y/n):"
 read -r p8_answer
 if [ "$p8_answer" != "${p8_answer#[Yy]}" ]
 then
+  echo -e "=============================================================="
+  echo -e "                     Media Player Setup"
+  echo -e "=============================================================="
+  echo -e ""
   read -e -p "Enter your Media Player entity:" -i "media_player.spotify" media_player
 
   if [[ "$panel_size" == "3.2" ]]
@@ -229,17 +231,59 @@ then
     read -e -p "Enter Source 2:" media_source_2
     read -e -p "Enter a Name for source 2:" media_source_2_name
   fi
+  echo -e -n "Do you want to configure the \e[1mPlaylist Page\e[0m?(y/n):"
+  read -r p7_answer
+  if [ "$p7_answer" != "${p7_answer#[Yy]}" ]
+  then
+    echo -e ""
+    echo -e "=============================================================="
+    echo -e "                    Media Playlists"
+    echo -e "=============================================================="
+    echo -e ""
+    read -e -p "Enter Playlist 1:" -i "script.1" playlist1
+    read -e -p "Enter Playlist 2:" -i "script.2" playlist2
+    read -e -p "Enter Playlist 3:" -i "script.3" playlist3
+    read -e -p "Enter Playlist 4:" -i "script.4" playlist4
+    read -e -p "Enter Playlist 5:" -i "script.5" playlist5
+    read -e -p "Enter Playlist 6:" -i "script.6" playlist6
+  fi
 fi
 
+echo -e -n "Do you want to configure the \e[1m3D Printer Page\e[0m?(y/n): "
+read -r p9_answer
+if [ "$p9_answer" != "${p9_answer#[Yy]}" ]
+then
+  echo -e "======================================================="
+  echo -e "                \e[1m3D Printer Page \e[0mSetup"
+  echo -e ""
+  echo -e "       The sensors for the 3d printer look like:"
+  echo -e "      \e[1msensor.octoprint_actual_bed_temp\e[0m"
+  echo -e "Provide only the part of custom part of your sensor."
+  echo -e "               In this case: octoprint"
+  echo -e "======================================================="
+  echo -e ""
 
+  read -e -p "Enter 3D Printer ON/OFF switch entity:" -i "switch.printer" octoSwitch
+  read -e -p "Enter your 3d printer sensor:" -i "octoprint" octoSensor
+fi
+
+##############################################################################################################################
 # Create temporary folder
 hasp_temp_dir=`mktemp -d`
 
 # Download the necessary files
-wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_3.2in/3.2_packages.tar.gz
-tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
-rm $hasp_temp_dir/3.2_packages.tar.gz
+if [[ "$panel_size" == "3.2"]]
+then
+  wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_3.2in/3.2_packages.tar.gz
+  tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
+  rm $hasp_temp_dir/3.2_packages.tar.gz
+else
+  wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_2.4in/2.4_packages.tar.gz
+  tar -zxf $hasp_temp_dir/2.4_packages.tar.gz -C $hasp_temp_dir
+  rm $hasp_temp_dir/2.4_packages.tar.gz
+fi
 
+##############################################################################################################################
 # Write SCRIPTS config to file if it was set up by user
 if [ "$p2_answer" != "${p2_answer#[Yy]}" ]
 then
@@ -266,24 +310,14 @@ fi
 # Write Toggles Page variables to yaml
 if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
 then
-  sed -i -- 's/domain.TOGGLE1/'"$toggle1"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE2/'"$toggle2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE3/'"$toggle3"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE4/'"$toggle4"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE5/'"$toggle5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE6/'"$toggle6"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/toggleName1/'"$toggle_1_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/toggleName2/'"$toggle_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/toggleName3/'"$toggle_3_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/toggleName4/'"$toggle_4_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/toggleName5/'"$toggle_5_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/toggleName6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  #Entities
+  sed -i -e 's/domain.TOGGLE1/'"$toggle1"'/g' -e 's/domain.TOGGLE2/'"$toggle2"'/g' -e 's/domain.TOGGLE3/'"$toggle3"'/g' -e 's/domain.TOGGLE4/'"$toggle4"'/g' -e 's/domain.TOGGLE5/'"$toggle5"'/g' -e 's/domain.TOGGLE6/'"$toggle6"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -e 's/toggleName1/'"$toggle_1_name"'/g' -e 's/toggleName2/'"$toggle_2_name"'/g' -e 's/toggleName3/'"$toggle_3_name"'/g' -e 's/toggleName4/'"$toggle_4_name"'/g' -e 's/toggleName5/'"$toggle_5_name"'/g' -e 's/toggleName6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+
   if [[ "$panel_size" == "3.2" ]]
   then
-    sed -i -- 's/domain.TOGGLE7/'"$toggle7"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-    sed -i -- 's/domain.TOGGLE8/'"$toggle8"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-    sed -i -- 's/toggleName7/'"$toggle_7_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-    sed -i -- 's/toggleName8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -e 's/domain.TOGGLE7/'"$toggle7"'/g' -e 's/domain.TOGGLE8/'"$toggle8"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -e 's/toggleName7/'"$toggle_7_name"'/g' -e 's/toggleName8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   fi
 fi
 
@@ -295,7 +329,13 @@ then
   sed -i -e 's/Source1/'"$media_source_1_name"'/g' -e 's/Source2/'"$media_source_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
 fi
 
+if [ "$p7_answer" != "${p7_answer#[Yy]}" ]
+then
+  sed -i -e 's/script.PLAYLIST1/'"$playlist1"'/g' -e 's/script.PLAYLIST2/'"$playlist2"'/g' -e 's/script.PLAYLIST3/'"$playlist3"'/g' -e 's/script.PLAYLIST4/'"$playlist4"'/g' -e 's/script.PLAYLIST5/'"$playlist5"'/g' -e 's/script.PLAYLIST6/'"$playlist6"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p7_playlists.yaml
 
+if [ "$p9_answer" != "${p9_answer#[Yy]}" ]
+then
+  sed -i -e 's/switch.printer/'"$octoSwitch"'/g' -e 's/octoprint/'"$octoSensor"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p9_3dprinter.yaml
 
 #################################################################################
 #################################################################################

@@ -35,7 +35,7 @@ sensor:
     json_attributes_topic:  "hasp/plate01/sensor"
 
   - platform: darksky
-    api_key: YOUR_DARK_SKY_API
+    api_key: YourAPIKey
     forecast:
       - 0
     language: en
@@ -48,7 +48,7 @@ sensor:
       minutes: 5
 
   - platform: darksky
-    api_key: YOUR_DARK_SKY_API
+    api_key: YourAPIKey
     forecast:
       - 1
     language: en
@@ -58,7 +58,7 @@ sensor:
       minutes: 30
 
   - platform: darksky
-    api_key: YOUR_DARK_SKY_API
+    api_key: YourAPIKey
     forecast:
       - 2
     language: en
