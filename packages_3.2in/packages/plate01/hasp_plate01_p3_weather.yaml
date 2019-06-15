@@ -19,7 +19,8 @@ automation:
       entity_id: 'binary_sensor.plate01_connected'
       state: 'on'
     action:
-    # In Text
+
+# Inside/Outside Label
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[9].font'
@@ -27,31 +28,75 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[9].txt'
-        payload: {{ In }}
+        payload_template: >-
+          {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
+            "In"
+          {%- else -%}
+            "Out"
+          {%- endif %}
 
-    # In Temp
-    
+# Switches the displayed temperature  
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[6].font'
-        payload: '5'
-# Replace sensor.YOUR_TEMPERATURE_SENSOR with your temperature sensor
+        payload: '6'
+    # replace sensor.YOUR_TEMPERATURE_SENSOR with your temperature sensor below
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[6].txt'
-        payload_template: '"{{ states.sensor.TEMPERATURE.state }}°C"'
-       
-
-    # In Humidity
+        payload_template: >-
+          {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
+            "{{ states.sensor.TEMPERATURE.state }}°C" 
+          {%- else -%}
+            "{{ states.sensor.TEMPERATURE2.state }}°C"
+          {%- endif %}
+    # Switches the displayed Humidity
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[11].font'
         payload: '7'
-# Replace sensor.YOUR_HUMIDITY_SENSOR with your humidity sensor
+    # replace sensor.YOUR_HUMIDITY_SENSOR with your humidity sensor below
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[11].txt'
-        payload_template: '"{{ states.sensor.HUMIDITY.state }}%"'
+        payload_template: >-
+          {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
+            "{{ states.sensor.HUMIDITY.state }}%" 
+          {%- else -%}
+            "{{ states.sensor.HUMIDITY2.state }}%"
+          {%- endif %}
+          
+#     # In Temp
+      # # In Text
+    # - service: mqtt.publish
+    #   data:
+    #     topic: 'hasp/plate01/command/p[3].b[9].font'
+    #     payload: '7'
+    # - service: mqtt.publish
+    #   data:
+    #     topic: 'hasp/plate01/command/p[3].b[9].txt'
+    #     payload: {{ In }}  
+#     - service: mqtt.publish
+#       data:
+#         topic: 'hasp/plate01/command/p[3].b[6].font'
+#         payload: '5'
+# # Replace sensor.YOUR_TEMPERATURE_SENSOR with your temperature sensor
+#     - service: mqtt.publish
+#       data:
+#         topic: 'hasp/plate01/command/p[3].b[6].txt'
+#         payload_template: '"{{ states.sensor.TEMPERATURE.state }}°C"'
+       
+
+#     # In Humidity
+#     - service: mqtt.publish
+#       data:
+#         topic: 'hasp/plate01/command/p[3].b[11].font'
+#         payload: '7'
+# # Replace sensor.YOUR_HUMIDITY_SENSOR with your humidity sensor
+#     - service: mqtt.publish
+#       data:
+#         topic: 'hasp/plate01/command/p[3].b[11].txt'
+#         payload_template: '"{{ states.sensor.HUMIDITY.state }}%"'
 
     # Out
     - service: mqtt.publish
