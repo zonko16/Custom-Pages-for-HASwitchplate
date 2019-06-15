@@ -1,0 +1,12 @@
+automation:
+- alias: hasp_plate01_ReturnToDefaultPage
+  trigger:
+  - platform: mqtt
+    topic: 'hasp/plate01/state/#'
+  action:
+  - delay: '00:00:10'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plate01/command/page'
+      payload: '3'
+  
