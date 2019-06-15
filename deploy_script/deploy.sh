@@ -118,14 +118,14 @@ echo -e -n "Do you want to configure the \e[1mScripts \e[0mPage?(y/n) "
 read -r p2_answer
 if [ "$p2_answer" != "${p2_answer#[Yy]}" ]
 then
-  echo ""
-  echo "\e[1m================================================="
-  echo "           Page 2: Scripts Setup"
-  echo ""
-  echo "Enter script entity IDs (i.e. script.living_room)"
-  echo "Script 1: bottom - Script_5: top"
-  echo "=================================================\e[0m"
-  echo ""
+  echo -e ""
+  echo -e "\e[1m================================================="
+  echo -e "           Page 2: Scripts Setup"
+  echo -e ""
+  echo -e "Enter script entity IDs (i.e. script.living_room)"
+  echo -e "Script 1: bottom - Script_5: top"
+  echo -e "=================================================\e[0m"
+  echo -e ""
 
 # User Input for script entities
   read -e -p "Enter script_1:" -i "script.SCRIPT_1" scene_1
@@ -143,13 +143,13 @@ echo -e "Do you want to configure the \e[1mWeather Page\e[0m?(y/n) "
 read -r p3_answer
 if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
-  echo "\e[1m================================================================"
+  echo -e "\e[1m================================================================"
   echo -e "For weather forecast you will need an Dark Sky API"
-  echo ""
-  echo "If you have a temperature sensor you can customize your entity here."
-  echo "The sensor can be accessed by pressing the actual temperature on the display"
-  echo "3.2in users can use an additional sensor."
-  echo "================================================================\e[0m"
+  echo -e ""
+  echo -e "If you have a temperature sensor you can customize your entity here."
+  echo -e "The sensor can be accessed by pressing the actual temperature on the display"
+  echo -e "3.2in users can use an additional sensor."
+  echo -e "================================================================\e[0m"
   
   read -e -p "Enter your Darksky API Token:" -i "YOUR_API_TOKEN" dark_sky_api
   read -e -p "Enter temperature sensor entity_id:" -i "sensor.INDOOR_TEMP_DUMMY" in_temp
@@ -168,10 +168,10 @@ echo -e "Do you want to configure the \e[1mThermostat Page\e[0m?(y/n)"
 read -r p5_answer
 if [ "$p5_answer" != "${p5_answer#[Yy]}" ]
 then
-  echo "\e[1m================================="
+  echo -e "\e[1m================================="
   echo -e "Page 5: Thermostat configuration"
-  echo "=================================\e[0m"
-  echo ""
+  echo -e "=================================\e[0m"
+  echo -e ""
   read -e -p "Enter your thermostat entity_id:" -i "climate.DUMMY" climate  
 fi
 ############################################
@@ -180,18 +180,18 @@ echo -e -n "Do you want to configure the \e[1mToggles Page\e[0m?(y/n):"
 read -r p6_answer
 if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
 then
-  echo "===================================================="
-  echo "Page 6: Toggles Setup"
-  echo ""
-  echo "Enter entity IDs and names for each switch."
-  echo "The switches will be ordered using following schema:"
-  echo ""
+  echo -e "===================================================="
+  echo -e "Page 6: Toggles Setup"
+  echo -e ""
+  echo -e "Enter entity IDs and names for each switch."
+  echo -e "The switches will be ordered using following schema:"
+  echo -e ""
   echo -e "\e[1mtoggle_1 - toggle_2"
   echo -e "toggle_3 - toggle_4"
   echo -e "toggle_5 - toggle_6"
   echo -e "toggle_6 - toggle_7\e[0m"
-  echo "===================================================="
-  echo ""
+  echo -e "===================================================="
+  echo -e ""
   read -e -p "Enter toggle_1 entity id:" -i "DUMMY" toggle1
   read -e -p "Enter toggle_1 name:" -i "DUMMY" toggle_1_name
   read -e -p "Enter toggle_2 entity id:" -i "DUMMY" toggle2
