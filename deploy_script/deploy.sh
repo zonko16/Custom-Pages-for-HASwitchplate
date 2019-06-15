@@ -53,7 +53,8 @@ then
 fi
 
 # Ask user to provide the panel size
-echo "Please provide the size of your Nextion panel."
+echo ""
+echo "\e[1mPlease provide the size of your Nextion panel.\e[0m"
 read -e -p "Options: (2.4 / 3.2)" -i "2.4" panel_size
 
 # Check to see if packages are being included
@@ -275,7 +276,7 @@ fi
 hasp_temp_dir=`mktemp -d`
 
 # Download the necessary files
-if [[ "$panel_size" == "3.2"]]
+if [[ "$panel_size"  == "3.2" ]]
 then
   wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_3.2in/3.2_packages.tar.gz
   tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
