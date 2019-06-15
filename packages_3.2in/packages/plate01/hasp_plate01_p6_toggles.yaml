@@ -38,9 +38,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[12].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "ToggleName1"
+            "TOGGLENAME1"
           {% else %}
-            "ToggleName9"
+            "TOGGLENAME9"
           {% endif %}
     #Label Toggle 2/10
     - service: mqtt.publish
@@ -52,9 +52,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[13].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "ToggleName2"
+            "TOGGLENAME2"
           {%- else -%}
-            "ToggleName10"
+            "TOGGLENAME10"
           {%- endif %}
     #Label Toggle 3/11
     - service: mqtt.publish
@@ -66,9 +66,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[14].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "ToggleName3"
+            "TOGGLENAME3"
           {%- else -%}
-            "ToggleName11"
+            "TOGGLENAME11"
           {%- endif %}
     #Label Toggle 4/12
     - service: mqtt.publish
@@ -80,9 +80,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[15].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "ToggleName4"
+            "TOGGLENAME4"
           {%- else -%}
-            "ToggleName12"
+            "TOGGLENAME12"
           {%- endif %}
     #Label Toggle 5/13
     - service: mqtt.publish
@@ -94,9 +94,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[16].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "ToggleName5"
+            "TOGGLENAME5"
           {%- else -%}
-            "ToggleName13"
+            "TOGGLENAME13"
           {%- endif %}
     #Label Toggle 6/14
     - service: mqtt.publish
@@ -108,9 +108,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[17].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "ToggleName6"
+            "TOGGLENAME6"
           {%- else -%}
-            "ToggleName14"
+            "TOGGLENAME14"
           {%- endif %}
     #Label Toggle 7/15
     - service: mqtt.publish
@@ -122,9 +122,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[18].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "ToggleName7"
+            "TOGGLENAME7"
           {%- else -%}
-            "ToggleName15"
+            "TOGGLENAME15"
           {%- endif %}
     #Label Toggle 8/16
     - service: mqtt.publish
@@ -136,9 +136,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[19].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "ToggleName8"
+            "TOGGLENAME8"
           {%- else -%}
-            "ToggleName16"
+            "TOGGLENAME16"
           {%- endif %}
 
 
