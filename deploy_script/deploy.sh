@@ -281,6 +281,7 @@ then
   wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_3.2in/3.2_packages.tar.gz
   tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
   rm $hasp_temp_dir/3.2_packages.tar.gz
+
 elif [[ "$panel_size"  == "2.4" ]]
 then
   wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_2.4in/2.4_packages.tar.gz
@@ -337,11 +338,12 @@ fi
 if [ "$p7_answer" != "${p7_answer#[Yy]}" ]
 then
   sed -i -e 's/script.PLAYLIST1/'"$playlist1"'/g' -e 's/script.PLAYLIST2/'"$playlist2"'/g' -e 's/script.PLAYLIST3/'"$playlist3"'/g' -e 's/script.PLAYLIST4/'"$playlist4"'/g' -e 's/script.PLAYLIST5/'"$playlist5"'/g' -e 's/script.PLAYLIST6/'"$playlist6"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p7_playlists.yaml
+fi
 
 if [ "$p9_answer" != "${p9_answer#[Yy]}" ]
 then
   sed -i -e 's/switch.printer/'"$octoSwitch"'/g' -e 's/octoprint/'"$octoSensor"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p9_3dprinter.yaml
-
+fi
 #################################################################################
 #################################################################################
 # Copy files from tempdir to packages
