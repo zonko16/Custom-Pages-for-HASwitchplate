@@ -38,7 +38,7 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[12].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "toggleName1"
+            "toggleNameI"
           {% else %}
             "toggleName9"
           {% endif %}
@@ -155,8 +155,8 @@ automation:
     - service: homeassistant.turn_on
       data_template:
         entity_id: >-
-          {% if is_state('domain.TOGGLE1', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            domain.TOGGLE1
+          {% if is_state('domain.TOGGLEI', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLEI
           {%- elif is_state('domain.TOGGLE9', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             domain.TOGGLE9
           {%- endif %}
@@ -286,8 +286,8 @@ automation:
     - service: homeassistant.turn_off
       data_template:
         entity_id: >-
-          {% if is_state('domain.TOGGLE1', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            domain.TOGGLE1
+          {% if is_state('domain.TOGGLEI', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLEI
           {%- elif is_state('domain.TOGGLE9', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             domain.TOGGLE9
           {%- endif %}
@@ -384,7 +384,7 @@ automation:
       topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
-      entity_id: domain.TOGGLE1
+      entity_id: domain.TOGGLEI
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -398,9 +398,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[4].picc'
         payload_template: >-
-         {% if is_state('domain.TOGGLE1', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+         {% if is_state('domain.TOGGLEI', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {% elif is_state('domain.TOGGLE1', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% elif is_state('domain.TOGGLEI', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
 

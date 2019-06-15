@@ -46,7 +46,7 @@ automation:
         topic: 'hasp/plate01/command/p[3].b[6].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
-            "{{ states.sensor.TEMPERATURE.state }}°C" 
+            "{{ states.sensor.TEMPERATURE1.state }}°C" 
           {%- else -%}
             "{{ states.sensor.TEMPERATURE2.state }}°C"
           {%- endif %}
@@ -61,7 +61,7 @@ automation:
         topic: 'hasp/plate01/command/p[3].b[11].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
-            "{{ states.sensor.HUMIDITY.state }}%" 
+            "{{ states.sensor.HUMIDITY1.state }}%" 
           {%- else -%}
             "{{ states.sensor.HUMIDITY2.state }}%"
           {%- endif %}
