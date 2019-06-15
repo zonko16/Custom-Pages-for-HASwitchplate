@@ -32,7 +32,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
             "In"
           {%- else -%}
-            "Out"
+            "In2"
           {%- endif %}
 
 # Switches the displayed temperature  

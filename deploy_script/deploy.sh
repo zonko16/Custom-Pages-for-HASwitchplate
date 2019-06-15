@@ -275,15 +275,14 @@ fi
 # Create temporary folder
 hasp_temp_dir=`mktemp -d`
 echo ""
+
 # Download the necessary files
 if [[ "$panel_size"  == "3.2" ]]
 then
- 
   echo "Download 3.2in packages"
   wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/dev/packages_3.2in/3.2_packages.tar.gz
   tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
   rm $hasp_temp_dir/3.2_packages.tar.gz
-
 elif [[ "$panel_size"  == "2.4" ]]
 then
   echo "Download 2.4in packages"
