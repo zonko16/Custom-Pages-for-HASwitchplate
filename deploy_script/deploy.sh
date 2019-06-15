@@ -189,25 +189,25 @@ then
   echo -e "\e[1mtoggle_5 - toggle_6"
   echo -e "\e[1mtoggle_6 - toggle_7"
   echo ""
-  read -e -p "Enter toggle_1 entity id:" -i "DUMMY" toggle_1
+  read -e -p "Enter toggle_1 entity id:" -i "DUMMY" toggle1
   read -e -p "Enter toggle_1 name:" -i "DUMMY" toggle_1_name
-  read -e -p "Enter toggle_2 entity id:" -i "DUMMY" toggle_2
+  read -e -p "Enter toggle_2 entity id:" -i "DUMMY" toggle2
   read -e -p "Enter toggle_2 name:" -i "DUMMY" toggle_3_name
-  read -e -p "Enter toggle_3 entity id:" -i "DUMMY" toggle_3
+  read -e -p "Enter toggle_3 entity id:" -i "DUMMY" toggle3
   read -e -p "Enter toggle_3 name:" -i "DUMMY" toggle_3_name
-  read -e -p "Enter toggle_4 entity id:" -i "DUMMY" toggle_4
+  read -e -p "Enter toggle_4 entity id:" -i "DUMMY" toggle4
   read -e -p "Enter toggle_4 name:" -i "DUMMY" toggle_4_name
-  read -e -p "Enter toggle_5 entity id:" -i "DUMMY" toggle_5
+  read -e -p "Enter toggle_5 entity id:" -i "DUMMY" toggle5
   read -e -p "Enter toggle_5 name:" -i "DUMMY" toggle_5_name
-  read -e -p "Enter toggle_6 entity id:" -i "DUMMY" toggle_6
+  read -e -p "Enter toggle_6 entity id:" -i "DUMMY" toggle6
   read -e -p "Enter toggle_6 name:" -i "DUMMY" toggle_6_name
   
   #Setup additional switches for 3.2in users
   if [[ "$panel_size"  == "3.2" ]]
   then
-    read -e -p "Enter toggle_7 entity id:" -i "DUMMY" toggle_7
+    read -e -p "Enter toggle_7 entity id:" -i "DUMMY" toggle7
     read -e -p "Enter toggle_7 name:" -i "DUMMY" toggle_7_name
-    read -e -p "Enter toggle_8 entity id:" -i "DUMMY" toggle_8
+    read -e -p "Enter toggle_8 entity id:" -i "DUMMY" toggle8
     read -e -p "Enter toggle_8 name:" -i "DUMMY" toggle_8_name
   fi
 fi
@@ -266,12 +266,12 @@ fi
 # Write Toggles Page variables to yaml
 if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
 then
-  sed -i -- 's/domain.TOGGLE1/'"$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE2/'"$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE3/'"$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE4/'"$toggle_4_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE5/'"$toggle_5_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/domain.TOGGLE6/'"$toggle_6_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE1/'"$toggle1"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE2/'"$toggle2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE3/'"$toggle3"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE4/'"$toggle4"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE5/'"$toggle5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE6/'"$toggle6"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   sed -i -- 's/toggleName1/'"$toggle_1_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   sed -i -- 's/toggleName2/'"$toggle_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   sed -i -- 's/toggleName3/'"$toggle_3_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
@@ -280,8 +280,8 @@ then
   sed -i -- 's/toggleName6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   if [[ "$panel_size" == "3.2" ]]
   then
-    sed -i -- 's/domain.TOGGLE7/'"$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-    sed -i -- 's/domain.TOGGLE8/'"$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/domain.TOGGLE7/'"$toggle7"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/domain.TOGGLE8/'"$toggle8"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
     sed -i -- 's/toggleName7/'"$toggle_7_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
     sed -i -- 's/toggleName8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   fi
