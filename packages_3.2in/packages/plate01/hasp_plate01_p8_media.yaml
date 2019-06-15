@@ -43,7 +43,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[8].b[11].txt'
-        payload: '"SOURCE1"' # Set name for SOURCE1
+        payload: '"Source1"' # Set name for SOURCE1
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[8].b[10].font'
@@ -51,7 +51,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[8].b[10].txt'
-        payload: '"SOURCE2"' # Set name for SOURCE2
+        payload: '"Source2"' # Set name for SOURCE2
 
   
   # Select SOURCE1
@@ -64,7 +64,7 @@ automation:
       service: media_player.select_source
       data:
         entity_id: media_player.spotify
-        source: 'MEDIA_SOURCE1' # replace with your own Media Player Source
+        source: 'MediaSource1' # replace with your own Media Player Source
 
   # Select SOURCE2
   - alias: hasp_plate_p8_SourceKücheB11
@@ -76,7 +76,7 @@ automation:
       service: media_player.select_source
       data:
         entity_id: media_player.spotify
-        source: 'MEDIA_SOURCE2' # replace with your own Media Player Source
+        source: 'MediaSource2' # replace with your own Media Player Source
 
   # Play/Pause button action
   - alias: hasp_plate01_p8_MediaPauseButton7

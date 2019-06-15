@@ -249,11 +249,11 @@ fi
 # Write WEATHER config to file if it was set up by user
 if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
-  sed -i -- 's/YOUR_DARKSKY_API/'"$dark_sky_api"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_*.yaml
-  sed -i -e 's/sensor.YOUR_TEMPERATURE_SENSOR/'"$in_temp"'/g' -e 's/sensor.YOUR_HUMIDITY_/'"$in_humidity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
+  sed -i -- 's/YourAPIKey/'"$dark_sky_api"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_*.yaml
+  sed -i -e 's/sensor.YourTemperatureSensor/'"$in_temp"'/g' -e 's/sensor.YourHumidity/'"$in_humidity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
   if [[ "$panel_size" == "3.2" ]]
   then
-    sed -i -e 's/sensor.YOUR_TEMPERATURE_SENSOR2/'"$in_temp_2"'/g' -e 's/sensor.YOUR_HUMIDITY_SENSOR2/'"$in_humidity_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
+    sed -i -e 's/sensor.YourTemperatureSensor2/'"$in_temp_2"'/g' -e 's/sensor.YourHumiditySensor2/'"$in_humidity_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p3_weather.yaml
   fi
 fi
     
@@ -266,24 +266,24 @@ fi
 # Write Toggles Page variables to yaml
 if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
 then
-  sed -i -- 's/ENTITY_T1/'"$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/ENTITY_T2/'"$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/ENTITY_T3/'"$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/ENTITY_T4/'"$toggle_4_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/ENTITY_T5/'"$toggle_5_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/ENTITY_T6/'"$toggle_6_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE1/'"$toggle_1_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE2/'"$toggle_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE3/'"$toggle_3_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE4/'"$toggle_4_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE5/'"$toggle_5_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-  sed -i -- 's/TOGGLE6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE1/'"$toggle_1_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE2/'"$toggle_2_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE3/'"$toggle_3_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE4/'"$toggle_4_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE5/'"$toggle_5_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/domain.TOGGLE6/'"$toggle_6_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ToggleName1/'"$toggle_1_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ToggleName2/'"$toggle_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ToggleName3/'"$toggle_3_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ToggleName4/'"$toggle_4_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ToggleName5/'"$toggle_5_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+  sed -i -- 's/ToggleName6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   if [[ "$panel_size" == "3.2" ]]
   then
-    sed -i -- 's/ENTITY_T7/'"$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-    sed -i -- 's/ENTITY_T8/'"$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-    sed -i -- 's/TOGGLE7/'"$toggle_7_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-    sed -i -- 's/TOGGLE8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/domain.TOGGLE7/'"$toggle_7_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/domain.TOGGLE8/'"$toggle_8_entity"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/ToggleName7/'"$toggle_7_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
+    sed -i -- 's/ToggleName8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   fi
 fi
 
@@ -291,8 +291,8 @@ fi
 if [ "$p8_answer" != "${p8_answer#[Yy]}" ]
 then
   sed -i -e 's/media_player.spotify/'"$media_player"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
-  sed -i -e 's/MEDIA_SOURCE1/'"$media_source_1"'/g' -e 's/MEDIA_SOURCE2/'"$media_source_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
-  sed -i -e 's/SOURCE1/'"$media_source_1_name"'/g' -e 's/SOURCE2/'"$media_source_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
+  sed -i -e 's/MediaSource1/'"$media_source_1"'/g' -e 's/MediaSource2/'"$media_source_2"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
+  sed -i -e 's/Source1/'"$media_source_1_name"'/g' -e 's/Source2/'"$media_source_2_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p8_media.yaml
 fi
 
 

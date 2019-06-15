@@ -38,9 +38,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[12].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "TOGGLE1"
+            "ToggleName1"
           {% else %}
-            "TOGGLE9"
+            "ToggleName9"
           {% endif %}
     #Label Toggle 2/10
     - service: mqtt.publish
@@ -52,9 +52,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[13].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "TOGGLE2"
+            "ToggleName2"
           {%- else -%}
-            "TOGGLE10"
+            "ToggleName10"
           {%- endif %}
     #Label Toggle 3/11
     - service: mqtt.publish
@@ -66,9 +66,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[14].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "TOGGLE3"
+            "ToggleName3"
           {%- else -%}
-            "TOGGLE11"
+            "ToggleName11"
           {%- endif %}
     #Label Toggle 4/12
     - service: mqtt.publish
@@ -80,9 +80,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[15].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "TOGGLE4"
+            "ToggleName4"
           {%- else -%}
-            "TOGGLE12"
+            "ToggleName12"
           {%- endif %}
     #Label Toggle 5/13
     - service: mqtt.publish
@@ -94,9 +94,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[16].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "TOGGLE5"
+            "ToggleName5"
           {%- else -%}
-            "TOGGLE13"
+            "ToggleName13"
           {%- endif %}
     #Label Toggle 6/14
     - service: mqtt.publish
@@ -108,9 +108,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[17].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "TOGGLE6"
+            "ToggleName6"
           {%- else -%}
-            "TOGGLE14"
+            "ToggleName14"
           {%- endif %}
     #Label Toggle 7/15
     - service: mqtt.publish
@@ -122,9 +122,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[18].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "TOGGLE7"
+            "ToggleName7"
           {%- else -%}
-            "TOGGLE15"
+            "ToggleName15"
           {%- endif %}
     #Label Toggle 8/16
     - service: mqtt.publish
@@ -136,9 +136,9 @@ automation:
         topic: 'hasp/plate01/command/p[6].b[19].txt'
         payload_template: >-
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
-            "TOGGLE8"
+            "ToggleName8"
           {%- else -%}
-            "TOGGLE16"
+            "ToggleName16"
           {%- endif %}
 
 
@@ -155,10 +155,10 @@ automation:
     - service: homeassistant.turn_on
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T1', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T1
-          {%- elif is_state('ENTITY_T9', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T9
+          {% if is_state('domain.TOGGLE1', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE1
+          {%- elif is_state('domain.TOGGLE9', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE9
           {%- endif %}
 
   # Toggle Toggle2 when p[6].b[5] pressed
@@ -171,10 +171,10 @@ automation:
     - service: homeassistant.turn_on
       data_template: 
         entity_id: >-
-          {% if is_state('ENTITY_T2', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T2
-          {%- elif is_state('ENTITY_T10', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T10
+          {% if is_state('domain.TOGGLE2', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE2
+          {%- elif is_state('domain.TOGGLE10', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE10
           {%- endif %}
 
   # Toggle Toggle3 when p[6].b[6] pressed
@@ -187,10 +187,10 @@ automation:
     - service: homeassistant.turn_on
       data_template:
         entity_id:  >-
-          {% if is_state('ENTITY_T3', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T3
-          {%- elif is_state('ENTITY_T11', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T11
+          {% if is_state('domain.TOGGLE3', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE3
+          {%- elif is_state('domain.TOGGLE11', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE11
           {%- endif %}
 
    # Toggle Button 4 when p6.b7 pressed
@@ -203,10 +203,10 @@ automation:
     - service: homeassistant.turn_on
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T4', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T4
-          {%- elif is_state('ENTITY_T12', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T12
+          {% if is_state('domain.TOGGLE4', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE4
+          {%- elif is_state('domain.TOGGLE12', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE12
           {%- endif %} 
       
    # Toggle Button 5 when p6.b8
@@ -219,10 +219,10 @@ automation:
     - service: homeassistant.turn_on
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T5', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T5
-          {%- elif is_state('ENTITY_T13', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T13
+          {% if is_state('domain.TOGGLE5', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE5
+          {%- elif is_state('domain.TOGGLE13', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE13
           {%- endif %} 
     
     # Toggle Button 6 p4.b9
@@ -235,10 +235,10 @@ automation:
     - service: homeassistant.turn_on
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T6', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T6
-          {%- elif is_state('ENTITY_T14', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T14
+          {% if is_state('domain.TOGGLE6', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE6
+          {%- elif is_state('domain.TOGGLE14', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE14
           {%- endif %} 
     
     # Toggle Button 7 p4.b10
@@ -251,10 +251,10 @@ automation:
     - service: homeassistant.turn_on
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T7', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T7
-          {%- elif is_state('ENTITY_T15', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T15
+          {% if is_state('domain.TOGGLE7', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE7
+          {%- elif is_state('domain.TOGGLE15', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE15
           {%- endif %} 
         
      # Togge Button 8 p4.b11
@@ -267,10 +267,10 @@ automation:
     - service: homeassistant.turn_on
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T8', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T8
-          {%- elif is_state('ENTITY_T16', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T16
+          {% if is_state('domain.TOGGLE8', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE8
+          {%- elif is_state('domain.TOGGLE16', 'off') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE16
           {%- endif %} 
  
  ##############################################################################################
@@ -286,10 +286,10 @@ automation:
     - service: homeassistant.turn_off
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T1', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T1
-          {%- elif is_state('ENTITY_T9', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T9
+          {% if is_state('domain.TOGGLE1', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE1
+          {%- elif is_state('domain.TOGGLE9', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE9
           {%- endif %}
 
   # Toggle Toggle2 when p[6].b[5] pressed
@@ -302,10 +302,10 @@ automation:
     - service: homeassistant.turn_off
       data_template: 
         entity_id: >-
-          {% if is_state('ENTITY_T2', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T2
-          {%- elif is_state('ENTITY_T10', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T10
+          {% if is_state('domain.TOGGLE2', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE2
+          {%- elif is_state('domain.TOGGLE10', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE10
           {%- endif %}
 
   # Toggle Toggle3 when p[6].b[6] pressed
@@ -318,10 +318,10 @@ automation:
     - service: homeassistant.turn_off
       data_template:
         entity_id:  >-
-          {% if is_state('ENTITY_T3', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T3
-          {%- elif is_state('ENTITY_T4', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T4
+          {% if is_state('domain.TOGGLE3', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE3
+          {%- elif is_state('domain.TOGGLE4', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE4
           {%- endif %}
       
    # Toggle Button 4 when p6.b7 pressed
@@ -334,10 +334,10 @@ automation:
     - service: homeassistant.turn_off
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T4', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T4
-          {%- elif is_state('ENTITY_T12', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T12
+          {% if is_state('domain.TOGGLE4', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE4
+          {%- elif is_state('domain.TOGGLE12', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE12
           {%- endif %} 
       
    # Toggle Button 5 when p6.b8
@@ -350,10 +350,10 @@ automation:
     - service: homeassistant.turn_off
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T5', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T5
-          {%- elif is_state('ENTITY_T13', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T13
+          {% if is_state('domain.TOGGLE5', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE5
+          {%- elif is_state('domain.TOGGLE13', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE13
           {%- endif %} 
     
     # Toggle Button 6 p4.b9
@@ -366,10 +366,10 @@ automation:
     - service: homeassistant.turn_off
       data_template:
         entity_id: >-
-          {% if is_state('ENTITY_T6', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
-            ENTITY_T6
-          {%- elif is_state('ENTITY_T14', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
-            ENTITY_T14
+          {% if is_state('domain.TOGGLE6', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+            domain.TOGGLE6
+          {%- elif is_state('domain.TOGGLE14', 'on') and ('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+            domain.TOGGLE14
           {%- endif %} 
 
  
@@ -384,7 +384,7 @@ automation:
       topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
-      entity_id: ENTITY_T1
+      entity_id: domain.TOGGLE1
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -398,9 +398,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[4].picc'
         payload_template: >-
-         {% if is_state('ENTITY_T1', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+         {% if is_state('domain.TOGGLE1', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T1', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% elif is_state('domain.TOGGLE1', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -417,7 +417,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
     - platform: state
-      entity_id: ENTITY_T2
+      entity_id: domain.TOGGLE2
     - platform: homeassistant
       event: start
     action:
@@ -425,9 +425,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[5].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T2', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% if is_state('domain.TOGGLE2', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T2', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% elif is_state('domain.TOGGLE2', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -441,7 +441,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
     - platform: state
-      entity_id: ENTITY_T3
+      entity_id: domain.TOGGLE3
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -452,9 +452,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[6].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T3', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% if is_state('domain.TOGGLE3', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T3', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% elif is_state('domain.TOGGLE3', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
           
@@ -468,9 +468,9 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
     - platform: state
-      entity_id: ENTITY_T4
+      entity_id: domain.TOGGLE4
     - platform: state
-      entity_id: ENTITY_T12
+      entity_id: domain.TOGGLE12
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -481,9 +481,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[7].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T4', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% if is_state('domain.TOGGLE4', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T4', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% elif is_state('domain.TOGGLE4', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
    
@@ -497,9 +497,9 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
     - platform: state
-      entity_id: ENTITY_T5
+      entity_id: domain.TOGGLE5
     - platform: state
-      entity_id: ENTITY_T13
+      entity_id: domain.TOGGLE13
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -510,11 +510,11 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[8].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T5', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% if is_state('domain.TOGGLE5', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {% elif ENTITY_T13', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% elif domain.TOGGLE13', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
-          ENTITY_T13
+          domain.TOGGLE13
   # Toggle state picture on p[6].b[9] when Toggle [6] changes
   - alias: hasp_plate01_p6_ToggleColor6
     trigger:
@@ -525,9 +525,9 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
     - platform: state
-      entity_id: ENTITY_T6
+      entity_id: domain.TOGGLE6
     - platform: state
-      entity_id: ENTITY_T14
+      entity_id: domain.TOGGLE14
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -538,9 +538,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[9].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T6', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% if is_state('domain.TOGGLE6', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T6', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% elif is_state('domain.TOGGLE6', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
      
@@ -551,7 +551,7 @@ automation:
       topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
-      entity_id: ENTITY_T7
+      entity_id: domain.TOGGLE7
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
@@ -565,9 +565,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[10].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T7', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% if is_state('domain.TOGGLE7', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T7', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% elif is_state('domain.TOGGLE7', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
          
@@ -578,7 +578,7 @@ automation:
       topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
-      entity_id: ENTITY_T8
+      entity_id: domain.TOGGLE8
     - platform: state
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'off'
@@ -592,9 +592,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[11].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T8', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% if is_state('domain.TOGGLE8', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T8', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
+          {% elif is_state('domain.TOGGLE8', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'off') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -610,7 +610,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'on'
     - platform: state
-      entity_id: ENTITY_T9
+      entity_id: domain.TOGGLE9
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -621,9 +621,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[4].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T9', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% if is_state('domain.TOGGLE9', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T9', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% elif is_state('domain.TOGGLE9', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -637,7 +637,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'on'
     - platform: state
-      entity_id: ENTITY_T10
+      entity_id: domain.TOGGLE10
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -648,9 +648,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[5].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T10', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% if is_state('domain.TOGGLE10', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T10', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% elif is_state('domain.TOGGLE10', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -661,9 +661,9 @@ automation:
       topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
-      entity_id: ENTITY_T7
+      entity_id: domain.TOGGLE7
     - platform: state
-      entity_id: ENTITY_T15
+      entity_id: domain.TOGGLE15
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -674,9 +674,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[6].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T4', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% if is_state('domain.TOGGLE4', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T4', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% elif is_state('domain.TOGGLE4', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
           
@@ -690,7 +690,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'on'
     - platform: state
-      entity_id: ENTITY_T12
+      entity_id: domain.TOGGLE12
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -701,9 +701,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[7].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T12', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% if is_state('domain.TOGGLE12', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T12', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}}
+          {% elif is_state('domain.TOGGLE12', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}}
             {{ 2 }}
           {%- endif %}
 
@@ -717,7 +717,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'on'
     - platform: state
-      entity_id: ENTITY_T13
+      entity_id: domain.TOGGLE13
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -728,9 +728,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[8].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T13', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% if is_state('domain.TOGGLE13', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T13', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% elif is_state('domain.TOGGLE13', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -741,9 +741,9 @@ automation:
       topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
-      entity_id: ENTITY_T8
+      entity_id: domain.TOGGLE8
     - platform: state
-      entity_id: ENTITY_T16
+      entity_id: domain.TOGGLE16
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -754,9 +754,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[9].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T14', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% if is_state('domain.TOGGLE14', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-           {% elif is_state('ENTITY_T14', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+           {% elif is_state('domain.TOGGLE14', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -770,7 +770,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'on'
     - platform: state
-      entity_id: ENTITY_T15
+      entity_id: domain.TOGGLE15
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -781,9 +781,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[10].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T15', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% if is_state('domain.TOGGLE15', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T15', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% elif is_state('domain.TOGGLE15', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
 
@@ -797,7 +797,7 @@ automation:
       entity_id: input_boolean.hasp_plate01_p6_switchtoggles
       to: 'on'
     - platform: state
-      entity_id: ENTITY_T16
+      entity_id: domain.TOGGLE16
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -808,9 +808,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[11].picc'
         payload_template: >-
-          {% if is_state('ENTITY_T16', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% if is_state('domain.TOGGLE16', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {% elif is_state('ENTITY_T16', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% elif is_state('domain.TOGGLE16', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {% endif %}
           
