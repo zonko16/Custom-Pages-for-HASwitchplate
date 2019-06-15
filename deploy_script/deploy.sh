@@ -383,9 +383,6 @@ then
     then
       sed -i -e 's/domain.TOGGLE9/'"$toggle9"'/g' -e 's/domain.TOGGLE10/'"$toggle10"'/g' -e 's/domain.TOGGLE11/'"$toggle11"'/g' -e 's/domain.TOGGLE12/'"$toggle12"'/g' -e 's/domain.TOGGLE13/'"$toggle13"'/g' -e 's/domain.TOGGLE14/'"$toggle14"'/g' -e 's/domain.TOGGLE15/'"$toggle15"'/g' -e 's/domain.TOGGLE16/'"$toggle16"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
       sed -i -e 's/toggleName9/'"$toggle_9_name"'/g' -e 's/toggleName10/'"$toggle_10_name"'/g' -e 's/toggleName11/'"$toggle_11_name"'/g' -e 's/toggleName12/'"$toggle_12_name"'/g' -e 's/toggleName13/'"$toggle_13_name"'/g' -e 's/toggleName14/'"$toggle_14_name"'/g' -e 's/toggleName15/'"$toggle_15_name"'/g' -e 's/toggleName16/'"$toggle_16_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
-
-
-  
   fi
 fi
 

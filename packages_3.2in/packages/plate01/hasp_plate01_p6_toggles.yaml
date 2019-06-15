@@ -9,14 +9,15 @@ input_boolean:
 # Automations for handling toggle state buttons on page 6
 automation:
   # Toggles input_boolean which switches between Toggle Page 1 and Toggle Page 2
-  #- alias: hasp_plate01_p6_SwitchTogglesPages
-  #  trigger: 
-  #  - platform: mqtt
-  #    topic: 'hasp/plate01/state/p[6].b[2]'
-  #    payload: 'ON'
-  #  action:
-  #  - service: input_boolean.toggle
-  #    entity_id: input_boolean.hasp_plate01_p6_switchtoggles
+  - alias: hasp_plate01_p6_SwitchTogglesPages
+    trigger: 
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[6].b[2]'
+      payload: 'ON'
+    action:
+    - service: input_boolean.toggle
+      entity_id: input_boolean.hasp_plate01_p6_switchtoggles
+      
   #Set font and text for toggle buttons on device connection
   - alias: hasp_plate01_p6_ToggleInit
     trigger:
@@ -54,7 +55,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             "toggleName2"
           {%- else -%}
-            "toggleNameI0"
+            "toggleName10"
           {%- endif %}
     #Label Toggle 3/11
     - service: mqtt.publish
@@ -68,7 +69,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             "toggleName3"
           {%- else -%}
-            "toggleNameI1"
+            "toggleName11"
           {%- endif %}
     #Label Toggle 4/12
     - service: mqtt.publish
@@ -82,7 +83,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             "toggleName4"
           {%- else -%}
-            "toggleNameI2"
+            "toggleName12"
           {%- endif %}
     #Label Toggle 5/13
     - service: mqtt.publish
@@ -96,7 +97,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             "toggleName5"
           {%- else -%}
-            "toggleNameI3"
+            "toggleName13"
           {%- endif %}
     #Label Toggle 6/14
     - service: mqtt.publish
@@ -110,7 +111,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             "toggleName6"
           {%- else -%}
-            "toggleNameI4"
+            "toggleName14"
           {%- endif %}
     #Label Toggle 7/15
     - service: mqtt.publish
@@ -124,7 +125,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             "toggleName7"
           {%- else -%}
-            "toggleNameI5"
+            "toggleName15"
           {%- endif %}
     #Label Toggle 8/16
     - service: mqtt.publish
@@ -138,7 +139,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p6_switchtoggles.state == "off" -%}
             "toggleName8"
           {%- else -%}
-            "toggleNameI6"
+            "toggleName16"
           {%- endif %}
 
 
@@ -470,8 +471,6 @@ automation:
     - platform: state
       entity_id: domain.TOGGLE4
     - platform: state
-      entity_id: domain.TOGGLE12
-    - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
     - platform: homeassistant
@@ -499,8 +498,6 @@ automation:
     - platform: state
       entity_id: domain.TOGGLE5
     - platform: state
-      entity_id: domain.TOGGLE13
-    - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
     - platform: homeassistant
@@ -527,8 +524,6 @@ automation:
       to: 'off'
     - platform: state
       entity_id: domain.TOGGLE6
-    - platform: state
-      entity_id: domain.TOGGLE14
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -662,9 +657,7 @@ automation:
       topic: 'hasp/plate01/state/page'
       payload: '6'
     - platform: state
-      entity_id: domain.TOGGLE7
-    - platform: state
-      entity_id: domain.TOGGLE15
+      entity_id: domain.TOGGLE11
     - platform: state
       entity_id: 'binary_sensor.plate01_connected'
       to: 'on'
@@ -675,9 +668,9 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[6].b[6].picc'
         payload_template: >-
-          {% if is_state('domain.TOGGLE4', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% if is_state('domain.TOGGLE11', 'on') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 1 }}
-          {% elif is_state('domain.TOGGLE4', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
+          {% elif is_state('domain.TOGGLE11', 'off') and is_state('input_boolean.hasp_plate01_p6_switchtoggles', 'on') -%}
             {{ 2 }}
           {%- endif %}
           

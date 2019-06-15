@@ -1,8 +1,23 @@
-
+##############################################################################
+# Input boolean used to switch between In/Out temperature
+input_boolean:
+  hasp_plate01_p3_temperatureswitch:
+    initial: 'on'
+  
 
 # Automations to display the weather forecast and current temp on page 2
 
 automation:
+  - alias: hasp_plate01_p3_tempswitch
+    trigger: 
+    - platform: mqtt
+      topic: 'hasp/plate01/state/p[3].b[6]'
+      payload: 'ON'
+    action: 
+    - service: homeassistant.toggle
+      data:
+        entity_id: input_boolean.hasp_plate01_p3_temperatureswitch
+
   # Display weather details on page 3 when weather updates or on HASP init
   - alias: hasp_plate01_p3_Weather
     trigger:
@@ -32,7 +47,7 @@ automation:
           {% if states.input_boolean.hasp_plate01_p3_temperatureswitch.state == "on" -%}
             "In"
           {%- else -%}
-            "In2"
+            "In-2"
           {%- endif %}
 
 # Switches the displayed temperature  
@@ -40,7 +55,6 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[3].b[6].font'
         payload: '6'
-    # replace sensor.YOUR_TEMPERATURE_SENSOR with your temperature sensor below
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[6].txt'
@@ -55,7 +69,6 @@ automation:
       data:
         topic: 'hasp/plate01/command/p[3].b[11].font'
         payload: '7'
-    # replace sensor.YOUR_HUMIDITY_SENSOR with your humidity sensor below
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[3].b[11].txt'
