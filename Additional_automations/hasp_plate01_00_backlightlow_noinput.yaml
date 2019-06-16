@@ -1,10 +1,10 @@
 timer:
-  hasp_plate01:
-    duration: '00:00:25'
+  hasp_plate01_backlight:
+    duration: '00:00:15'
 
 
 automation:
-- alias: hasp_plate01_00_DefaultPage_TimerReset
+- alias: hasp_plate01_00_BacklightBright_TimerReset
   trigger:
   - platform: mqtt
     topic: 'hasp/plate01/state/#'
@@ -27,5 +27,5 @@ automation:
   - service: mqtt.publish
     data:
       topic: 'hasp/plate01/brightness/set'
-      payload: '10'
+      payload: '20'
   
