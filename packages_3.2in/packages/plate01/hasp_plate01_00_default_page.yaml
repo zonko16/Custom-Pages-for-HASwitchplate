@@ -1,6 +1,6 @@
 timer:
   hasp_plate01:
-    duration: '00:00:15'
+    duration: '00:00:25'
 
 
 automation:

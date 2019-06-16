@@ -16,6 +16,10 @@ Features
 
 Changelog
 ====
+#### Update 0.4
+- Add shell script for faster first time setup
+- Add automation to switch back to the Clock/Weather Page, if there is no button press for 20 seconds.
+
 #### UPDATE 0.33
 - Fix automation trigger on page change for p5, p6, p7, p9
 
