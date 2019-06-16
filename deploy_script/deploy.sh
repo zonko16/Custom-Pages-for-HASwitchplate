@@ -207,7 +207,6 @@ then
   read -e -p "Enter toggle_5 name:" -i "DUMMY" toggle_5_name
   read -e -p "Enter toggle_6 entity id:" -i "DUMMY" toggle6
   read -e -p "Enter toggle_6 name:" -i "DUMMY" toggle_6_name
-  
   if [[ "$panel_size" == "2.4" ]]
   then
     echo ""
@@ -259,8 +258,6 @@ then
       read -e -p "Enter toggle_16 name:" -i "DUMMY" toggle_16_name
     fi
   fi
-else
-echo -e ""
 fi
 
 # Setup Media Player
