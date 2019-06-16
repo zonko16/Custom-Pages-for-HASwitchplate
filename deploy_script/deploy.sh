@@ -259,10 +259,12 @@ then
       read -e -p "Enter toggle_16 name:" -i "DUMMY" toggle_16_name
     fi
   fi
+else
+echo -e ""
 fi
 
 # Setup Media Player
-echo ""
+echo -e ""
 echo -e -n "Do you want to configure the \e[1mMedia Player Page\e[0m?(y/n):"
 read -r p8_answer
 if [ "$p8_answer" != "${p8_answer#[Yy]}" ]
