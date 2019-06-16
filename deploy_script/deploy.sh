@@ -212,8 +212,8 @@ then
     echo ""
     echo -e "You can use a second Page of toggles by pressing the Toggles Page button again"
     echo -e -n "Do you want to configure a \e[1mSECOND Toggles Page\e[0m?(y/n):"
-    read -r 24_p6_p2_answer
-    if [ "$24_p6_p2_answer" != "${24_p6_p2_answer#[Yy]}" ]
+    read -r answer_24_p6_2
+    if [ "$answer_24_p6_2" != "${answer_24_p6_2#[Yy]}" ]
     then
       read -e -p "Enter toggle_7 entity id:" -i "DUMMY" toggle7
       read -e -p "Enter toggle_7 name:" -i "DUMMY" toggle_7_name
