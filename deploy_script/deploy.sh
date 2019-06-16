@@ -326,13 +326,13 @@ echo ""
 if [[ "$panel_size"  == "3.2" ]]
 then
   echo "Download 3.2in packages"
-  wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/beta/packages_3.2in/3.2_packages.tar.gz
+  wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/master/packages_3.2in/3.2_packages.tar.gz
   tar -zxf $hasp_temp_dir/3.2_packages.tar.gz -C $hasp_temp_dir
   rm $hasp_temp_dir/3.2_packages.tar.gz
 elif [[ "$panel_size"  == "2.4" ]]
 then
   echo "Download 2.4in packages"
-  wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/beta/packages_2.4in/2.4_packages.tar.gz
+  wget -q -P $hasp_temp_dir https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/master/packages_2.4in/2.4_packages.tar.gz
   tar -zxf $hasp_temp_dir/2.4_packages.tar.gz -C $hasp_temp_dir
   rm $hasp_temp_dir/2.4_packages.tar.gz
 fi

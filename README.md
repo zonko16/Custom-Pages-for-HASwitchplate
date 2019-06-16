@@ -63,7 +63,27 @@ QUICK START
 
 1. Install HASP as usual but use the [HASwitchplate_2.4.tft](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/blob/master/Nextion%20HMI/HASwitchPlate_2.4.tft) provided by this repository instead. 
 
-2. Replace the yaml files in ```config/packages/plate01``` with the ones provided in this repository.
+2a. You can run a script for an easier/faster setup.
+You will need to SSH to run the script.
+**Hass.IO users running the SSH Addon:**
+Open the terminal and execute:
+
+```
+cd /config
+apk add tar wget
+bash <(wget -qO- -o /dev/null https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/master/deploy_script/deploy.sh)
+```
+
+**Standard Home Assistant users:**
+```
+sudo su -s /bin/bash homeassistant
+cd ~/.homeassistant
+bash <(wget -qO- -o /dev/null https://github.com/zonko16/Custom-Pages-for-HASwitchplate/raw/master/deploy_script/deploy.sh)
+```
+
+You can skip the rest of the installation guide if you ran through the script.
+
+2b. Replace the yaml files in ```config/packages/plate01``` with the ones provided in this repository.
     - For the **2.4" Panel** use .yamls in [packages_2.4in/](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/tree/master/packages_2.4in) 
     - For the **3.2" Panel** use .yamls in [packages_3.2in/](https://github.com/zonko16/Custom-Pages-for-HASwitchplate/tree/master/packages_3.2in)
 
