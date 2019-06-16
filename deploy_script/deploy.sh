@@ -139,7 +139,7 @@ fi
 
 ############################################
 # Weather/Time Page configuration
-echo -e "Do you want to configure the \e[1mWeather Page\e[0m?(y/n) "
+echo -e -n "Do you want to configure the \e[1mWeather Page\e[0m?(y/n) "
 read -r p3_answer
 if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
@@ -164,7 +164,8 @@ fi
 
 ############################################
 # Thermostat Page Configuration
-echo -e "Do you want to configure the \e[1mThermostat Page\e[0m?(y/n)"
+echo ""
+echo -e -n"Do you want to configure the \e[1mThermostat Page\e[0m?(y/n)"
 read -r p5_answer
 if [ "$p5_answer" != "${p5_answer#[Yy]}" ]
 then
@@ -227,9 +228,8 @@ then
       read -e -p "Enter toggle_11 name:" -i "DUMMY" toggle_11_name
       read -e -p "Enter toggle_12 entity id:" -i "DUMMY" toggle12
       read -e -p "Enter toggle_12 name:" -i "DUMMY" toggle_12_name
-  fi 
   #Setup additional switches for 3.2in users
-  if [[ "$panel_size"  == "3.2" ]]
+  elif [[ "$panel_size"  == "3.2" ]]
   then
     read -e -p "Enter toggle_7 entity id:" -i "DUMMY" toggle7
     read -e -p "Enter toggle_7 name:" -i "DUMMY" toggle_7_name
@@ -238,8 +238,8 @@ then
     echo ""
     echo -e "You can use a second Page of toggles by pressing the Toggles Page button again"
     echo -e -n "Do you want to configure a \e[1mSECOND Toggles Page\e[0m?(y/n):"
-    read -r 32_p6_p2_answer
-    if [ "$32_p6_p2_answer" != "${32_p6_p2_answer#[Yy]}" ]
+    read -r answer_32_p6_2
+    if [ "$answer_32_p6_2" != "${answer_32_p6_2#[Yy]}" ]
     then
       read -e -p "Enter toggle_9 entity id:" -i "DUMMY" toggle10
       read -e -p "Enter toggle_9 name:" -i "DUMMY" toggle_10_name
@@ -368,7 +368,7 @@ then
   sed -i -e 's/domain.TOGGLEI/'"$toggle1"'/g' -e 's/domain.TOGGLE2/'"$toggle2"'/g' -e 's/domain.TOGGLE3/'"$toggle3"'/g' -e 's/domain.TOGGLE4/'"$toggle4"'/g' -e 's/domain.TOGGLE5/'"$toggle5"'/g' -e 's/domain.TOGGLE6/'"$toggle6"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
   sed -i -e 's/toggleNameI/'"$toggle_1_name"'/g' -e 's/toggleName2/'"$toggle_2_name"'/g' -e 's/toggleName3/'"$toggle_3_name"'/g' -e 's/toggleName4/'"$toggle_4_name"'/g' -e 's/toggleName5/'"$toggle_5_name"'/g' -e 's/toggleName6/'"$toggle_6_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
 
-  if [ "$24_p6_p2_answer" != "${24_p6_p2_answer#[Yy]}" ]
+  if [ "$answer_24_p6_2" != "${answer_24_p6_2#[Yy]}" ]
   then
     sed -i -e 's/domain.TOGGLE7/'"$toggle7"'/g' -e 's/domain.TOGGLE8/'"$toggle8"'/g' -e 's/domain.TOGGLE9/'"$toggle9"'/g' -e 's/domain.TOGGLE10/'"$toggle10"'/g' -e 's/domain.TOGGLE11/'"$toggle11"'/g' -e 's/domain.TOGGLE12/'"$toggle12"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
     sed -i -e 's/toggleName7/'"$toggle_7_name"'/g' -e 's/toggleName8/'"$toggle_8_name"'/g' -e 's/toggleName9/'"$toggle_9_name"'/g' -e 's/toggleName10/'"$toggle_10_name"'/g' -e 's/toggleName11/'"$toggle_11_name"'/g' -e 's/toggleName12/'"$toggle_12_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
@@ -378,7 +378,7 @@ then
     sed -i -e 's/domain.TOGGLE7/'"$toggle7"'/g' -e 's/domain.TOGGLE8/'"$toggle8"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
     sed -i -e 's/toggleName7/'"$toggle_7_name"'/g' -e 's/toggleName8/'"$toggle_8_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
     
-    if [ "$32_p6_p2_answer" != "${32_p6_p2_answer#[Yy]}" ]
+    if [ "$answer_32_p6_2" != "${answer_32_p6_2#[Yy]}" ]
     then
       sed -i -e 's/domain.TOGGLE9/'"$toggle9"'/g' -e 's/domain.TOGGLE10/'"$toggle10"'/g' -e 's/domain.TOGGLE11/'"$toggle11"'/g' -e 's/domain.TOGGLE12/'"$toggle12"'/g' -e 's/domain.TOGGLE13/'"$toggle13"'/g' -e 's/domain.TOGGLE14/'"$toggle14"'/g' -e 's/domain.TOGGLE15/'"$toggle15"'/g' -e 's/domain.TOGGLE16/'"$toggle16"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
       sed -i -e 's/toggleName9/'"$toggle_9_name"'/g' -e 's/toggleName10/'"$toggle_10_name"'/g' -e 's/toggleName11/'"$toggle_11_name"'/g' -e 's/toggleName12/'"$toggle_12_name"'/g' -e 's/toggleName13/'"$toggle_13_name"'/g' -e 's/toggleName14/'"$toggle_14_name"'/g' -e 's/toggleName15/'"$toggle_15_name"'/g' -e 's/toggleName16/'"$toggle_16_name"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p6_toggles.yaml
