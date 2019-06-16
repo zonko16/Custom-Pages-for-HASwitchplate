@@ -207,7 +207,7 @@ then
   read -e -p "Enter toggle_6 entity id:" -i "DUMMY" toggle6
   read -e -p "Enter toggle_6 name:" -i "DUMMY" toggle_6_name
   
-  if [[ "$panel_size" == "2.4"]]
+  if [[ "$panel_size" == "2.4" ]]
   then
     echo ""
     echo -e "You can use a second Page of toggles by pressing the Toggles Page button again"
