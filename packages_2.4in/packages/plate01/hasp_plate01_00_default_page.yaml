@@ -22,6 +22,6 @@ automation:
   action:
   - service: mqtt.publish
     data:
-      topic: 'hasp/plate01/command/page/'
+      topic: 'hasp/plate01/command/page'
       payload: '3'
   
