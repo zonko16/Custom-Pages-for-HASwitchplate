@@ -241,8 +241,8 @@ then
     read -r answer_32_p6_2
     if [ "$answer_32_p6_2" != "${answer_32_p6_2#[Yy]}" ]
     then
-      read -e -p "Enter toggle_9 entity id:" -i "DUMMY" toggle10
-      read -e -p "Enter toggle_9 name:" -i "DUMMY" toggle_10_name
+      read -e -p "Enter toggle_9 entity id:" -i "DUMMY" toggle9
+      read -e -p "Enter toggle_9 name:" -i "DUMMY" toggle_9_name
       read -e -p "Enter toggle_10 entity id:" -i "DUMMY" toggle10
       read -e -p "Enter toggle_10 name:" -i "DUMMY" toggle_10_name
       read -e -p "Enter toggle_11 entity id:" -i "DUMMY" toggle11
@@ -344,7 +344,7 @@ then
   sed -i -e 's/script.SCRIPT_1/'"$scene_1"'/g' -e 's/script.SCRIPT_2/'"$scene_2"'/g' -e  's/script.SCRIPT_3/'"$scene_3"'/g' -e 's/script.SCRIPT_4/'"$scene_4"'/g' -e 's/script.SCRIPT_5/'"$scene_5"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p2_scripts.yaml
 fi
 
-# Write WEATHER config to file if it was set up by user
+# Write P3_WEATHER config to file if it was set up by user
 if [ "$p3_answer" != "${p3_answer#[Yy]}" ]
 then
   sed -i -- 's/YourAPIKey/'"$dark_sky_api"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_*.yaml
@@ -361,7 +361,7 @@ then
   sed -i -- 's/climate.DUMMY/'"$climate"'/g' $hasp_temp_dir/packages/plate01/hasp_plate01_p5_thermostat.yaml
 fi
 
-# Write Toggles Page variables to yaml
+# Write P6_Toggles Page variables to yaml
 if [ "$p6_answer" != "${p6_answer#[Yy]}" ]
 then
   #Entities
