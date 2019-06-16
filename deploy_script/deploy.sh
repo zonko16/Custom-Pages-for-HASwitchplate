@@ -227,6 +227,7 @@ then
       read -e -p "Enter toggle_11 name:" -i "DUMMY" toggle_11_name
       read -e -p "Enter toggle_12 entity id:" -i "DUMMY" toggle12
       read -e -p "Enter toggle_12 name:" -i "DUMMY" toggle_12_name
+    fi
   #Setup additional switches for 3.2in users
   elif [[ "$panel_size"  == "3.2" ]]
   then
