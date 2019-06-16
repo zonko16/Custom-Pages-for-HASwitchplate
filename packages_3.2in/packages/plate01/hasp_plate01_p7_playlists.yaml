@@ -22,7 +22,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[3].txt'
-        payload_template: '\"{{ state_attr("script.PLAYLIST1", "friendly_name")}}\"'
+        payload_template: '"{{ state_attr("script.PLAYLIST1", "friendly_name")}}"'
     #Font/text Toggle 2/10
     - service: mqtt.publish
       data:
@@ -31,7 +31,7 @@ automation:
     - service: mqtt.publish
       data:
         topic: 'hasp/plate01/command/p[7].b[4].txt'
-        payload_template: '\"{{ state_attr("script.PLAYLIST2", "friendly_name") }}\"'
+        payload_template: '"{{ state_attr("script.PLAYLIST2", "friendly_name") }}"'
     #Font/text Toggle 3/11
     - service: mqtt.publish
       data:
