@@ -195,17 +195,17 @@ then
   echo -e "toggle_6 - toggle_7\e[0m"
   echo -e "===================================================="
   echo -e ""
-  read -e -p "Enter toggle_1 entity id:" -i "DUMMY" toggle1
+  read -e -p "Enter toggle_1 entity id:" -i "switch.DUMMY" toggle1
   read -e -p "Enter toggle_1 name:" -i "DUMMY" toggle_1_name
-  read -e -p "Enter toggle_2 entity id:" -i "DUMMY" toggle2
+  read -e -p "Enter toggle_2 entity id:" -i "switch.DUMMY" toggle2
   read -e -p "Enter toggle_2 name:" -i "DUMMY" toggle_2_name
-  read -e -p "Enter toggle_3 entity id:" -i "DUMMY" toggle3
+  read -e -p "Enter toggle_3 entity id:" -i "switch.DUMMY" toggle3
   read -e -p "Enter toggle_3 name:" -i "DUMMY" toggle_3_name
-  read -e -p "Enter toggle_4 entity id:" -i "DUMMY" toggle4
+  read -e -p "Enter toggle_4 entity id:" -i "switch.DUMMY" toggle4
   read -e -p "Enter toggle_4 name:" -i "DUMMY" toggle_4_name
-  read -e -p "Enter toggle_5 entity id:" -i "DUMMY" toggle5
+  read -e -p "Enter toggle_5 entity id:" -i "switch.DUMMY" toggle5
   read -e -p "Enter toggle_5 name:" -i "DUMMY" toggle_5_name
-  read -e -p "Enter toggle_6 entity id:" -i "DUMMY" toggle6
+  read -e -p "Enter toggle_6 entity id:" -i "switch.DUMMY" toggle6
   read -e -p "Enter toggle_6 name:" -i "DUMMY" toggle_6_name
   if [[ "$panel_size" == "2.4" ]]
   then
@@ -215,25 +215,25 @@ then
     read -r answer_24_p6_2
     if [ "$answer_24_p6_2" != "${answer_24_p6_2#[Yy]}" ]
     then
-      read -e -p "Enter toggle_7 entity id:" -i "DUMMY" toggle7
+      read -e -p "Enter toggle_7 entity id:" -i "switch.DUMMY" toggle7
       read -e -p "Enter toggle_7 name:" -i "DUMMY" toggle_7_name
-      read -e -p "Enter toggle_8 entity id:" -i "DUMMY" toggle8
+      read -e -p "Enter toggle_8 entity id:" -i "switch.DUMMY" toggle8
       read -e -p "Enter toggle_8 name:" -i "DUMMY" toggle_8_name
-      read -e -p "Enter toggle_9 entity id:" -i "DUMMY" toggle9
+      read -e -p "Enter toggle_9 entity id:" -i "switch.DUMMY" toggle9
       read -e -p "Enter toggle_9 name:" -i "DUMMY" toggle_9_name
-      read -e -p "Enter toggle_10 entity id:" -i "DUMMY" toggle10
-      read -e -p "Enter toggle_10 name:" -i "DUMMY" toggle_10_name
-      read -e -p "Enter toggle_11 entity id:" -i "DUMMY" toggle11
-      read -e -p "Enter toggle_11 name:" -i "DUMMY" toggle_11_name
-      read -e -p "Enter toggle_12 entity id:" -i "DUMMY" toggle12
+      read -e -p "Enter toggle_10 entity id:" -i "switch.DUMMY" toggle10
+      read -e -p "Enter toggle_10 name:" -i "switch.DUMMY" toggle_10_name
+      read -e -p "Enter toggle_11 entity id:" -i "switch.DUMMY" toggle11
+      read -e -p "Enter toggle_11 name:" -i "switch.DUMMY" toggle_11_name
+      read -e -p "Enter toggle_12 entity id:" -i "switch.DUMMY" toggle12
       read -e -p "Enter toggle_12 name:" -i "DUMMY" toggle_12_name
     fi
   #Setup additional switches for 3.2in users
   elif [[ "$panel_size"  == "3.2" ]]
   then
-    read -e -p "Enter toggle_7 entity id:" -i "DUMMY" toggle7
+    read -e -p "Enter toggle_7 entity id:" -i "switch.DUMMY" toggle7
     read -e -p "Enter toggle_7 name:" -i "DUMMY" toggle_7_name
-    read -e -p "Enter toggle_8 entity id:" -i "DUMMY" toggle8
+    read -e -p "Enter toggle_8 entity id:" -i "switch.DUMMY" toggle8
     read -e -p "Enter toggle_8 name:" -i "DUMMY" toggle_8_name
     echo ""
     echo -e "You can use a second Page of toggles by pressing the Toggles Page button again"
@@ -241,21 +241,21 @@ then
     read -r answer_32_p6_2
     if [ "$answer_32_p6_2" != "${answer_32_p6_2#[Yy]}" ]
     then
-      read -e -p "Enter toggle_9 entity id:" -i "DUMMY" toggle9
+      read -e -p "Enter toggle_9 entity id:" -i "switch.DUMMY" toggle9
       read -e -p "Enter toggle_9 name:" -i "DUMMY" toggle_9_name
-      read -e -p "Enter toggle_10 entity id:" -i "DUMMY" toggle10
+      read -e -p "Enter toggle_10 entity id:" -i "switch.DUMMY" toggle10
       read -e -p "Enter toggle_10 name:" -i "DUMMY" toggle_10_name
-      read -e -p "Enter toggle_11 entity id:" -i "DUMMY" toggle11
+      read -e -p "Enter toggle_11 entity id:" -i "switch.DUMMY" toggle11
       read -e -p "Enter toggle_11 name:" -i "DUMMY" toggle_11_name
-      read -e -p "Enter toggle_12 entity id:" -i "DUMMY" toggle12
+      read -e -p "Enter toggle_12 entity id:" -i "switch.DUMMY" toggle12
       read -e -p "Enter toggle_12 name:" -i "DUMMY" toggle_12_name
-      read -e -p "Enter toggle_13 entity id:" -i "DUMMY" toggle13
+      read -e -p "Enter toggle_13 entity id:" -i "switch.DUMMY" toggle13
       read -e -p "Enter toggle_13 name:" -i "DUMMY" toggle_13_name
-      read -e -p "Enter toggle_14 entity id:" -i "DUMMY" toggle14
+      read -e -p "Enter toggle_14 entity id:" -i "switch.DUMMY" toggle14
       read -e -p "Enter toggle_14 name:" -i "DUMMY" toggle_14_name
-      read -e -p "Enter toggle_15 entity id:" -i "DUMMY" toggle15
+      read -e -p "Enter toggle_15 entity id:" -i "switch.DUMMY" toggle15
       read -e -p "Enter toggle_15 name:" -i "DUMMY" toggle_15_name
-      read -e -p "Enter toggle_16 entity id:" -i "DUMMY" toggle16
+      read -e -p "Enter toggle_16 entity id:" -i "switch.DUMMY" toggle16
       read -e -p "Enter toggle_16 name:" -i "DUMMY" toggle_16_name
     fi
   fi
