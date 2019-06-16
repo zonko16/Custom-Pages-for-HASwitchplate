@@ -156,8 +156,8 @@ then
   read -e -p "Enter humidity sensor entity_id:" -i "sensor.INDOOR_HUMIDITY_DUMMY" in_humidity
   if [[ "$panel_size" == "3.2" ]]
   then
-    read -e -p "Enter second temperature sensor entity_id:" -i "sensor.TEMP_2" indoor_temp_2
-    read -e -p "Enter second humidity sensor entity_id." -i "sensor.HUMIDITY_2" indoor_humidity_2
+    read -e -p "Enter second temperature sensor entity_id:" -i "sensor.TEMP_2" in_temp_2
+    read -e -p "Enter second humidity sensor entity_id." -i "sensor.HUMIDITY_2" in_humidity_2
   fi
 fi
 
