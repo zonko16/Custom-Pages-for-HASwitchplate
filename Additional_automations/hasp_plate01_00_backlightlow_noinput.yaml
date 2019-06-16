@@ -1,0 +1,31 @@
+timer:
+  hasp_plate01:
+    duration: '00:00:25'
+
+
+automation:
+- alias: hasp_plate01_00_DefaultPage_TimerReset
+  trigger:
+  - platform: mqtt
+    topic: 'hasp/plate01/state/#'
+  action:
+  - service: timer.start
+    data:
+      entity_id: 'timer.hasp_plate01'
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plate01/brightness/set'
+      payload: '255'
+
+- alias: hasp_plate01_00_BacklightLow_trigger
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.hasp_plate01
+  action:
+  - service: mqtt.publish
+    data:
+      topic: 'hasp/plate01/brightness/set'
+      payload: '10'
+  
